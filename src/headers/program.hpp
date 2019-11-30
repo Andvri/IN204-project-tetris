@@ -9,6 +9,5 @@ public:
     void start();
 
 private:
-    int n;
 };
 #endif
