@@ -1,9 +1,9 @@
 enum Shape {
-    I,
+    I = 1,
     J,
-    L = -Shape::J,
+    L,
     O,
     T,
     S,
-    Z = -Shape::S,
+    Z,
 };
