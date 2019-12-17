@@ -12,7 +12,10 @@
                 "${workspaceRoot}/main.cpp",
                 "${workspaceRoot}/src/*.cpp",
                 "-o",
-                "${workspaceRoot}/build/program"
+                "${workspaceRoot}/build/program",
+                "-lsfml-graphics",
+                "-lsfml-window", 
+                "-lsfml-system"
             ],
             "options": {
                 "cwd": "${fileDirname}"
