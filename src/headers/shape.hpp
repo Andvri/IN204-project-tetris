@@ -1,3 +1,5 @@
+#ifndef SHAPE_ENUM
+#define SHAPE_ENUM
 enum Shape {
     I = 1,
     J,
@@ -7,3 +9,4 @@ enum Shape {
     S,
     Z,
 };
+#endif

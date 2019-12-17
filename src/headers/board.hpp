@@ -12,6 +12,9 @@ public:
     void start();
 
 
+
+protected:
     int tableau[HAUTER][LARGUEUR]; 
+    bool fill = false;
 };
 #endif
