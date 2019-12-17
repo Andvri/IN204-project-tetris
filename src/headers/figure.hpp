@@ -5,13 +5,16 @@
 
 class Figure{
 public:
+        //Constructeur
     Figure(int shape)
         : shape(static_cast<Shape>(shape)){
         Atribuition();
     }
     ~Figure(){}
 
+        //Function responsable pour faire les atribuitions de couleur et le form de chaque piece
     void Atribuition(){
+            //Coulors randomic
         for (int i = 0; i < 4; i++){
             if (i == 0){
                 form[0].setColor(static_cast<Color>(Random()));
@@ -20,6 +23,7 @@ public:
             }
         }
 
+            //Define la forme du Shape correspondante
         switch (shape) {
         case 1: //I
             form[0].setPosX(3);
@@ -86,6 +90,7 @@ public:
 
     };
 
+        //Function randomic pour ajouter un valeur entre 1 et 7 et faire la correspondence entre les enum Color
     int Random(){
         std::default_random_engine generator;
         std::uniform_int_distribution<int> distribution(1, 7);
