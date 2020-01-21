@@ -1,10 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "src/headers/board.hpp"
-#include "src/headers/color.hpp"
-#include "src/headers/fiches.hpp"
-#include "src/headers/figure.hpp"
-#include "src/headers/program.hpp"
-#include "src/headers/shape.hpp"
+#include "libraries.hpp"
 
 void teste(){
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");

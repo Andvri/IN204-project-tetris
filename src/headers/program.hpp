@@ -2,12 +2,15 @@
 #define PROGRAM_CLASS
 #include <iostream>
 
+
 class Program
 {
 public:
     Program();
     void start();
+    void movement();
 
-private:
+protected:
+
 };
 #endif

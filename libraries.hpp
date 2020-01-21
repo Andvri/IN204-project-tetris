@@ -1,1 +1,8 @@
 #include "src/headers/program.hpp"
+#include "src/headers/board.hpp"
+#include "src/headers/color.hpp"
+#include "src/headers/fiches.hpp"
+#include "src/headers/figure.hpp"
+#include "src/headers/program.hpp"
+#include "src/headers/shape.hpp"
+#include "SFML/Graphics.hpp"

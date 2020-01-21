@@ -10,11 +10,13 @@ class Board{
 public:
     Board();
     void start();
-
+    bool limitation(int height, int width);
+    bool filledLine(int width);
 
 
 protected:
-    int tableau[HAUTER][LARGUEUR]; 
-    bool fill = false;
+    int tableau[HAUTER][LARGUEUR]; //0 = not filled; 1 = filled 
+    int x = 5, y = 0;
+
 };
 #endif
