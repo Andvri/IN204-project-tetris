@@ -1,16 +1,13 @@
+#include <iostream>
 #ifndef PROGRAM_CLASS
 #define PROGRAM_CLASS
-#include <iostream>
-
-
 class Program
 {
+private:
+    /* data */
 public:
-    Program();
+    Program(/* args */);
+    ~Program();
     void start();
-    void movement();
-
-protected:
-
 };
 #endif
