@@ -1,22 +1,19 @@
 #ifndef BOARD_CLASS
 #define BOARD_CLASS
 #include <iostream>
+#include <SFML/Graphics.hpp>
 
-
+#define BLOCKSIZE 30
 #define LARGUEUR 10
 #define HAUTER 20
 
 class Board{
 public:
-    Board();
-    void start();
-    bool limitation(int height, int width);
-    bool filledLine(int width);
+    Board(){};
+    ~Board(){};
 
-
-protected:
-    int tableau[HAUTER][LARGUEUR]; //0 = not filled; 1 = filled 
-    int x = 5, y = 0;
+public:
+    int tableau[HAUTER][LARGUEUR] = {0}; //0 = not filled; 1 = filled 
 
 };
 #endif

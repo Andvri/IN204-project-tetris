@@ -9,10 +9,12 @@ void Program::start () {
 
 void Program::movement(){
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+        
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
 
-    }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-
-    }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
         
     }
 }

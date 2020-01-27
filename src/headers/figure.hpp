@@ -1,22 +1,56 @@
 #ifndef FIGURE_CLASS 
 #define FIGURE_CLASS
-#include "fiches.hpp"
+#include "./board.hpp"
 #include <random>
+
 
 class Figure{
 public:
         //Constructeur
-    Figure(int shape)
-        : shape(static_cast<Shape>(shape)){
-        Atribuition();
-    }
+    Figure(){};
     ~Figure(){}
-    void Atribuition();
+    void newBlock();
     int Random();
 
-protected:
-    Fiches form[4]; 
-    Shape shape;
+public:
+    int form[7][4][4] = {
+        1,0,0,0,
+        1,0,0,0,
+        1,0,0,0,
+        1,0,0,0,
+
+        1,0,0,0,
+        1,1,0,0,
+        0,1,0,0,
+        0,0,0,0,
+
+        0,1,0,0,
+        1,1,0,0,
+        1,0,0,0,
+        0,0,0,0,
+
+        1,1,0,0,
+        1,1,0,0,
+        0,0,0,0,
+        0,0,0,0,
+
+        1,0,0,0,
+        1,1,0,0,
+        1,0,0,0,
+        0,0,0,0,
+
+        0,1,0,0,
+        0,1,0,0,
+        1,1,0,0,
+        0,0,0,0,
+
+        1,0,0,0,
+        1,0,0,0,
+        1,1,0,0,
+        0,0,0,0,
+    };
+    int posX = LARGUEUR/2, posY = 0;
+    int kind = rand() % 7;
 };
 
 #endif
