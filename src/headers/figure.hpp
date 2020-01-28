@@ -1,15 +1,17 @@
 #ifndef FIGURE_CLASS 
 #define FIGURE_CLASS
-#include "./board.hpp"
-#include <random>
 
+#include <iostream>
+#include <ctime>    
+#include <cstdlib>  
 
 class Figure{
 public:
         //Constructeur
-    Figure(){};
+    Figure();
     ~Figure(){}
     void newBlock();
+    void rotate();
     int Random();
 
 public:
@@ -49,8 +51,8 @@ public:
         1,1,0,0,
         0,0,0,0,
     };
-    int posX = LARGUEUR/2, posY = 0;
-    int kind = rand() % 7;
+    int posX, posY;
+    int kind;
 };
 
 #endif

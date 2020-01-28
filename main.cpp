@@ -1,4 +1,3 @@
-#include <SFML/Graphics.hpp>
 #include "./libraries.hpp"
 
 Figure tetrino;
@@ -9,46 +8,11 @@ const sf::Color colors[] = {
 
 void design(){
     sf::RenderWindow window(sf::VideoMode(LARGUEUR*BLOCKSIZE, HAUTER*BLOCKSIZE), "TETRIS");
-    // sf::Texture t;
-    // t.loadFromFile("./src/imgs/red.png");
-
-    // sf::Sprite s(t);
     sf::RectangleShape block(sf::Vector2f(BLOCKSIZE, BLOCKSIZE));
-    
-    auto clearLines = [&](){
-        int to = HAUTER -1;
-
-        //TOP FOR BOTTOM
-        for (int from = HAUTER -1; from >= 0; from--){
-            int counter = 0;
-
-            for (int x = 0; x < LARGUEUR; x++){
-                if (table.tableau[from][x])
-                    counter++;
-            }
-            if (counter < LARGUEUR){
-                for (int x = 0; x < LARGUEUR; x++){
-                    table.tableau[to][x] = table.tableau[from][x];
-                }
-                to--;
-            }
-        }
-    };
-
-    auto limitation = [&](){
-        for (int y = 0; y < 4; y++){
-            for (int x = 0; x < 4; x++){
-                if (tetrino.form[tetrino.kind][y][x] == 0) continue;
-                if (tetrino.posX + x < 0 || tetrino.posX + x >= LARGUEUR || tetrino.posY + y >= HAUTER) return false;
-                if (table.tableau[tetrino.posY + y][tetrino.posX + x]) return false;
-            }
-        }
-        return true;
-    };
 
     auto movDown = [&](){
         tetrino.posY++;
-        if (limitation() == false){
+        if (table.checkLimits(tetrino) == false){
             tetrino.posY--;
             for (int y = 0; y < 4; y++){
                 for (int x = 0; x < 4; x++){
@@ -57,34 +21,9 @@ void design(){
                     }
                 }
             }
-            clearLines();
+            table.clearLines();
             tetrino.newBlock();
         };
-    };
-
-    auto rotate = [&](){
-        int len = 0;
-        for (int y =0; y < 4; y++){
-            for (int x = 0; x < 4; x++){
-                if (tetrino.form[tetrino.kind][y][x]){
-                    len = std::max(std::max(x, y) + 1, len);
-                }
-            }
-        }
-        int d[4][4] = {0};
-            //rotation en 90degrees
-        for (int y =0; y < 4; y++){
-            for (int x = 0; x < 4; x++){
-                if (tetrino.form[tetrino.kind][y][x]){
-                    d[len -1 -x][y] = 1;
-                }
-            }
-        }
-        for (int y =0; y < 4; y++){
-            for (int x = 0; x < 4; x++){
-                tetrino.form[tetrino.kind][y][x] = d[y][x];
-            }
-        }
     };
 
     tetrino.newBlock();
@@ -103,17 +42,14 @@ void design(){
             if (event.type == sf::Event::KeyPressed){
                 if (event.key.code == sf::Keyboard::Left){
                     tetrino.posX--;
-                    if (limitation() == false) tetrino.posX++;
-                }
-                if (event.key.code == sf::Keyboard::Right){
+                    if (table.checkLimits(tetrino) == false) tetrino.posX++;
+                }if (event.key.code == sf::Keyboard::Right){
                     tetrino.posX++;    
-                    if (limitation() == false) tetrino.posX--;
-                }
-                if (event.key.code == sf::Keyboard::Down){
+                    if (table.checkLimits(tetrino) == false) tetrino.posX--;
+                }if (event.key.code == sf::Keyboard::Down){
                     movDown();
-                }
-                if(event.key.code == sf::Keyboard::Up){
-                    rotate();
+                }if(event.key.code == sf::Keyboard::Up){
+                    tetrino.rotate();
                 }
             }
         }

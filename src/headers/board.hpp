@@ -1,7 +1,7 @@
 #ifndef BOARD_CLASS
 #define BOARD_CLASS
-#include <iostream>
-#include <SFML/Graphics.hpp>
+
+#include "./figure.hpp"
 
 #define BLOCKSIZE 30
 #define LARGUEUR 10
@@ -9,11 +9,14 @@
 
 class Board{
 public:
-    Board(){};
+    Board();
+    
+    void clearLines();
+    bool checkLimits(Figure tetrino);
     ~Board(){};
 
-public:
-    int tableau[HAUTER][LARGUEUR] = {0}; //0 = not filled; 1 = filled 
+
+    int tableau[HAUTER][LARGUEUR];
 
 };
 #endif

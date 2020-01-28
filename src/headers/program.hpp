@@ -1,7 +1,7 @@
 #ifndef PROGRAM_CLASS
 #define PROGRAM_CLASS
 #include <iostream>
-
+#include "SFML/Graphics.hpp"
 
 class Program
 {
