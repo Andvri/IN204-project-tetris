@@ -24,20 +24,20 @@
             "problemMatcher": [
                 "$gcc"
             ],
-            "presentation": {
-                "reveal": "always",
-                "panel": "new"
-            },
             "group": "build"
         },
         {
             "type": "shell",
             "label": "Run build program",
             "command": "${workspaceRoot}/build/program",
-            "presentation": {
-                "reveal": "always",
-                "panel": "new"
-            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "Delete build program",
+            "command": "rm ${workspaceRoot}/build/program",
             "problemMatcher": [
                 "$gcc"
             ]
@@ -45,11 +45,8 @@
         {
             "type": "shell",
             "label": "Build and Run build program",
-            "presentation": {
-                "reveal": "always",
-                "panel": "new"
-            },
             "dependsOn": [
+                "Delete build program",
                 "Build program",
                 "Run build program"
             ],

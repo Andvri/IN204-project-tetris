@@ -1,6 +1,9 @@
 #ifndef APPLICATION_CLASS
 #define APPLICATION_CLASS
 
+#include "../../utils/headers/ResourceHolder.hpp"
+#include "../../utils/headers/ResourceIdentifiers.hpp"
+
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -21,9 +24,9 @@ class Application
 		static const sf::Time	TimePerFrame;
 
 		sf::RenderWindow		mWindow;
-
-		sf::Text				mStatisticsText;
-		sf::Time				mStatisticsUpdateTime;
-		std::size_t				mStatisticsNumFrames;
+        sf::Sprite		mBackgroundSprite;
+        sf::Text                mTitle;
+        TextureHolder			mTextures;
+	  	FontHolder				mFonts;
 };
 #endif
