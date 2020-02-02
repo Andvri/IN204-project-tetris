@@ -11,7 +11,7 @@
                 "-g",
                 "${workspaceRoot}/Main.cpp",
                 "${workspaceRoot}/sources/*.cpp",
-                //"${workspaceRoot}/utils/*.cpp",
+                "${workspaceRoot}/utils/*.cpp",
                 "-o",
                 "${workspaceRoot}/build/program",
                 "-lsfml-graphics",
@@ -37,7 +37,7 @@
         {
             "type": "shell",
             "label": "Delete build program",
-            "command": "rm ${workspaceRoot}/build/program",
+            "command": "rm -f ${workspaceRoot}/build/program",
             "problemMatcher": [
                 "$gcc"
             ]

@@ -14,6 +14,11 @@ namespace Textures
 	enum ID
 	{
 		DefaultBackground,
+		Red,
+		Yellow,
+		Green,
+		Blue,
+		Orange
 	};
 }
 

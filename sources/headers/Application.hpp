@@ -5,7 +5,10 @@
 #include "../../utils/headers/ResourceIdentifiers.hpp"
 
 #include <SFML/System.hpp>
+#include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+
+#include "./Tetris.hpp"
 
 class Application
 {
@@ -19,14 +22,15 @@ class Application
         void					processInput();
 		void					update(sf::Time dt);
 		void					render();
+		void					handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
 
 	private:
 		static const sf::Time	TimePerFrame;
 
 		sf::RenderWindow		mWindow;
-        sf::Sprite		mBackgroundSprite;
+        Tetris					mTetris;
+
         sf::Text                mTitle;
-        TextureHolder			mTextures;
-	  	FontHolder				mFonts;
+	  	sf::Font				mFont;
 };
 #endif

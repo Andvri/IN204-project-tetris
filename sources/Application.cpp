@@ -4,23 +4,14 @@ const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 
 Application::Application():
     mWindow(sf::VideoMode(1024, 576), "TETRIS 20.20"),
-    mTextures(), 
-    mFonts(),
-	mBackgroundSprite()
+    mTetris(mWindow), 
+	mFont()
 {
-    mFonts.load(Fonts::Anurati, "media/fonts/Anurati-Regular.otf");
-    mFonts.load(Fonts::Blanka, "media/fonts/Blanka-Regular.otf");
-	mTextures.load(Textures::DefaultBackground, "media/images/Galaxy2.png");
-
-    mTextures.get(Textures::DefaultBackground).setRepeated(true);
-    mBackgroundSprite.setTexture(mTextures.get(Textures::DefaultBackground));	
-	mBackgroundSprite.setTextureRect(sf::IntRect(0, 0, mWindow.getSize().x,mWindow.getSize().y));
-	mTitle.setFont(mFonts.get(Fonts::Blanka));
+    mFont.loadFromFile("media/fonts/Blank-Regular.otf");
+	mTitle.setFont(mFont);
 	mTitle.setString("TETRIS 2020");
 	mTitle.setPosition(sf::Vector2f(300, 180));
 	mTitle.setCharacterSize(80); // in pixels, not points!
-
-
 	mTitle.setFillColor(sf::Color::White);
 }
 
@@ -57,34 +48,19 @@ void Application::processInput()
 	{
 		if (event.type == sf::Event::Closed)
 			mWindow.close();
-
-        if (event.type == sf::Event::Resized)
-		{
-			// update the view to the new size of the window
-
-			mBackgroundSprite.setTextureRect(sf::IntRect(0, 0, event.size.width, event.size.height));
-
-			// update the view to the new size of the window
-			// update the view to the new size of the window
-			sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
-
-			std::cout << event.size.width << "-"<< event.size.height << std::endl;
-			mWindow.setView(sf::View(visibleArea));
-
-			std::cout << event.size.width << "-"<< event.size.height << std::endl;
-		}
 	}
 }
 
 void Application::update(sf::Time dt)
 {
-	
+	mTetris.update(dt);
 }
 
 void Application::render()
 {
 	mWindow.clear();
-    mWindow.draw(mBackgroundSprite);
+	mTetris.draw();
 	mWindow.draw(mTitle);
+	mWindow.setView(mWindow.getDefaultView());
 	mWindow.display();
 }
