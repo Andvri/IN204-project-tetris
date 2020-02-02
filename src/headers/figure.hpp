@@ -7,50 +7,24 @@
 
 class Figure{
 public:
-        //Constructeur
     Figure();
-    ~Figure(){}
+    ~Figure(){};
+
     void newBlock();
     void rotate();
-    int Random();
+    int random();
+    void atribbuition(int kind);
 
-public:
-    int form[7][4][4] = {
-        1,0,0,0,
-        1,0,0,0,
-        1,0,0,0,
-        1,0,0,0,
+    int getPontualForm(int y, int x);
+    int getPosX();
+    int getPosY();
+    int getKind();
 
-        1,0,0,0,
-        1,1,0,0,
-        0,1,0,0,
-        0,0,0,0,
+    int addPosX(int x);
+    int addPosY(int y);
 
-        0,1,0,0,
-        1,1,0,0,
-        1,0,0,0,
-        0,0,0,0,
-
-        1,1,0,0,
-        1,1,0,0,
-        0,0,0,0,
-        0,0,0,0,
-
-        1,0,0,0,
-        1,1,0,0,
-        1,0,0,0,
-        0,0,0,0,
-
-        0,1,0,0,
-        0,1,0,0,
-        1,1,0,0,
-        0,0,0,0,
-
-        1,0,0,0,
-        1,0,0,0,
-        1,1,0,0,
-        0,0,0,0,
-    };
+private:
+    int form[4][4];
     int posX, posY;
     int kind;
 };
