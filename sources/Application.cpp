@@ -8,12 +8,12 @@ Application::Application():
 	mPlayer(),
 	mFont()
 {
-    //mFont.loadFromFile("media/fonts/Blank-Regular.otf");
-	//mTitle.setFont(mFont);
-	//mTitle.setString("TETRIS 2020");
-	//mTitle.setPosition(sf::Vector2f(300, 180));
-	//mTitle.setCharacterSize(80); // in pixels, not points!
-	//mTitle.setFillColor(sf::Color::White);
+    mFont.loadFromFile("media/fonts/Blanka-Regular.otf");
+	mTitle.setFont(mFont);
+	mTitle.setString("TETRIS 2020");
+	mTitle.setPosition(sf::Vector2f(300, 180));
+	mTitle.setCharacterSize(80); // in pixels, not points!
+	mTitle.setFillColor(sf::Color::White);
 }
 
 Application::~Application()
@@ -69,6 +69,6 @@ void Application::render()
 	mTetris.draw();
 
 	mWindow.setView(mWindow.getDefaultView());
-//	mWindow.draw(mTitle);
+	mWindow.draw(mTitle);
 	mWindow.display();
 }

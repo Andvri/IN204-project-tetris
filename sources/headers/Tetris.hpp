@@ -48,6 +48,7 @@ class Tetris : private sf::NonCopyable
 		{
 			Background,
 			SquarePlayer,
+			SquarePlayer2,
 			LayerCount
 		};
 
@@ -65,6 +66,7 @@ class Tetris : private sf::NonCopyable
 		sf::Vector2f						mSpawnPosition;
 		float								mScrollSpeed;
 		Square*								mPlayerSquare;
+		Square*								mPlayerSquare2;
 };
 
 #endif // TETRIS_HPP

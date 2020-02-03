@@ -18,7 +18,6 @@ struct SquareMover
 	void operator() (Square& square, sf::Time) const
 	{
 		square.accelerate(velocity);
-		std::cout << "here" << std::endl;
 	}
 
 	sf::Vector2f velocity;

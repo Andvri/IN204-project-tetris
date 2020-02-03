@@ -16,6 +16,7 @@ Tetris::Tetris(sf::RenderWindow& window)
 , mSpawnPosition(mWorldView.getSize().x / 2.f, mWorldBounds.height - mWorldView.getSize().y / 2.f)
 , mScrollSpeed(-50.f)
 , mPlayerSquare(nullptr)
+, mPlayerSquare2(nullptr)
 {
 	loadTextures();
 	buildScene();
@@ -30,6 +31,7 @@ void Tetris::update(sf::Time dt)
 	// Scroll the world, reset player velocity
 	mWorldView.move(0.f, mScrollSpeed * dt.asSeconds());	
 	mPlayerSquare->setVelocity(0.f, 0.f);
+	mPlayerSquare2->setVelocity(0.f,0.f);
 
 	// Forward commands to scene graph, adapt velocity (scrolling, diagonal correction)
 	while (!mCommandQueue.isEmpty())
@@ -82,9 +84,15 @@ void Tetris::buildScene()
 	// Add player's square
 	std::unique_ptr<Square> leader(new Square(Square::Red, mTextures));
 	mPlayerSquare = leader.get();
-	mPlayerSquare->setPosition(mSpawnPosition);
+	mPlayerSquare->setPosition(sf::Vector2f(100.0f,50.0f));
 	mPlayerSquare->setVelocity(40.f, mScrollSpeed);
 	mSceneLayers[SquarePlayer]->attachChild(std::move(leader));
+
+	std::unique_ptr<Square> leader2(new Square(Square::Red, mTextures));
+	mPlayerSquare2 = leader2.get();
+	mPlayerSquare2->setPosition(sf::Vector2f(200.0f,70.0f));
+	mPlayerSquare2->setVelocity(40.f, mScrollSpeed);
+	mSceneLayers[SquarePlayer2]->attachChild(std::move(leader2));
 
 }
 
@@ -101,6 +109,15 @@ void Tetris::adaptPlayerPosition()
 	position.y = std::max(position.y, viewBounds.top + borderDistance);
 	position.y = std::min(position.y, viewBounds.top + viewBounds.height - borderDistance);
 	mPlayerSquare->setPosition(position);
+
+
+
+	position = mPlayerSquare2->getPosition();
+	position.x = std::max(position.x, viewBounds.left + borderDistance);
+	position.x = std::min(position.x, viewBounds.left + viewBounds.width - borderDistance);
+	position.y = std::max(position.y, viewBounds.top + borderDistance);
+	position.y = std::min(position.y, viewBounds.top + viewBounds.height - borderDistance);
+	mPlayerSquare2->setPosition(position);
 }
 
 void Tetris::adaptPlayerVelocity()
@@ -113,4 +130,16 @@ void Tetris::adaptPlayerVelocity()
 
 	// Add scrolling velocity
 	mPlayerSquare->accelerate(0.f, mScrollSpeed);
+
+
+
+
+	velocity = mPlayerSquare2->getVelocity();
+
+	// If moving diagonally, reduce velocity (to have always same velocity)
+	if (velocity.x != 0.f && velocity.y != 0.f)
+		mPlayerSquare2->setVelocity(velocity / std::sqrt(2.f));
+
+	// Add scrolling velocity
+	mPlayerSquare2->accelerate(0.f, mScrollSpeed);
 }
