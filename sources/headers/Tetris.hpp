@@ -7,11 +7,16 @@
 #include "../../utils/headers/SpriteNode.hpp"
 #include "./Square.hpp"
 
+#include "../../utils/headers/CommandQueue.hpp"
+#include "../../utils/headers/Command.hpp"
+
+
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/Graphics/View.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
 #include <array>
+#include <queue>
 
 
 // Forward declaration
@@ -27,10 +32,15 @@ class Tetris : private sf::NonCopyable
 		void								update(sf::Time dt);
 		void								draw();
 
+		CommandQueue&						getCommandQueue();
+
 
 	private:
 		void								loadTextures();
 		void								buildScene();
+
+		void								adaptPlayerPosition();
+		void								adaptPlayerVelocity();
 
 
 	private:
@@ -49,6 +59,7 @@ class Tetris : private sf::NonCopyable
 
 		SceneNode							mSceneGraph;
 		std::array<SceneNode*, LayerCount>	mSceneLayers;
+		CommandQueue						mCommandQueue;
 
 		sf::FloatRect						mWorldBounds;
 		sf::Vector2f						mSpawnPosition;

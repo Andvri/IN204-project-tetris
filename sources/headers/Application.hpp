@@ -9,7 +9,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "./Tetris.hpp"
-
+#include "./Player.hpp"
 class Application
 {
 	public:
@@ -29,6 +29,7 @@ class Application
 
 		sf::RenderWindow		mWindow;
         Tetris					mTetris;
+		Player					mPlayer;
 
         sf::Text                mTitle;
 	  	sf::Font				mFont;

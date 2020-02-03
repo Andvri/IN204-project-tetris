@@ -2,6 +2,9 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
+#include <algorithm>
+#include <cmath>
+
 
 Tetris::Tetris(sf::RenderWindow& window)
 : mWindow(window)
@@ -23,29 +26,30 @@ Tetris::Tetris(sf::RenderWindow& window)
 
 void Tetris::update(sf::Time dt)
 {
-	// Scroll the world
+	
+	// Scroll the world, reset player velocity
 	mWorldView.move(0.f, mScrollSpeed * dt.asSeconds());	
+	mPlayerSquare->setVelocity(0.f, 0.f);
 
-	// Move the player sidewards (plane scouts follow the main square
-	sf::Vector2f position = mPlayerSquare->getPosition();
-	sf::Vector2f velocity = mPlayerSquare->getVelocity();
+	// Forward commands to scene graph, adapt velocity (scrolling, diagonal correction)
+	while (!mCommandQueue.isEmpty())
+		mSceneGraph.onCommand(mCommandQueue.pop(), dt);
+	adaptPlayerVelocity();
 
-	// If player touches borders, flip its X velocity
-	if (position.x <= mWorldBounds.left + 150.f
-	 || position.x >= mWorldBounds.left + mWorldBounds.width - 150.f)
-	{
-		velocity.x = -velocity.x;
-		mPlayerSquare->setVelocity(velocity);
-	}
-
-	// Apply movements
+	// Regular update step, adapt position (correct if outside view)
 	mSceneGraph.update(dt);
+	adaptPlayerPosition();
 }
 
 void Tetris::draw()
 {
 	mWindow.setView(mWorldView);
 	mWindow.draw(mSceneGraph);
+}
+
+CommandQueue& Tetris::getCommandQueue()
+{
+	return mCommandQueue;
 }
 
 void Tetris::loadTextures()
@@ -82,4 +86,31 @@ void Tetris::buildScene()
 	mPlayerSquare->setVelocity(40.f, mScrollSpeed);
 	mSceneLayers[SquarePlayer]->attachChild(std::move(leader));
 
+}
+
+
+void Tetris::adaptPlayerPosition()
+{
+	// Keep player's position inside the screen bounds, at least borderDistance units from the border
+	sf::FloatRect viewBounds(mWorldView.getCenter() - mWorldView.getSize() / 2.f, mWorldView.getSize());
+	const float borderDistance = 40.f;
+
+	sf::Vector2f position = mPlayerSquare->getPosition();
+	position.x = std::max(position.x, viewBounds.left + borderDistance);
+	position.x = std::min(position.x, viewBounds.left + viewBounds.width - borderDistance);
+	position.y = std::max(position.y, viewBounds.top + borderDistance);
+	position.y = std::min(position.y, viewBounds.top + viewBounds.height - borderDistance);
+	mPlayerSquare->setPosition(position);
+}
+
+void Tetris::adaptPlayerVelocity()
+{
+	sf::Vector2f velocity = mPlayerSquare->getVelocity();
+
+	// If moving diagonally, reduce velocity (to have always same velocity)
+	if (velocity.x != 0.f && velocity.y != 0.f)
+		mPlayerSquare->setVelocity(velocity / std::sqrt(2.f));
+
+	// Add scrolling velocity
+	mPlayerSquare->accelerate(0.f, mScrollSpeed);
 }

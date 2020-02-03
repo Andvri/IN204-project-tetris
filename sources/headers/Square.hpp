@@ -22,6 +22,7 @@ class Square : public Entity
 
 	public:
 							Square(Type type, const TextureHolder& textures);
+	virtual unsigned int	getCategory() const;
 
 
 	private:

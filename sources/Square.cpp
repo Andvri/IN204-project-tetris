@@ -27,3 +27,9 @@ void Square::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) cons
 {
 	target.draw(mSprite, states);
 }
+
+
+unsigned int Square::getCategory() const
+{
+	return Category::PlayerSquare;
+}
