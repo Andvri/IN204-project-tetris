@@ -2,7 +2,8 @@
 
 
 
-GameScene::GameScene(StateManager& stack, Context context) :       State(stack, context),
+GameScene::GameScene(StateManager& stack, Context context) 
+:   State(stack, context),
     mCircle()
 {
     mCircle.setRadius(10);

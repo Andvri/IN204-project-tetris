@@ -10,7 +10,7 @@ private:
     /* data */
 public:
     TitleScene(StateManager& stack, Context context);
-    ~TitleScene();
+
 
     virtual void		draw();
     virtual bool		update(sf::Time dt);

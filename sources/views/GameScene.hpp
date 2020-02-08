@@ -10,7 +10,6 @@ class GameScene
 public:
 
     GameScene(StateManager& stack, Context context);
-    ~GameScene();
 
     virtual void		draw();
     virtual bool		update(sf::Time dt);

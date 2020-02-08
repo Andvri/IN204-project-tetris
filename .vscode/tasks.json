@@ -10,7 +10,6 @@
             "args": [
                 "-g",
                 "${workspaceRoot}/Main.cpp",
-                "${workspaceRoot}/src/*.cpp",
                 "${workspaceRoot}/sources/*.cpp",
                 "${workspaceRoot}/sources/views/*.cpp",
                 "${workspaceRoot}/sources/utils/States/*.cpp",

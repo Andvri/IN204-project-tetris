@@ -1,5 +1,0 @@
-#include "SFML/Graphics.hpp"
-#include "./src/game_body.cpp"
-#include "./src/figure.cpp"
-#include "./src/board.cpp"
-#include "./src/player.cpp"

@@ -2,7 +2,8 @@
 
 
 
-MenuScene::MenuScene(StateManager& stack, Context context) :       State(stack, context),
+MenuScene::MenuScene(StateManager& stack, Context context) :       
+	State(stack, context),
     mRectangle()
 {
     mRectangle.setSize(sf::Vector2f(10,10));

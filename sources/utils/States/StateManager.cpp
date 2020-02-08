@@ -11,6 +11,9 @@ StateManager::StateManager(State::Context context)
 {
 }
 
+StateManager::~StateManager()
+{}
+
 void StateManager::update(sf::Time dt)
 {
 	// Iterate from top to bottom, stop as soon as update() returns false

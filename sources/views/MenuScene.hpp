@@ -12,7 +12,6 @@ private:
     /* data */
 public:
     MenuScene(StateManager& stack, Context context);
-    ~MenuScene();
 
     virtual void		draw();
     virtual bool		update(sf::Time dt);

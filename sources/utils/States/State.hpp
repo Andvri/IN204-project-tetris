@@ -12,7 +12,7 @@ namespace sf
 }
 
 class StateManager;
-class Player;
+
 
 
 class State
@@ -21,10 +21,9 @@ class State
         typedef std::unique_ptr<State> Ptr;
         struct Context
         {
-            Context(sf::RenderWindow& window, Player& player);
+            Context(sf::RenderWindow& window);
 
-            sf::RenderWindow*	window; 
-            Player*				player;
+            sf::RenderWindow*	window;
         };
 
         State(StateManager& stack, Context context);

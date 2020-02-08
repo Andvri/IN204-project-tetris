@@ -1,9 +1,8 @@
 #include "State.hpp"
 #include "StateManager.hpp"
 
-State::Context::Context(sf::RenderWindow& window, Player& player)
+State::Context::Context(sf::RenderWindow& window)
 : window(&window)
-, player(&player)
 {
 }
 

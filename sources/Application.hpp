@@ -6,7 +6,6 @@
 #include <SFML/Graphics.hpp>
 
 #include "./utils/States.hpp"
-#include "./utils/Player.hpp"
 class Application
 {
     public:
@@ -24,6 +23,5 @@ class Application
         sf::RenderWindow		mWindow;
 
         StateManager		    mStateStack;
-        Player                  mPlayer;
 };
 #endif

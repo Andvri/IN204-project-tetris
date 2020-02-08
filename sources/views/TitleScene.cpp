@@ -2,7 +2,8 @@
 
 
 
-TitleScene::TitleScene(StateManager& stack, Context context) :       State(stack, context),
+TitleScene::TitleScene(StateManager& stack, Context context) :
+	State(stack, context),
     mRectangle()
 {
     mRectangle.setSize(sf::Vector2f(10,10));

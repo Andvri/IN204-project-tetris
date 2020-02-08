@@ -1,12 +1,12 @@
 #include "./Application.hpp"
 #include "./Views.hpp"
 
+
 const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 
 Application::Application():
     mWindow(sf::VideoMode(1024, 576), "TETRIS 20.20"), 
-	mPlayer(),
-	mStateStack( State::Context(mWindow, mPlayer) )
+	mStateStack( State::Context(mWindow) )
 {
 	registerStates();
 	mStateStack.pushState(States::Title);
