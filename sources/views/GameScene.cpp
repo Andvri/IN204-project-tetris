@@ -6,7 +6,7 @@ GameScene::GameScene(StateManager& stack, Context context)
 :   State(stack, context),
     mCircle()
 {
-    mCircle.setRadius(10);
+    mCircle.setRadius(100);
     mCircle.setFillColor(sf::Color::Yellow);
 	mCircle.setPosition(context.window->getView().getSize() / 2.f);
 }

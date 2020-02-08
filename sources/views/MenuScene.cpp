@@ -6,7 +6,7 @@ MenuScene::MenuScene(StateManager& stack, Context context) :
 	State(stack, context),
     mRectangle()
 {
-    mRectangle.setSize(sf::Vector2f(10,10));
+    mRectangle.setSize(sf::Vector2f(100,100));
     mRectangle.setFillColor(sf::Color::Yellow);
 	mRectangle.setPosition(context.window->getView().getSize() / 2.f);
 }
