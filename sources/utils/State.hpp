@@ -4,18 +4,21 @@
 #include <SFML/System/Time.hpp>
 #include <SFML/Window/Event.hpp>
 
+#include "StateIdentifiers.hpp"
+
 namespace sf
 {
 	class RenderWindow;
 }
 
-class StateStack;
+class StateManager;
 class Player;
 
 
 class State
 {   
     public:
+        typedef std::unique_ptr<State> Ptr;
         struct Context
         {
             Context(sf::RenderWindow& window, Player& player);
@@ -24,7 +27,7 @@ class State
             Player*				player;
         };
 
-        State(StateStack& stack, Context context);
+        State(StateManager& stack, Context context);
         virtual				~State();
         virtual void		draw() = 0;
         virtual bool		update(sf::Time dt) = 0;
@@ -32,8 +35,12 @@ class State
     protected:
         Context				getContext() const;
 
+        void				requestStackPush(States::ID stateID);
+		void				requestStackPop();
+		void				requestStateClear();
+
     private:
-        StateStack*			mStack;
+        StateManager*		mStack;
         Context				mContext;
 };
 

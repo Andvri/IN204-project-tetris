@@ -12,6 +12,7 @@
                 "${workspaceRoot}/Main.cpp",
                 "${workspaceRoot}/src/*.cpp",
                 "${workspaceRoot}/sources/*.cpp",
+                "${workspaceRoot}/sources/utils/*.cpp",
                 "-o",
                 "${workspaceRoot}/build/program",
                 "-lsfml-graphics",
