@@ -1,24 +1,19 @@
-#include "./headers/Application.hpp"
-#include <iostream>
+#include "./Application.hpp"
+#include "./Views.hpp"
+
+
 const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 
 Application::Application():
-    mWindow(sf::VideoMode(1024, 576), "TETRIS 20.20"),
-    mTetris(mWindow), 
-	mPlayer(),
-	mFont()
+    mWindow(sf::VideoMode(1024, 576), "TETRIS 20.20"), 
+	mStateStack( State::Context(mWindow) )
 {
-    mFont.loadFromFile("media/fonts/Blanka-Regular.otf");
-	mTitle.setFont(mFont);
-	mTitle.setString("TETRIS 2020");
-	mTitle.setPosition(sf::Vector2f(300, 180));
-	mTitle.setCharacterSize(80); // in pixels, not points!
-	mTitle.setFillColor(sf::Color::White);
+	registerStates();
+	mStateStack.pushState(States::Title);
 }
 
 Application::~Application()
-{
-}
+{}
 
 void Application::run ()
 {
@@ -35,7 +30,9 @@ void Application::run ()
 
 			processInput();
 			update(TimePerFrame);
-
+			
+			if (mStateStack.isEmpty())
+				mWindow.close();
 		}
 
 		render();
@@ -44,31 +41,37 @@ void Application::run ()
 
 void Application::processInput()
 {
-	CommandQueue& commands = mTetris.getCommandQueue();
 
 	sf::Event event;
 	while (mWindow.pollEvent(event))
 	{
-		mPlayer.handleEvent(event, commands);
+		mStateStack.handleEvent(event);
 
 		if (event.type == sf::Event::Closed)
 			mWindow.close();
 	}
 
-	mPlayer.handleRealtimeInput(commands);
 }
 
 void Application::update(sf::Time dt)
 {
-	mTetris.update(dt);
+	mStateStack.update(dt);
 }
 
 void Application::render()
 {
 	mWindow.clear();
-	mTetris.draw();
+
+	mStateStack.draw();
 
 	mWindow.setView(mWindow.getDefaultView());
-	mWindow.draw(mTitle);
 	mWindow.display();
+}
+
+
+void Application::registerStates()
+{
+	mStateStack.registerState<TitleScene>(States::Title);
+	mStateStack.registerState<MenuScene>(States::Menu);
+	mStateStack.registerState<GameScene>(States::Game);
 }
