@@ -5,6 +5,8 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
+#include "./utils/States.hpp"
+#include "./utils/Player.hpp"
 class Application
 {
     public:
@@ -15,9 +17,13 @@ class Application
         void	processInput();
         void	update(sf::Time dt);
         void    render();
+        void    registerStates();
 
     private:
         static const sf::Time	TimePerFrame;
         sf::RenderWindow		mWindow;
+
+        StateManager		    mStateStack;
+        Player                  mPlayer;
 };
 #endif
