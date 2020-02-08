@@ -9,8 +9,9 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-g",
-                "${workspaceRoot}/main.cpp",
+                "${workspaceRoot}/Main.cpp",
                 "${workspaceRoot}/src/*.cpp",
+                "${workspaceRoot}/sources/*.cpp",
                 "-o",
                 "${workspaceRoot}/build/program",
                 "-lsfml-graphics",
