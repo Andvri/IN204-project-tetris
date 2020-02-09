@@ -2,7 +2,7 @@
 #define TITLESCENE_CLASS
 #include "SFML/Graphics.hpp"
 #include "../utils/States.hpp"
-
+#include "../utils/Components/Label.hpp"
 class TitleScene
     : public State
 {
@@ -16,9 +16,9 @@ public:
     virtual bool		update(sf::Time dt);
     virtual bool		handleEvent(const sf::Event& event);
 private: 
-    sf::Text        mTitle;
-    sf::Text        mMsg;
-    sf::Text        mCopy;
+    Label           mTitle;
+    Label           mMsg;
+    Label           mCopy;
     sf::Font        mFont;
     sf::Sprite      mBackgroundSprite;
     sf::Texture     mBackground;

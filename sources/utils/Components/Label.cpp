@@ -1,6 +1,9 @@
 #include "Label.hpp"
 #include "../Utility.hpp"
 
+#include <SFML/Graphics/RenderStates.hpp>
+#include <SFML/Graphics/RenderTarget.hpp>
+
 
 Label::Label(const std::string& text, const std::string& path, bool active, float size, bool toogle, bool highlighted)
     : Component(),
@@ -57,7 +60,8 @@ bool Label::isSelectable () const
     return false;
 }
 
-void Label::draw(sf::RenderTarget&, sf::RenderStates) const 
+void Label::draw(sf::RenderTarget& target, sf::RenderStates states) const 
 {
-
+    states.transform *= getTransform();
+	target.draw(mText, states);
 }

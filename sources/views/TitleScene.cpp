@@ -5,30 +5,36 @@
 
 TitleScene::TitleScene(StateManager& stack, Context context) :
 	State(stack, context),
-	mTitle(),
-    mMsg(),
-    mCopy(),
-	mFont(),
+	mTitle("TE TRIS 20 20","media/fonts/Blanka-Regular.otf", true, 80),
+    mMsg("Press any key to start","media/fonts/Blanka-Regular.otf", true, 30, true, false),
+    mCopy("2020 © JF Studios","media/fonts/Blanka-Regular.otf", true, 20),
 	mBackgroundSprite(),
-	mBackground(),
-	mShowText(true),
-	mTextEffectTime(sf::Time::Zero)
+	mBackground()
 {
 	if (!mBackground.loadFromFile("media/images/Galaxy2.png"))
 	{
 	}
-	if(!mFont.loadFromFile("media/fonts/Blanka-Regular.otf"))
-	{
-	}
-
 	sf::RenderWindow& window = *getContext().window;
 	mBackground.setRepeated(true);
 	mBackgroundSprite.setTexture(mBackground);
 	mBackgroundSprite.setTextureRect(sf::IntRect(0, 0, window.getSize().x,window.getSize().y));
-	mTitle.setFont(mFont);
-	mTitle.setString("Press any key to start");
-	Utility::centerOrigin(mTitle);
-	mTitle.setPosition(sf::Vector2f(context.window->getSize() / 2u));
+
+
+
+	/**
+	 * 
+	 *	TODO:  Optimize centering
+	 */
+	sf::Vector2f ws(window.getSize() / 4u);
+
+	float propX = sf::Vector2f(window.getSize() / 2u).x;
+	float propY = ws.y;
+
+	mTitle.setPosition(sf::Vector2f(propX, propY));
+	mMsg.setPosition(sf::Vector2f(propX, propY*2));
+	mCopy.setPosition(sf::Vector2f(propX, propY*3));
+
+
 }
 
 
@@ -36,19 +42,22 @@ void TitleScene::draw()
 {
 	sf::RenderWindow& window = *getContext().window;
 	window.draw(mBackgroundSprite);
-	if (mShowText)
+
+	if (mTitle.isActive())
 		window.draw(mTitle);
+
+	if (mMsg.isActive())
+		window.draw(mMsg);
+
+	if (mCopy.isActive())
+		window.draw(mCopy);
 }
 
 bool TitleScene::update(sf::Time dt)
 {
-	mTextEffectTime += dt;
-
-	if (mTextEffectTime >= sf::seconds(0.5f))
-	{
-		mShowText = !mShowText;
-		mTextEffectTime = sf::Time::Zero;
-	}
+	mTitle.update(dt);
+	mMsg.update(dt);
+	mCopy.update(dt);
 
 	return true;
 }

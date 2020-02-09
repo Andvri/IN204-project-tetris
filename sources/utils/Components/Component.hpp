@@ -33,7 +33,7 @@ class Component :
         virtual bool		isActive() const;
         virtual void		activate();
         virtual void		deactivate();
-        virtual void        uupdate(sf::Time dt) = 0;
+        virtual bool        update(sf::Time dt) = 0;
         virtual void		handleEvent(const sf::Event& event) = 0;
 
 
