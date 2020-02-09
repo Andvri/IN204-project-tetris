@@ -13,6 +13,7 @@
                 "${workspaceRoot}/sources/*.cpp",
                 "${workspaceRoot}/sources/views/*.cpp",
                 "${workspaceRoot}/sources/utils/States/*.cpp",
+                "${workspaceRoot}/sources/utils/Components/*.cpp",
                 "-o",
                 "${workspaceRoot}/build/program",
                 "-lsfml-graphics",

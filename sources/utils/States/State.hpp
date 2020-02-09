@@ -22,7 +22,6 @@ class State
         struct Context
         {
             Context(sf::RenderWindow& window);
-
             sf::RenderWindow*	window;
         };
 

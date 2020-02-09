@@ -25,7 +25,7 @@ bool MenuScene::update(sf::Time dt)
 
 bool MenuScene::handleEvent(const sf::Event& event)
 {
-	if (event.type == sf::Event::KeyPressed)
+	if (event.key.code == sf::Keyboard::N)
 	{
 		requestStackPop();
 		requestStackPush(States::Game);
