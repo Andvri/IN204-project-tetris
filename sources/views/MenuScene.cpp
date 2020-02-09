@@ -8,7 +8,7 @@ MenuScene::MenuScene(StateManager& stack, Context context) :
 	mBackground(),
 	mButtons(),
 	mButtonSelect(0),
-	mMenuTitle("MENU", "media/fonts/Blanka-Regular.otf", true, 100, false, true)
+	mMenuTitle("MENU", "media/fonts/Blanka-Regular.otf", true, 100, false, true, sf::Color::Red)
 {
 	sf::RenderWindow& window = *getContext().window;
 	sf::Vector2u ws(window.getSize());
