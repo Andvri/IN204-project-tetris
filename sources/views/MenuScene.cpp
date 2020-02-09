@@ -7,13 +7,15 @@ MenuScene::MenuScene(StateManager& stack, Context context) :
     mRectangle(),
 	mBackground(),
 	mButtons(),
-	mButtonSelect(0)
+	mButtonSelect(0),
+	mMenuTitle("MENU", "media/fonts/Blanka-Regular.otf", true, 100, false, true)
 {
 	sf::RenderWindow& window = *getContext().window;
 	sf::Vector2u ws(window.getSize());
 	
 	mBackground.setSize(sf::IntRect(0, 0, window.getSize().x,window.getSize().y));
 
+	mMenuTitle.setPosition(Utility::getPositionRelative(ws, 2u, 4u, 1, 1));
 
 	for (int i = 0; i < ButtonsLabel.size(); i++)
 	{
@@ -44,12 +46,15 @@ void MenuScene::draw()
 	{
 		window.draw(*i);
 	}
+
+	if(mMenuTitle.isActive()) window.draw(mMenuTitle);
 	
 	
 }
 
 bool MenuScene::update(sf::Time dt)
 {
+	mMenuTitle.update(dt);
 	return true;
 }
 
