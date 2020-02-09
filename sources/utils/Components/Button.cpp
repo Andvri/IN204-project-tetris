@@ -10,22 +10,29 @@ Button::Button(const std::string& text, const std::string& path,bool active, flo
     Component(),
     mText(),
     mFont(),
-    mBufferSound(),
-    mSound(),
-    mBackground()
+    mSoundToggle(),
+    mSoundSelect(),
+    mBufferSoundSelect(),
+    mBufferSoundToggle(),
+    mBackground(),
+    mActive(false)
 {
     if (active) activate();
     if(!mFont.loadFromFile(path))
 	{
 	}
 
-    if(!mBufferSound.loadFromFile("media/music/move-me-too.ogg"))
+    if(!mBufferSoundToggle.loadFromFile("media/music/move-me-too.ogg"))
 	{
 	}
+    mSoundToggle.setBuffer(mBufferSoundToggle);
+
+    if(!mBufferSoundSelect.loadFromFile("media/music/move-me-too.ogg"))
+	{
+	}
+    mSoundSelect.setBuffer(mBufferSoundSelect);
 
 
-
-    mSound.setBuffer(mBufferSound);
     mText.setFont(mFont);
     mText.setString(text);
     mText.setCharacterSize(size);
@@ -36,7 +43,7 @@ Button::Button(const std::string& text, const std::string& path,bool active, flo
 
     if(pred) 
     {
-        Component::select();
+        mActive = pred;
         mText.setOutlineThickness(8);
     };
 }
@@ -61,8 +68,8 @@ void Button::select()
 {
 	Component::select();
     mText.setOutlineThickness(8);
-    mSound.play();
-    if (mCallback) mCallback();
+    mSoundSelect.play();
+    if (mCallback && mActive) mCallback();
 }
 
 void Button::deselect()
@@ -104,3 +111,9 @@ void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
 bool Button::update(sf::Time dt) 
 {}
 
+void Button::toggle()
+{
+    mText.setOutlineThickness((!mActive) ? 6 : 0);
+    if(!mActive) mSoundToggle.play();
+    mActive = !mActive;
+}

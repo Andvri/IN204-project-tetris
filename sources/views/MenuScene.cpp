@@ -19,6 +19,11 @@ MenuScene::MenuScene(StateManager& stack, Context context) :
 	{
 		Button *b = new Button(ButtonsLabel[i],"media/fonts/Blanka-Regular.otf", true, 30, (i==0));
 		b->setPosition(Utility::getPositionRelative(ws, 2u, 10u, 1, i +5));
+
+		if (ButtonsLabel.size()-1 == i)
+			b->setCallback([this](){
+				requestStateClear();
+			});
 		mButtons.push_back(b);
 	}
 	
@@ -53,17 +58,37 @@ bool MenuScene::handleEvent(const sf::Event& event)
 	}
 
 	if (event.type == event.KeyPressed) 
-	{
-		if (event.key.code == sf::Keyboard::Tab)
+	{		
+		switch (event.key.code)
 		{
-			int next = (mButtonSelect + 1) % ButtonsLabel.size();
-		
-			mButtons[mButtonSelect]->deselect();
-			mButtons[next]->select();
-
-			mButtonSelect = next;
+		case sf::Keyboard::Tab:
+			moveFocus(true);
+			break;
+		case sf::Keyboard::Up:
+			moveFocus(false);
+			break;
+		case sf::Keyboard::Down:
+			moveFocus(true);
+			break;
+		case sf::Keyboard::Return:
+			mButtons[ButtonsLabel.size()-1]->select();
 		}
 	}
 
 	return true;
+}
+
+void MenuScene::moveFocus(bool asc)
+{
+	int next;
+
+	if (mButtonSelect == 0 && !asc)
+		next = mButtons.size() - 1;
+	else
+		next = (mButtonSelect + ((asc) ? 1 : -1) ) % ButtonsLabel.size();
+	
+	mButtons[mButtonSelect]->toggle();
+	mButtons[next]->toggle();
+
+	mButtonSelect = next;
 }

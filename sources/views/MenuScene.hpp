@@ -12,6 +12,8 @@ class MenuScene
 {
 private:
     std::vector<std::string> ButtonsLabel = { "Singleplayer",    "Multiplayer", "Exit" };
+
+    void moveFocus(bool asc);
 public:
     MenuScene(StateManager& stack, Context context);
 
@@ -23,7 +25,7 @@ private:
     Background                  mBackground;
     std::vector<Button*>        mButtons;
     int                         mButtonSelect;
-    
+
 };
 
 #endif

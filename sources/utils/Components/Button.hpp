@@ -26,6 +26,10 @@ public:
     virtual bool		isSelectable() const;
     virtual void		select();
     virtual void		deselect();
+    
+    void                toggle();
+    
+    
     virtual void        activate();
     virtual void        deactivate();
     virtual bool		update(sf::Time dt);
@@ -39,8 +43,11 @@ private:
     sf::Font                mFont;
     sf::Texture             mBackground;
     Callback				mCallback;
-    sf::SoundBuffer         mBufferSound;
-    sf::Sound               mSound;
+    sf::SoundBuffer         mBufferSoundSelect;
+    sf::Sound               mSoundSelect;
+    sf::SoundBuffer         mBufferSoundToggle;
+    sf::Sound               mSoundToggle;
+    bool                    mActive;
 };
 
 #endif
