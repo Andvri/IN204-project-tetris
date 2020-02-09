@@ -113,7 +113,7 @@ bool Button::update(sf::Time dt)
 
 void Button::toggle()
 {
-    mText.setOutlineThickness((!mActive) ? 6 : 0);
+    mText.setOutlineThickness((!mActive) ? 10 : 0);
     if(!mActive) mSoundToggle.play();
     mActive = !mActive;
 }

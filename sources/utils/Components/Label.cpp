@@ -5,7 +5,7 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 
 
-Label::Label(const std::string& text, const std::string& path, bool active, float size, bool toogle, bool highlighted)
+Label::Label(const std::string& text, const std::string& path, bool active, float size, bool toogle, bool highlighted, const sf::Color color)
     : Component(),
     mEffect(NONE)
 {
@@ -16,6 +16,8 @@ Label::Label(const std::string& text, const std::string& path, bool active, floa
     mText.setFont(mFont);
     mText.setString(text);
     mText.setCharacterSize(size);
+    mText.setFillColor(color);
+    mText.setOutlineColor(color);
 
     if (toogle) mEffect = Effect::TOGGLE_LOOP;
     if (highlighted) {
@@ -47,11 +49,8 @@ bool Label::update(sf::Time dt)
             
             case HIGHLIGHTED:
             {
-                /**
-                 *  TODO: Optimize effects 
-                 */
                 float thickness = mTextEffectTime.asSeconds();
-                mText.setOutlineThickness(5 + thickness);
+                mText.setOutlineThickness(15 + thickness);
                 if (mTextEffectTime >= sf::seconds(5.0f)) mTextEffectTime = sf::Time::Zero;
                 break;
 
