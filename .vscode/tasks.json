@@ -12,6 +12,7 @@
                 "${workspaceRoot}/Main.cpp",
                 "${workspaceRoot}/sources/*.cpp",
                 "${workspaceRoot}/sources/views/*.cpp",
+                "${workspaceRoot}/sources/utils/*.cpp",
                 "${workspaceRoot}/sources/utils/States/*.cpp",
                 "${workspaceRoot}/sources/utils/Components/*.cpp",
                 "-o",

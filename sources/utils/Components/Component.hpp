@@ -4,6 +4,7 @@
 
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/Graphics/Drawable.hpp>
+#include <SFML/System/Time.hpp>
 #include <SFML/Graphics/Transformable.hpp>
 
 #include <memory>
@@ -17,10 +18,8 @@ class Component :
     public sf::Drawable, 
     public sf::Transformable, 
     private sf::NonCopyable
-{
-    public:
-        typedef std::shared_ptr<Component> Ptr;
 
+{
 
 	public:
 							Component();
@@ -34,7 +33,7 @@ class Component :
         virtual bool		isActive() const;
         virtual void		activate();
         virtual void		deactivate();
-
+        virtual void        uupdate(sf::Time dt) = 0;
         virtual void		handleEvent(const sf::Event& event) = 0;
 
 

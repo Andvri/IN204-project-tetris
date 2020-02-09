@@ -16,7 +16,14 @@ public:
     virtual bool		update(sf::Time dt);
     virtual bool		handleEvent(const sf::Event& event);
 private: 
-    sf::RectangleShape			mRectangle;
+    sf::Text        mTitle;
+    sf::Text        mMsg;
+    sf::Text        mCopy;
+    sf::Font        mFont;
+    sf::Sprite      mBackgroundSprite;
+    sf::Texture     mBackground;
+    bool			mShowText;
+    sf::Time		mTextEffectTime;
 };
 
 
