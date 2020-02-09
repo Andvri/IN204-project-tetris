@@ -74,4 +74,5 @@ void Application::registerStates()
 	mStateStack.registerState<TitleScene>(States::Title);
 	mStateStack.registerState<MenuScene>(States::Menu);
 	mStateStack.registerState<GameScene>(States::Game);
+	mStateStack.registerState<MultiplayerScene>(States::MultiPlayer);
 }

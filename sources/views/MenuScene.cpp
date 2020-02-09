@@ -31,10 +31,10 @@ MenuScene::MenuScene(StateManager& stack, Context context) :
 				requestStackPop();
 				requestStackPush(States::Game);
 			});
-		else
+		else if (ButtonsLabel[i] == "Multiplayer")
 			b->setCallback([this](){
 				requestStackPop();
-				requestStackPush(States::Title);
+				requestStackPush(States::MultiPlayer);
 			});
 		mButtons.push_back(b);
 	}
