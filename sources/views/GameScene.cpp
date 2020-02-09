@@ -1,21 +1,27 @@
 #include "GameScene.hpp"
-
+#include "../utils/Utility.hpp"
 
 
 GameScene::GameScene(StateManager& stack, Context context) 
 :   State(stack, context),
-    mCircle()
+    mGrid(21, 5, 20)
 {
-    mCircle.setRadius(100);
-    mCircle.setFillColor(sf::Color::Yellow);
-	mCircle.setPosition(context.window->getView().getSize() / 2.f);
+	mGrid.setPosition(Utility::getPositionRelative(context.window->getView().getSize(), 8, 2, 1, 1));
+
+	std::vector<int> colors;
+	for (int i = 0; i< 21*5; i++) {
+		colors.push_back(i%8);
+	}
+
+	mGrid.setColors(colors);
+
 }
 
 
 void GameScene::draw()
 {
 	sf::RenderWindow& window = *getContext().window;
-	window.draw(mCircle);
+	window.draw(mGrid);
 }
 
 bool GameScene::update(sf::Time dt)

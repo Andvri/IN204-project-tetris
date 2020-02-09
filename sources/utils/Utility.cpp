@@ -1,6 +1,9 @@
 #include "Utility.hpp"
 
 const sf::Vector2f Utility::WINDOW_SIZE = sf::Vector2f(1024, 576);
+/**
+ * 	TODO: Migrate everything to templates
+ */
 
 void Utility::centerOrigin(sf::Text& text)
 {
@@ -12,6 +15,12 @@ void Utility::centerOrigin(sf::Sprite& sprite)
 {
 	sf::FloatRect bounds = sprite.getLocalBounds();
 	sprite.setOrigin(std::floor(bounds.left + bounds.width / 2.f), std::floor(bounds.top + bounds.height / 2.f));
+}
+
+void Utility::centerOrigin(sf::Shape& shape)
+{
+	sf::FloatRect bounds = shape.getLocalBounds();
+	shape.setOrigin(std::floor(bounds.left + bounds.width / 2.f), std::floor(bounds.top + bounds.height / 2.f));
 }
 
 
