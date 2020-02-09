@@ -26,9 +26,15 @@ MenuScene::MenuScene(StateManager& stack, Context context) :
 			b->setCallback([this](){
 				requestStateClear();
 			});
-		else 
+		else if (ButtonsLabel[i] == "Singleplayer")
 			b->setCallback([this](){
-				
+				requestStackPop();
+				requestStackPush(States::Game);
+			});
+		else
+			b->setCallback([this](){
+				requestStackPop();
+				requestStackPush(States::Title);
 			});
 		mButtons.push_back(b);
 	}

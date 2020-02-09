@@ -5,7 +5,7 @@
 const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 
 Application::Application():
-    mWindow(sf::VideoMode(1024, 576), "TETRIS 20.20"), 
+    mWindow(sf::VideoMode(1920, 1080), "TETRIS 20.20"), 
 	mStateStack( State::Context(mWindow) )
 {
 	registerStates();

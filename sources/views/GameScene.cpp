@@ -1,21 +1,38 @@
 #include "GameScene.hpp"
-
+#include "../utils/Utility.hpp"
 
 
 GameScene::GameScene(StateManager& stack, Context context) 
 :   State(stack, context),
-    mCircle()
+    mBackground(),
+	mNextRec(),
+	mPlayerText("Player info: ", "media/fonts/Blanka-Regular.otf", true, 30),
+	mScoreText("Score: ", "media/fonts/Blanka-Regular.otf", true, 30),
+	mNextText("Next piece: ", "media/fonts/Blanka-Regular.otf", true, 30)
 {
-    mCircle.setRadius(100);
-    mCircle.setFillColor(sf::Color::Yellow);
-	mCircle.setPosition(context.window->getView().getSize() / 2.f);
+	sf::RenderWindow& window = *getContext().window;
+	sf::Vector2u ws(window.getSize());
+
+	mBackground.setSize(sf::IntRect(0, 0, window.getSize().x, window.getSize().y));
+
+	mPlayerText.setPosition(Utility::getPositionRelative(ws, 8u, 8u, 1, 4));
+	mScoreText.setPosition(Utility::getPositionRelative(ws, 16u, 8u, 1, 1));
+	mNextText.setPosition(Utility::getPositionRelative(ws, 8u, 8u, 7, 1));
+
+
+
 }
 
 
 void GameScene::draw()
 {
 	sf::RenderWindow& window = *getContext().window;
-	window.draw(mCircle);
+	window.draw(mBackground);
+	
+	if(mPlayerText.isActive()) window.draw(mPlayerText);
+	if(mScoreText.isActive()) window.draw(mScoreText);
+	if(mNextText.isActive()) window.draw(mNextText);
+	window.draw(mNextRec);
 }
 
 bool GameScene::update(sf::Time dt)
