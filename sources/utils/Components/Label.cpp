@@ -18,35 +18,46 @@ Label::Label(const std::string& text, const std::string& path, bool active, floa
     mText.setCharacterSize(size);
 
     if (toogle) mEffect = Effect::TOGGLE_LOOP;
-    if (highlighted) mEffect = Effect::HIGHLIGHTED;
+    if (highlighted) {
+        mEffect = Effect::HIGHLIGHTED;
+    
+        mText.setOutlineColor(sf::Color(255,255,255,25));
+    }
     Utility::centerOrigin(mText);
 }
 
 bool Label::update(sf::Time dt) 
 {
     mTextEffectTime += dt;
-    if (mTextEffectTime >= sf::seconds(0.5f))
-    {
+    
         switch (mEffect)
         {
             case TOGGLE_LOOP:
             {
-                if (isActive()) deactivate();
-                    else  activate();
+                if (mTextEffectTime >= sf::seconds(0.5f))
+                {
+                   if (isActive()) deactivate();
+                        else  activate();
+                    mTextEffectTime = sf::Time::Zero;
+                }
                 break;
+                
             }
                 
             
             case HIGHLIGHTED:
             {
-
+                /**
+                 *  TODO: Optimize effects 
+                 */
+                float thickness = mTextEffectTime.asSeconds();
+                mText.setOutlineThickness(5 + thickness);
+                if (mTextEffectTime >= sf::seconds(5.0f)) mTextEffectTime = sf::Time::Zero;
                 break;
 
             }
         }
 
-        mTextEffectTime = sf::Time::Zero;
-    }
     return true;
 }
 

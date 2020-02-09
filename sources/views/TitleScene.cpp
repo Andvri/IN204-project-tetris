@@ -5,7 +5,7 @@
 
 TitleScene::TitleScene(StateManager& stack, Context context) :
 	State(stack, context),
-	mTitle("TE TRIS 20 20","media/fonts/Blanka-Regular.otf", true, 80),
+	mTitle("TE TRIS 20 20","media/fonts/Blanka-Regular.otf", true, 100, false, true),
     mMsg("Press any key to start","media/fonts/Blanka-Regular.otf", true, 30, true, false),
     mCopy("2020 © JF Studios","media/fonts/Blanka-Regular.otf", true, 20),
 	mBackgroundSprite(),
