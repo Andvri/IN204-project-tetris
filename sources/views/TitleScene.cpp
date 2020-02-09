@@ -11,12 +11,12 @@ TitleScene::TitleScene(StateManager& stack, Context context) :
 	mBackground()
 {
 	sf::RenderWindow& window = *getContext().window;
-	sf::Vector2u ws(window.getSize());
+	sf::Vector2f ws(window.getSize());
 	
 	
 	
 	
-	mBackground.setSize(sf::IntRect(0, 0, window.getSize().x,window.getSize().y));
+	mBackground.setSize(Utility::getRectWindow());
 
 	mTitle.setPosition(Utility::getPositionRelative(ws, 2u, 4u));
 	mMsg.setPosition(Utility::getPositionRelative(ws, 2u, 4u, 1, 2));

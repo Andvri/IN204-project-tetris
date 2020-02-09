@@ -11,9 +11,9 @@ MenuScene::MenuScene(StateManager& stack, Context context) :
 	mMenuTitle("MENU", "media/fonts/Blanka-Regular.otf", true, 100, false, true)
 {
 	sf::RenderWindow& window = *getContext().window;
-	sf::Vector2u ws(window.getSize());
+	sf::Vector2f ws(window.getSize());
 	
-	mBackground.setSize(sf::IntRect(0, 0, window.getSize().x,window.getSize().y));
+	mBackground.setSize(Utility::getRectWindow());
 
 	mMenuTitle.setPosition(Utility::getPositionRelative(ws, 2u, 4u, 1, 1));
 
