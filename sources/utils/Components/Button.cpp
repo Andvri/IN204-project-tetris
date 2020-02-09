@@ -19,7 +19,7 @@ Button::Button(const std::string& text, const std::string& path,bool active, flo
 	{
 	}
 
-    if(!mBufferSound.loadFromFile("media/music/exquisite.ogg"))
+    if(!mBufferSound.loadFromFile("media/music/move-me-too.ogg"))
 	{
 	}
 
@@ -29,12 +29,16 @@ Button::Button(const std::string& text, const std::string& path,bool active, flo
     mText.setFont(mFont);
     mText.setString(text);
     mText.setCharacterSize(size);
-    mText.setOutlineColor(sf::Color(255,255,255,25));
+    mText.setOutlineColor(sf::Color(255,255,255,50));
     Utility::centerOrigin(mText);
 
 
 
-    if(pred) select();
+    if(pred) 
+    {
+        Component::select();
+        mText.setOutlineThickness(8);
+    };
 }
 
 void Button::setCallback(Callback callback)
@@ -56,7 +60,7 @@ bool Button::isSelectable() const
 void Button::select()
 {
 	Component::select();
-    mText.setOutlineThickness(5);
+    mText.setOutlineThickness(8);
     mSound.play();
     if (mCallback) mCallback();
 }

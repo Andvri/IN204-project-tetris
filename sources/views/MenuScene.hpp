@@ -11,7 +11,7 @@ class MenuScene
     : public State
 {
 private:
-    /* data */
+    std::vector<std::string> ButtonsLabel = { "Singleplayer",    "Multiplayer", "Exit" };
 public:
     MenuScene(StateManager& stack, Context context);
 
@@ -21,10 +21,9 @@ public:
 private: 
     sf::RectangleShape			mRectangle;
     Background                  mBackground;
-    Button                      mButton;
-    Button                      mButton2;
     std::vector<Button*>        mButtons;
     int                         mButtonSelect;
+    
 };
 
 #endif
