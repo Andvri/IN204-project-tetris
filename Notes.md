@@ -11,3 +11,8 @@ Nexts steps are:
 
 Bugs found:
     Rotation ()
+
+
+
+TODO: 
+    - Create a resource manager, so as not to recreate the resources  
