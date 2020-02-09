@@ -20,9 +20,13 @@ MenuScene::MenuScene(StateManager& stack, Context context) :
 		Button *b = new Button(ButtonsLabel[i],"media/fonts/Blanka-Regular.otf", true, 30, (i==0));
 		b->setPosition(Utility::getPositionRelative(ws, 2u, 10u, 1, i +5));
 
-		if (ButtonsLabel.size()-1 == i)
+		if (i == ButtonsLabel.size()-1)
 			b->setCallback([this](){
 				requestStateClear();
+			});
+		else 
+			b->setCallback([this](){
+				
 			});
 		mButtons.push_back(b);
 	}
@@ -51,11 +55,6 @@ bool MenuScene::update(sf::Time dt)
 
 bool MenuScene::handleEvent(const sf::Event& event)
 {
-	if (event.key.code == sf::Keyboard::N)
-	{
-		requestStackPop();
-		requestStackPush(States::Game);
-	}
 
 	if (event.type == event.KeyPressed) 
 	{		
@@ -71,7 +70,7 @@ bool MenuScene::handleEvent(const sf::Event& event)
 			moveFocus(true);
 			break;
 		case sf::Keyboard::Return:
-			mButtons[ButtonsLabel.size()-1]->select();
+			mButtons[mButtonSelect]->select();
 		}
 	}
 

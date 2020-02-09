@@ -27,7 +27,7 @@ Button::Button(const std::string& text, const std::string& path,bool active, flo
 	}
     mSoundToggle.setBuffer(mBufferSoundToggle);
 
-    if(!mBufferSoundSelect.loadFromFile("media/music/move-me-too.ogg"))
+    if(!mBufferSoundSelect.loadFromFile("media/music/select-when.ogg"))
 	{
 	}
     mSoundSelect.setBuffer(mBufferSoundSelect);
