@@ -19,7 +19,8 @@
                 "${workspaceRoot}/build/program",
                 "-lsfml-graphics",
                 "-lsfml-window",
-                "-lsfml-system"
+                "-lsfml-system",
+                "-lsfml-audio"
             ],
             "options": {
                 "cwd": "${fileDirname}"

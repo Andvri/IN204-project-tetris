@@ -62,6 +62,9 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "valarray": "cpp",
-        "cassert": "cpp"
+        "cassert": "cpp",
+        "codecvt": "cpp",
+        "future": "cpp",
+        "variant": "cpp"
     }
 }

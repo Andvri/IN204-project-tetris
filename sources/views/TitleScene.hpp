@@ -3,6 +3,7 @@
 #include "SFML/Graphics.hpp"
 #include "../utils/States.hpp"
 #include "../utils/Components/Label.hpp"
+#include "../utils/Components/Background.hpp"
 class TitleScene
     : public State
 {
@@ -19,11 +20,7 @@ private:
     Label           mTitle;
     Label           mMsg;
     Label           mCopy;
-    sf::Font        mFont;
-    sf::Sprite      mBackgroundSprite;
-    sf::Texture     mBackground;
-    bool			mShowText;
-    sf::Time		mTextEffectTime;
+    Background      mBackground;
 };
 
 
