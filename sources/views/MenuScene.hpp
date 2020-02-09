@@ -5,13 +5,14 @@
 #include "../utils/States.hpp"
 #include "../utils/Components/Background.hpp"
 #include "../utils/Components/Button.hpp"
+#include "../utils/Components/Label.hpp"
 
 
 class MenuScene
     : public State
 {
 private:
-    std::vector<std::string> ButtonsLabel = { "Singleplayer",    "Multiplayer", "Exit" };
+    std::vector<std::string> ButtonsLabel = { "Singleplayer", "Multiplayer", "Exit" };
 
     void moveFocus(bool asc);
 public:
@@ -21,6 +22,7 @@ public:
     virtual bool		update(sf::Time dt);
     virtual bool		handleEvent(const sf::Event& event);
 private: 
+    Label                       mMenuTitle;
     sf::RectangleShape			mRectangle;
     Background                  mBackground;
     std::vector<Button*>        mButtons;
