@@ -18,7 +18,7 @@ public:
 public:
     
 
-    Button(const std::string& text, const std::string& path,bool active, float size);
+    Button(const std::string& text, const std::string& path,bool active, float size, bool pred = false);
 
     void				setText(const std::string& text);
     void				setCallback(Callback callback);

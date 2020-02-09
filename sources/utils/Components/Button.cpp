@@ -6,7 +6,7 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 
 
-Button::Button(const std::string& text, const std::string& path,bool active, float size) :
+Button::Button(const std::string& text, const std::string& path,bool active, float size, bool pred) :
     Component(),
     mText(),
     mFont(),
@@ -22,12 +22,19 @@ Button::Button(const std::string& text, const std::string& path,bool active, flo
     if(!mBufferSound.loadFromFile("media/music/exquisite.ogg"))
 	{
 	}
+
+
+
     mSound.setBuffer(mBufferSound);
     mText.setFont(mFont);
     mText.setString(text);
     mText.setCharacterSize(size);
     mText.setOutlineColor(sf::Color(255,255,255,25));
     Utility::centerOrigin(mText);
+
+
+
+    if(pred) select();
 }
 
 void Button::setCallback(Callback callback)
@@ -50,6 +57,7 @@ void Button::select()
 {
 	Component::select();
     mText.setOutlineThickness(5);
+    mSound.play();
 }
 
 void Button::deselect()
@@ -61,7 +69,6 @@ void Button::deselect()
 void Button::activate()
 {
 	Component::activate();
-    mSound.play();
     /**
      *  TODO: In the future place here what to do when selected 
      *  and activated or deactivated 
@@ -79,6 +86,7 @@ void Button::deactivate()
 
 void Button::handleEvent(const sf::Event&)
 {
+    
 }
 
 void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
