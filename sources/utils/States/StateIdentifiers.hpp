@@ -8,7 +8,8 @@ namespace States
         None,
 		Title,
 		Menu,
-        Game
+        Game,
+		MultiPlayer
 	};
 }
 
