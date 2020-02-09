@@ -23,6 +23,7 @@ private:
     Background                  mBackground;
     Button                      mButton;
     Button                      mButton2;
+    std::vector<Button*>        mButtons;
     int                         mButtonSelect;
 };
 

@@ -58,6 +58,7 @@ void Button::select()
 	Component::select();
     mText.setOutlineThickness(5);
     mSound.play();
+    if (mCallback) mCallback();
 }
 
 void Button::deselect()
@@ -69,6 +70,7 @@ void Button::deselect()
 void Button::activate()
 {
 	Component::activate();
+    
     /**
      *  TODO: In the future place here what to do when selected 
      *  and activated or deactivated 
