@@ -1,1 +1,0 @@
-#include "sources/headers/Application.hpp"
