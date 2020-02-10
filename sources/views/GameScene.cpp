@@ -11,7 +11,7 @@ GameScene::GameScene(StateManager& stack, Context context)
 	mNextText("Next piece: ", "media/fonts/Blanka-Regular.otf", true, 30)
 {
 	sf::RenderWindow& window = *getContext().window;
-	sf::Vector2u ws(window.getSize());
+	sf::Vector2f ws(window.getSize());
 
 	mBackground.setSize(sf::IntRect(0, 0, window.getSize().x, window.getSize().y));
 

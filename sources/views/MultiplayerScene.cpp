@@ -11,7 +11,7 @@ MultiplayerScene::MultiplayerScene(StateManager& stack, Context contex)
     mButtonChoice(0)
 {
     sf::RenderWindow& window = *getContext().window;
-    sf::Vector2u ws(window.getSize());
+    sf::Vector2f ws(window.getSize());
 
     mBackground.setSize(sf::IntRect(0, 0, window.getSize().x, window.getSize().y));
 
