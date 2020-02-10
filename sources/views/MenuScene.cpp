@@ -29,7 +29,7 @@ MenuScene::MenuScene(StateManager& stack, Context context) :
 		else 
 			b->setCallback([this](){
 				requestStackPop();
-				requestStackPush(States::Title);
+				requestStackPush(States::Game);
 			});
 		mButtons.push_back(b);
 	}

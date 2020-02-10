@@ -3,6 +3,7 @@
 
 #include "../utils/States.hpp"
 #include "SFML/Graphics.hpp"
+#include "../utils/Components/Grid.hpp"
 
 class GameScene
     : public State
@@ -15,7 +16,7 @@ public:
     virtual bool		update(sf::Time dt);
     virtual bool		handleEvent(const sf::Event& event);
 private: 
-    sf::CircleShape			mCircle;
+    Grid			    mGrid;
 };
 
 #endif
