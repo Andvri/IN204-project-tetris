@@ -7,7 +7,8 @@
 
 Label::Label(const std::string& text, const std::string& path, bool active, float size, bool toogle, bool highlighted, const sf::Color color)
     : Component(),
-    mEffect(NONE)
+    mEffect(NONE),
+    mBorder()
 {
     if (active) activate();
     if(!mFont.loadFromFile(path))
@@ -18,13 +19,20 @@ Label::Label(const std::string& text, const std::string& path, bool active, floa
     mText.setCharacterSize(size);
     mText.setFillColor(color);
     mText.setOutlineColor(color);
+    mBorder.setSize(sf::Vector2f(mText.getLocalBounds().width + (2*size), size * 1.5f));
+    mBorder.setFillColor(sf::Color::Transparent);
+    mBorder.setOutlineColor(sf::Color::Transparent);
+    mBorder.setOutlineThickness(0);
+
 
     if (toogle) mEffect = Effect::TOGGLE_LOOP;
     if (highlighted) {
         mEffect = Effect::HIGHLIGHTED;
     
         mText.setOutlineColor(sf::Color(255,255,255,25));
+    
     }
+    Utility::centerOrigin(mBorder);
     Utility::centerOrigin(mText);
 }
 
@@ -73,5 +81,15 @@ bool Label::isSelectable () const
 void Label::draw(sf::RenderTarget& target, sf::RenderStates states) const 
 {
     states.transform *= getTransform();
-	target.draw(mText, states);
+    if (mBorder.getFillColor() != sf::Color::Transparent)
+        target.draw(mBorder, states);
+	
+    target.draw(mText, states);
+}
+
+void Label::setBorder(sf::Color borderColor, sf::Color outline, int outlineSize)
+{
+    mBorder.setFillColor(borderColor);
+    mBorder.setOutlineColor(outline);
+    mBorder.setOutlineThickness(outlineSize);
 }

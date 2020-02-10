@@ -25,7 +25,7 @@ public:
     void				setText(const std::string& text);
     virtual bool		update(sf::Time dt);
     virtual void		handleEvent(const sf::Event& event);
-    
+    void                setBorder(sf::Color borderColor, sf::Color outline, int outlineSize);
 private:
     void				draw(sf::RenderTarget& target, sf::RenderStates states) const;
 private: 
@@ -34,6 +34,7 @@ private:
     sf::Time                mTextEffectTime;
     sf::Color               mColor;
     Effect                  mEffect;
+    sf::RectangleShape      mBorder;
 };
 
 #endif
