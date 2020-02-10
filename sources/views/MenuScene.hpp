@@ -12,7 +12,7 @@ class MenuScene
     : public State
 {
 private:
-    std::vector<std::string> ButtonsLabel = { "Singleplayer", "Multiplayer", "Exit" };
+    std::vector<std::string> ButtonsLabel = { "Singleplayer", "Multiplayer", "Help", "Exit" };
 
     void moveFocus(bool asc);
 public:

@@ -9,7 +9,8 @@ namespace States
 		Title,
 		Menu,
         Game,
-		MultiPlayer
+		MultiPlayer,
+		Help
 	};
 }
 

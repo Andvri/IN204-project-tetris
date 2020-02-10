@@ -2,3 +2,4 @@
 #include "./views/MenuScene.hpp"
 #include "./views/TitleScene.hpp"
 #include "./views/MultiplayerScene.hpp"
+#include "./views/HelpScene.hpp"
