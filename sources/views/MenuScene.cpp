@@ -36,6 +36,11 @@ MenuScene::MenuScene(StateManager& stack, Context context) :
 				requestStackPop();
 				requestStackPush(States::MultiPlayer);
 			});
+		else if (ButtonsLabel[i] == "Help")
+			b->setCallback([this](){
+				requestStackPop();
+				requestStackPush(States::Help);
+			});
 		mButtons.push_back(b);
 	}
 	
