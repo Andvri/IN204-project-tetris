@@ -5,6 +5,7 @@
 #include "../utils/States.hpp"
 #include "../utils/Components/Label.hpp"
 #include "../utils/Components/Background.hpp"
+#include "../utils/Components/Grid.hpp"
 
 class GameScene
     : public State
@@ -16,12 +17,16 @@ public:
     virtual bool		update(sf::Time dt);
     virtual bool		handleEvent(const sf::Event& event);
 
+    std::string         getHumanTime(sf::Time dt) const;
+
 private: 
     Label			        mPlayerText;
     Label			        mScoreText;
     Label			        mNextText;
     sf::RectangleShape      mNextRec;
     Background              mBackground;
+    Grid                    mGrid;
+    sf::Time                timeSinceLastUpdate;
     
 };
 

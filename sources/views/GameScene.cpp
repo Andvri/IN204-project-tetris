@@ -1,6 +1,7 @@
 #include "GameScene.hpp"
 #include "../utils/Utility.hpp"
 
+#include <iostream>
 
 GameScene::GameScene(StateManager& stack, Context context) 
 :   State(stack, context),
@@ -8,19 +9,30 @@ GameScene::GameScene(StateManager& stack, Context context)
 	mNextRec(),
 	mPlayerText("Player info: ", "media/fonts/Blanka-Regular.otf", true, 30),
 	mScoreText("Score: ", "media/fonts/Blanka-Regular.otf", true, 30),
-	mNextText("Next piece: ", "media/fonts/Blanka-Regular.otf", true, 30)
+	mNextText("Next piece: ", "media/fonts/Blanka-Regular.otf", true, 30),
+	mGrid(20, 10, 20),
+	timeSinceLastUpdate(sf::Time::Zero)
 {
 	sf::RenderWindow& window = *getContext().window;
 	sf::Vector2f ws(window.getSize());
 
-	mBackground.setSize(sf::IntRect(0, 0, window.getSize().x, window.getSize().y));
+	mBackground.setSize(Utility::getRectWindow());
 
 	mPlayerText.setPosition(Utility::getPositionRelative(ws, 8u, 8u, 1, 4));
 	mScoreText.setPosition(Utility::getPositionRelative(ws, 16u, 8u, 1, 1));
 	mNextText.setPosition(Utility::getPositionRelative(ws, 8u, 8u, 7, 1));
 
-
-
+	std::vector<int> v;
+	for (size_t i = 0; i < 10*20; i++)
+	{
+		if (20*5 > i)
+		v.push_back(0);
+		else
+		v.push_back((i%6)+1);
+	}
+	
+	mGrid.setColors(v);
+	mGrid.setPosition(Utility::getPositionRelative(ws, 2u, 2u,1, 1));
 }
 
 
@@ -33,10 +45,13 @@ void GameScene::draw()
 	if(mScoreText.isActive()) window.draw(mScoreText);
 	if(mNextText.isActive()) window.draw(mNextText);
 	window.draw(mNextRec);
+	window.draw(mGrid);
 }
 
 bool GameScene::update(sf::Time dt)
-{
+{	
+	timeSinceLastUpdate += dt;
+	mPlayerText.setText(getHumanTime(dt));
 	return true;
 }
 
@@ -44,9 +59,36 @@ bool GameScene::handleEvent(const sf::Event& event)
 {
 	if (event.type == sf::Event::KeyPressed)
 	{
-		requestStackPop();
-		requestStackPush(States::Title);
+		if (event.key.code == sf::Keyboard::P)
+		{
+			requestStackPop();
+			requestStackPush(States::Title);
+		}
 	}
 
 	return true;
+}
+
+std::string GameScene::getHumanTime(sf::Time dt) const
+{
+	std::string text;
+	int seconds = timeSinceLastUpdate.asSeconds();
+	int hours   = (seconds / 3600);
+
+	text += (hours < 10) ? ("0"):"";
+	text +=	std::to_string(hours) + " : ";
+
+	seconds -= (hours*3600);
+	int minutes = (seconds / 60);
+
+	text += (minutes < 10) ? ("0"):"";
+	text +=	std::to_string(minutes) + " : ";
+
+
+	seconds -= (minutes*60);
+	text += (seconds < 10) ? ("0"):"";
+	text += std::to_string(seconds)	;
+	
+		
+	return  text;
 }

@@ -45,8 +45,9 @@ void Grid::draw(sf::RenderTarget& target, sf::RenderStates states) const
         {
             sf::RectangleShape tmp;
             int color = mTable[i*mWidth +j];
-            tmp.setFillColor(ButtonsLabel[color]);
-            tmp.setOutlineColor(sf::Color::White);
+            sf::Color tmpC = ButtonsLabel[color];;
+            tmp.setFillColor(tmpC);
+            tmp.setOutlineColor(sf::Color(224, 224, 224));
             tmp.setOutlineThickness(mPixel/20);
             tmp.setSize(sf::Vector2f(mPixel, mPixel));
             tmp.setPosition(sf::Vector2f(posBase.x + (j*mPixel),posBase.y + (i*mPixel)));
