@@ -66,6 +66,7 @@ private:
     void descend();
     void handlerCollisionEvent(CollisionDirection cd);
     bool                    mPause;
+    bool                    mHardDrop;
 };
 
 #endif
