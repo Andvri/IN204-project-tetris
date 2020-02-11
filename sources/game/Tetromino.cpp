@@ -89,7 +89,7 @@ Tetromino& Tetromino::operator++ (int)
         catch(ExceptionType outLimits)
         {
 
-            //this->callCollisionEvent((p.y < 0) ? NORTH : SOUTH);
+            this->callCollisionEvent((p.y < 0) ? NORTH : SOUTH);
             
             break;
         }
@@ -110,7 +110,7 @@ Tetromino& Tetromino::operator-- (int)
         }
         catch(ExceptionType outLimits)
         {
-            //copy.callCollisionEvent((p.y < 0) ? NORTH : SOUTH);
+            copy.callCollisionEvent((p.y < 0) ? NORTH : SOUTH);
             *this = copy;
             break;
         }
@@ -131,7 +131,7 @@ Tetromino& operator+(const Tetromino &t1, const int offsetX)
         }
         catch(ExceptionType outLimits)
         {
-            //n->callCollisionEvent((i.x < 0) ? WEST : EAST);
+            n->callCollisionEvent((i.x < 0) ? WEST : EAST);
             n = new Tetromino(t1);
             break;
         }
@@ -156,7 +156,7 @@ Tetromino& operator-(const Tetromino &t1, const int offsetX)
         }
         catch(ExceptionType outLimits)
         {
-            //n->callCollisionEvent((i.x < 0) ? WEST : EAST);
+            n->callCollisionEvent((i.x < 0) ? WEST : EAST);
             n = new Tetromino(t1);
             break;
         }

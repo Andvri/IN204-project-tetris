@@ -157,8 +157,10 @@ void GameScene::handlerCollisionEvent( CollisionDirection cd)
 void GameScene::descend()
 {
 	Tetromino tmp = *mTetromino;
+	tmp.disableEvent();
 	tmp++;
-	  
+	tmp.enableEvent();
+	
 	if (mMatrix == tmp) {
 	    (*mTetromino)++;
 		
