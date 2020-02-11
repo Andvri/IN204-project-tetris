@@ -1,6 +1,7 @@
 #include "Tetromino.hpp"
 #include "Matrix.hpp"
 #include <iostream>
+#include<cstdlib>
 #include "../utils/ExceptionType.hpp"
 
 Tetromino::Tetromino(int mBorderX, int mBorderY, AvailableColors mColor): 
@@ -13,6 +14,23 @@ Tetromino::Tetromino(int mBorderX, int mBorderY, AvailableColors mColor):
     int axisY = -1*offsetX;
     int axisX = (mBorderX/2);
 
+
+    for (auto pixel : mFigureStructure)
+    {
+        mPos.push_back(sf::Vector2i(axisX+pixel.x, axisY+pixel.y));
+    }
+    
+}
+
+Tetromino::Tetromino(int mBorderX, int mBorderY): 
+    mPos(),
+    mColor(static_cast<AvailableColors>(rand()%6)),
+    mBorderX(mBorderX),
+    mBorderY(mBorderY)
+{
+    sf::Vector2i axis = mFigureStructure[structuralAxis];
+    int axisY = -1*offsetX;
+    int axisX = (mBorderX/2);
 
 
     for (auto pixel : mFigureStructure)
@@ -70,8 +88,9 @@ Tetromino& Tetromino::operator++ (int)
         }
         catch(ExceptionType outLimits)
         {
-            copy.callCollisionEvent((p.x < 0) ? NORTH : SOUTH);
             *this = copy;
+            copy.callCollisionEvent((p.x < 0) ? NORTH : SOUTH);
+            
             break;
         }
     }

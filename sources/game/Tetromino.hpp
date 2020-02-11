@@ -37,7 +37,8 @@ private:
     };
     void callCollisionEvent(CollisionDirection cd);
 public:
-    Tetromino(int mBorderX, int mBorderY, AvailableColors mColor = AvailableColors::GREEN);
+    Tetromino(int mBorderX, int mBorderY, AvailableColors mColor);
+    Tetromino(int mBorderX, int mBorderY);
     Tetromino(AvailableColors mColor = AvailableColors::TRANSPARENT);
     Tetromino(const Tetromino &t);
 

@@ -26,7 +26,11 @@ GameScene::GameScene(StateManager& stack, Context context)
 	mNextText.setPosition(Utility::getPositionRelative(ws, 8u, 8u, 7, 1));
 
     mTetromino = new Tetromino(10, 20);
-
+	mTetromino->setCollisionEvent([this](CollisionDirection cd)
+			  {
+                 handlerCollisionEvent(cd);
+			  }
+			  );
 	mGrid.setPosition(Utility::getPositionRelative(ws, 2u, 2u,1, 1));
 }
 
@@ -52,7 +56,7 @@ bool GameScene::update(sf::Time dt)
 	timeSinceLastUpdate += dt;
 	timeLevel+= dt;
 	
-	if (timeLevel >= sf::seconds(1.0f)) {
+	if (timeLevel >= sf::seconds(0.1f)) {
 	  (*mTetromino)++;
       timeLevel = sf::Time::Zero;
 	}
@@ -66,10 +70,27 @@ bool GameScene::handleEvent(const sf::Event& event)
 {
 	if (event.type == sf::Event::KeyPressed)
 	{
-		if (event.key.code == sf::Keyboard::P)
+		switch (event.key.code)
 		{
-			requestStackPop();
-			requestStackPush(States::Title);
+		    case (sf::Keyboard::P):
+			{
+				requestStackPop();
+			    requestStackPush(States::Title);
+			    break;
+			}
+			case (sf::Keyboard::Left):
+			case (sf::Keyboard::A):
+			{
+				*mTetromino = (*mTetromino - 1);
+				break;
+			}
+			case (sf::Keyboard::Right):
+			case (sf::Keyboard::D):
+			{
+				*mTetromino = (*mTetromino + 1);
+				break;
+			}
+		
 		}
 	}
 
@@ -98,4 +119,18 @@ std::string GameScene::getHumanTime(sf::Time dt) const
 	
 		
 	return  text;
+}
+
+void GameScene::handlerCollisionEvent( CollisionDirection cd)
+{
+	if (cd == SOUTH)
+		  {
+			  mMatrix = (mMatrix + (*mTetromino));
+			  mTetromino = new Tetromino(10, 20);
+			  mTetromino->setCollisionEvent([this](CollisionDirection cd)
+			  {
+                 handlerCollisionEvent(cd);
+			  }
+			  );
+		  }
 }
