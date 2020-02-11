@@ -16,7 +16,8 @@ GameScene::GameScene(StateManager& stack, Context context)
 	mMatrix(10, 20),
 	mTetromino(nullptr),
 	mPlayGame(true),
-	mPause(false)
+	mPause(false),
+	mHardDrop(false)
 {
 	sf::RenderWindow& window = *getContext().window;
 	sf::Vector2f ws(window.getSize());
@@ -124,6 +125,18 @@ bool GameScene::handleEvent(const sf::Event& event)
 				
 				break;
 			}
+
+			case (sf::Keyboard::Space):
+			{
+				mHardDrop = true;
+				while (mHardDrop)
+				{
+					descend();
+				}
+				
+				
+				break;
+			}
 			}
 		}
 	}
@@ -157,6 +170,7 @@ std::string GameScene::getHumanTime(sf::Time dt) const
 
 void GameScene::handlerCollisionEvent( CollisionDirection cd)
 {
+	mHardDrop = false;
 	if (mPlayGame) {
 
        if (cd == SOUTH)
