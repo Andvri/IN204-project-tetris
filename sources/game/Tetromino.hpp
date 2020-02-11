@@ -26,6 +26,15 @@ private:
 
     Callback		mOnCollisionEvent;
     AvailableColors mColor;
+
+    int structuralAxis = 2;
+    int offsetX = 1;
+    std::vector<sf::Vector2i> mFigureStructure = {
+        sf::Vector2i(0,-2),
+        sf::Vector2i(0,-1),
+        sf::Vector2i(0,0),
+        sf::Vector2i(-1,0)
+    };
     void callCollisionEvent(CollisionDirection cd);
 public:
     Tetromino(int mBorderX, int mBorderY, AvailableColors mColor = AvailableColors::GREEN);

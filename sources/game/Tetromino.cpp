@@ -9,12 +9,16 @@ Tetromino::Tetromino(int mBorderX, int mBorderY, AvailableColors mColor):
     mBorderX(mBorderX),
     mBorderY(mBorderY)
 {
-    for (size_t i = 0; i < 4; i++)
+    sf::Vector2i axis = mFigureStructure[structuralAxis];
+    int axisY = -1*offsetX;
+    int axisX = (mBorderX/2);
+
+
+
+    for (auto pixel : mFigureStructure)
     {
-        mPos.push_back(sf::Vector2i(i, (i+1)*2) );
+        mPos.push_back(sf::Vector2i(axisX+pixel.x, axisY+pixel.y));
     }
-    mPos[0] = sf::Vector2i(0, 4);
-    mPos[1] = sf::Vector2i(1, 2);
     
 }
 
@@ -61,7 +65,7 @@ Tetromino& Tetromino::operator++ (int)
         try
         {
             p.y++;
-            if (p.y < 0 || p.y >= this->mBorderY) 
+            if (p.y >= this->mBorderY) 
                 throw TETROMINO_OUT_OF_LIMITS;
         }
         catch(ExceptionType outLimits)
@@ -82,7 +86,7 @@ Tetromino& Tetromino::operator-- (int)
         try
         {
             p.y--;
-            if (p.y < 0 || p.y >= this->mBorderY) 
+            if (p.y >= this->mBorderY) 
                 throw TETROMINO_OUT_OF_LIMITS;
         }
         catch(ExceptionType outLimits)

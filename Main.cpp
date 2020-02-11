@@ -9,14 +9,18 @@ int main()
     try
 	{
           Tetromino a(10,10);
-		  a.print();
-		  
-		  Matrix m(10, 20);
-		  m = (m+a);
-          Tetromino b = a+1;
-		  b++;
-		  m = (m+b);
-		  std::cout << m << std::endl;
+		  Matrix m(10,10);
+		  std::cout << m + a << std::endl;
+		  a++;
+		  std::cout << m + a << std::endl;
+		  a++;
+		  std::cout << m + a << std::endl;
+		  a = a+1;
+		  std::cout << m + a << std::endl;
+		  a = a++;
+		  std::cout << m + a << std::endl;
+		  a = a++;
+		  std::cout << m + a << std::endl;
 
 
 	}

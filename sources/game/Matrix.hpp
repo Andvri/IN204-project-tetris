@@ -30,6 +30,7 @@ public:
     int getHeight();
 
     Matrix();
+    Matrix(const Matrix& m);
     Matrix(int width, int height);
     ~Matrix();
     bool    operator ==( Tetromino &t);

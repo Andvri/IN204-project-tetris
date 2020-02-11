@@ -13,6 +13,13 @@ Matrix::Matrix(int width, int height):
 {
 }
 
+Matrix::Matrix(const Matrix& m)
+{
+    this->mHeight = m.mHeight;
+    this->mWidth = m.mWidth;
+    this->mPos = m.mPos;
+}
+
 Matrix::~Matrix()
 {
 }
@@ -29,8 +36,9 @@ bool Matrix::tetrominoCompatible(std::vector<sf::Vector2i> pos)
     
     for (auto p : pos)
     {
-        if (mPos[codePosition(p.x,p.y)] != AvailableColors::TRANSPARENT) 
-            return false;
+        if(p.y>=0)
+            if (mPos[codePosition(p.x,p.y)] != AvailableColors::TRANSPARENT) 
+                return false;
     }
     
     return true;
@@ -59,11 +67,13 @@ sf::Vector2i Matrix::decodePosition(int code)
 
 Matrix& operator+(Matrix &m,Tetromino &t)
 {
+    Matrix *copy = new Matrix(m);
     std::vector<sf::Vector2i> pos(t.getPos());
     for (auto &&p : pos)
-        m.mPos[m.codePosition(p.x,p.y)] = t.getColor();
+        if(p.y>=0)
+            copy->mPos[m.codePosition(p.x,p.y)] = t.getColor();
     
-    return m;
+    return *copy;
 }
 
 
