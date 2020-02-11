@@ -26,17 +26,17 @@ bool Matrix::operator==( Tetromino &t)
 
 bool Matrix::tetrominoCompatible(std::vector<sf::Vector2i> pos)
 {
-    bool compatible = true;
+    
     for (auto p : pos)
     {
         if (mPos[codePosition(p.x,p.y)] != AvailableColors::TRANSPARENT) 
         {
-            compatible = false;
             callCollisionEvent();
+            return false;
         }
     }
     
-    return compatible;
+    return true;
 }
 
 
