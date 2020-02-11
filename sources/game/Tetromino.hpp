@@ -4,6 +4,9 @@
 #include "AvailableColors.hpp"
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include <functional>
+
+#include "CollisionDirection.hpp"
 #include "Direction.hpp"
 
 #ifndef CLASS_MATRIX
@@ -13,12 +16,17 @@ class Matrix;
 
 class Tetromino
 {
+
+public:
+    typedef std::function<void(CollisionDirection cd)>		Callback;
 private:    
     std::vector<sf::Vector2i> mPos;
     int mBorderX;
     int mBorderY;
 
+    Callback		mOnCollisionEvent;
     AvailableColors mColor;
+    void callCollisionEvent(CollisionDirection cd);
 public:
     Tetromino(int mBorderX, int mBorderY, AvailableColors mColor = AvailableColors::TRANSPARENT);
     Tetromino(AvailableColors mColor = AvailableColors::TRANSPARENT);
@@ -31,7 +39,8 @@ public:
 
     AvailableColors getColor();
     std::vector<sf::Vector2i> getPos();
-
+    
+    void setCollisionEvent(Callback callback);
 
     Tetromino& operator ++(int);
     Tetromino& operator --(int);

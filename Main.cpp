@@ -9,6 +9,9 @@ int main()
     try
 	{
           Tetromino a(20,10);
+		  a.setCollisionEvent( [&] (CollisionDirection cd) {
+			  std::cout << cd << std::endl;
+		  });
 		  a.print();
 		  a = a+1;
 		  a.print();
@@ -17,8 +20,11 @@ int main()
 		  a--;
 		  a = a+3;
 		  a.print();
-		  a--;
-		  a.print();
+		  Tetromino b(a);
+		  b--;
+		  b.print();
+
+
 	}
 	catch (std::exception& e)
 	{

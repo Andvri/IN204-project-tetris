@@ -40,6 +40,7 @@ Tetromino::Tetromino(const Tetromino &t)
     this->mBorderY = t.mBorderY;
     this->mPos = t.mPos;
     this->mColor = t.mColor;
+    if (t.mOnCollisionEvent) this->setCollisionEvent(t.mOnCollisionEvent);
 }
 
 void Tetromino::print()
@@ -65,6 +66,7 @@ Tetromino& Tetromino::operator++ (int)
         }
         catch(ExceptionType outLimits)
         {
+            copy.callCollisionEvent((p.x < 0) ? NORTH : SOUTH);
             *this = copy;
             break;
         }
@@ -85,6 +87,7 @@ Tetromino& Tetromino::operator-- (int)
         }
         catch(ExceptionType outLimits)
         {
+            copy.callCollisionEvent((p.x < 0) ? NORTH : SOUTH);
             *this = copy;
             break;
         }
@@ -105,6 +108,7 @@ Tetromino& operator+(const Tetromino &t1, const int offsetX)
         }
         catch(ExceptionType outLimits)
         {
+            n->callCollisionEvent((i.x < 0) ? WEST : EAST);
             n = new Tetromino(t1);
             break;
         }
@@ -129,6 +133,7 @@ Tetromino& operator-(const Tetromino &t1, const int offsetX)
         }
         catch(ExceptionType outLimits)
         {
+            n->callCollisionEvent((i.x < 0) ? WEST : EAST);
             n = new Tetromino(t1);
             break;
         }
@@ -156,4 +161,15 @@ bool Tetromino::operator==( Matrix &m)
 void Tetromino::rotate(Direction d)
 {
     std::cout << d << std::endl;
+}
+
+
+void Tetromino::callCollisionEvent(CollisionDirection cd)
+{
+    if (mOnCollisionEvent) mOnCollisionEvent(cd);
+}
+
+void Tetromino::setCollisionEvent(Callback callback)
+{
+    mOnCollisionEvent = std::move(callback);
 }
