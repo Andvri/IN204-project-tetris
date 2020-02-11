@@ -26,7 +26,7 @@ GameScene::GameScene(StateManager& stack, Context context)
 	for (size_t i = 0; i < 10*20; i++)
 	{
 		if (20*5 > i)
-		v.push_back(0);
+		v.push_back(8);
 		else
 		v.push_back((i%6)+1);
 	}

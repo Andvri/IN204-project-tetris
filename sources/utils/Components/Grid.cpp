@@ -12,7 +12,7 @@ Grid::Grid(int mHeight, int mWidth, float mPixel):
     mTable(mWidth*mHeight),
     mBackground(sf::Vector2f(mWidth*mPixel, mHeight*mPixel))
 {
-    mBackground.setFillColor(sf::Color::White);
+    mBackground.setFillColor(sf::Color::Transparent);
     Utility::centerOrigin(mBackground);
 }
 

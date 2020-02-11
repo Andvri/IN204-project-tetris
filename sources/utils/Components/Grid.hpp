@@ -4,18 +4,6 @@
 #include "Component.hpp"
 #include <vector>
 
-
-enum ColorAvalibles {
-    GREY,
-    GREEN,
-    BLUE,
-    RED,
-    YELLOW,
-    ORANGE,
-    MAGENTA,
-    CYAN,
-};
-
 class Grid
 : public Component
 {
@@ -35,6 +23,7 @@ private:
         sf::Color::Red,
         sf::Color::Magenta,
         sf::Color::Cyan,
+        sf::Color::Transparent
     };
 
     void				draw(sf::RenderTarget& target, sf::RenderStates states) const;
