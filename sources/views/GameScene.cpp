@@ -11,7 +11,10 @@ GameScene::GameScene(StateManager& stack, Context context)
 	mScoreText("Score: ", "media/fonts/Blanka-Regular.otf", true, 30),
 	mNextText("Next piece: ", "media/fonts/Blanka-Regular.otf", true, 30),
 	mGrid(20, 10, 20),
-	timeSinceLastUpdate(sf::Time::Zero)
+	timeSinceLastUpdate(sf::Time::Zero),
+	timeLevel(sf::Time::Zero),
+	mMatrix(10, 20),
+	mTetromino(nullptr)
 {
 	sf::RenderWindow& window = *getContext().window;
 	sf::Vector2f ws(window.getSize());
@@ -22,16 +25,8 @@ GameScene::GameScene(StateManager& stack, Context context)
 	mScoreText.setPosition(Utility::getPositionRelative(ws, 16u, 8u, 1, 1));
 	mNextText.setPosition(Utility::getPositionRelative(ws, 8u, 8u, 7, 1));
 
-	std::vector<int> v;
-	for (size_t i = 0; i < 10*20; i++)
-	{
-		if (20*5 > i)
-		v.push_back(8);
-		else
-		v.push_back((i%6)+1);
-	}
-	
-	mGrid.setColors(v);
+    mTetromino = new Tetromino(10, 20);
+
 	mGrid.setPosition(Utility::getPositionRelative(ws, 2u, 2u,1, 1));
 }
 
@@ -40,6 +35,10 @@ void GameScene::draw()
 {
 	sf::RenderWindow& window = *getContext().window;
 	window.draw(mBackground);
+
+    
+
+	mGrid.setColors((mMatrix + (*mTetromino)).getPos());
 	
 	if(mPlayerText.isActive()) window.draw(mPlayerText);
 	if(mScoreText.isActive()) window.draw(mScoreText);
@@ -51,6 +50,14 @@ void GameScene::draw()
 bool GameScene::update(sf::Time dt)
 {	
 	timeSinceLastUpdate += dt;
+	timeLevel+= dt;
+	
+	if (timeLevel >= sf::seconds(1.0f)) {
+	  (*mTetromino)++;
+      timeLevel = sf::Time::Zero;
+	}
+    
+
 	mPlayerText.setText(getHumanTime(dt));
 	return true;
 }

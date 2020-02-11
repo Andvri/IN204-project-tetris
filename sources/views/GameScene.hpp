@@ -6,6 +6,8 @@
 #include "../utils/Components/Label.hpp"
 #include "../utils/Components/Background.hpp"
 #include "../utils/Components/Grid.hpp"
+#include "../game/Tetromino.hpp"
+#include "../game/Matrix.hpp"
 
 class GameScene
     : public State
@@ -27,7 +29,9 @@ private:
     Background              mBackground;
     Grid                    mGrid;
     sf::Time                timeSinceLastUpdate;
-    
+    sf::Time                timeLevel;
+    Matrix                  mMatrix;
+    Tetromino*              mTetromino;
 };
 
 #endif

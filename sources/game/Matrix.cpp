@@ -91,3 +91,8 @@ std::ostream& operator << (std::ostream &o, Matrix &m)
     
     return o;
 }
+
+std::vector<int> Matrix::getPos() const
+{
+    return mPos;
+}

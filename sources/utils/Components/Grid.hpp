@@ -37,7 +37,7 @@ public:
     virtual bool		update(sf::Time dt);
     virtual void		handleEvent(const sf::Event& event);
 
-    void                setColors(std::vector<int> &v);
+    void                setColors(const std::vector<int> &v);
     
 };
 

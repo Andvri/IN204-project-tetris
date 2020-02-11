@@ -28,6 +28,7 @@ public:
 
     int getWidth();
     int getHeight();
+    std::vector<int> getPos() const;
 
     Matrix();
     Matrix(const Matrix& m);
