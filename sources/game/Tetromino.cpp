@@ -14,6 +14,9 @@ Tetromino::Tetromino(AvailableColors mColor):
     
 }
 
+Tetromino::~Tetromino()
+{}
+
 void Tetromino::print()
 {
     for (sf::Vector2i p : mPos)
@@ -73,4 +76,9 @@ AvailableColors Tetromino::getColor()
 bool Tetromino::operator==( Matrix &m)
 {
     return m == *this;
+}
+
+void Tetromino::rotate(Direction d)
+{
+    std::cout << d << std::endl;
 }
