@@ -4,7 +4,10 @@
 #include "Component.hpp"
 #include <vector>
 
-
+/**
+ * @brief color list
+ * 
+ */
 enum ColorAvalibles {
     GREY,
     GREEN,
@@ -16,6 +19,10 @@ enum ColorAvalibles {
     CYAN,
 };
 
+/**
+ * @brief build the meshes responsible for making the tetris table
+ * 
+ */
 class Grid
 : public Component
 {
@@ -37,10 +44,23 @@ private:
         sf::Color::Cyan,
     };
 
+    /**
+     * @brief performs the design of the entire table, taking the variables of this class to transform it into the game table
+     * 
+     * @param target 
+     * @param states 
+     */
     void				draw(sf::RenderTarget& target, sf::RenderStates states) const;
     
 
 public:
+    /**
+     * @brief Construct a new Grid object
+     * 
+     * @param mHeight 
+     * @param mWidth 
+     * @param mPixel 
+     */
     Grid( int mHeight,  int mWidth, float mPixel = 30);
 
     virtual bool		isSelectable() const;
@@ -48,6 +68,11 @@ public:
     virtual bool		update(sf::Time dt);
     virtual void		handleEvent(const sf::Event& event);
 
+    /**
+     * @brief Set the Colors object
+     * 
+     * @param v color value in enum
+     */
     void                setColors(std::vector<int> &v);
     
 };

@@ -18,7 +18,12 @@ HelpScene::HelpScene(StateManager& stack, Context context) :
 	mTitleHelp.setPosition(Utility::getPositionRelative(ws, 2u, 4u, 1, 1));
 	mSubTitleButton.setPosition(Utility::getPositionRelative(ws, 6u, 6u, 1, 3));
 	mSubTitleText.setPosition(Utility::getPositionRelative(ws, 6u, 6u, 5, 3));
+	
 	mReturn.setPosition(Utility::getPositionRelative(ws, 12u, 12u, 11, 11));
+	mReturn.setCallback([this](){
+		requestStackPop();
+		requestStackPush(States::Menu);
+	});
 
 	for (int i = 0; i < mTextsLeft.size(); i++)
 	{
@@ -68,8 +73,7 @@ bool HelpScene::handleEvent(const sf::Event& event)
 		switch (event.key.code)
 		{
 		case sf::Keyboard::Return:
-			requestStackPop();
-			requestStackPush(States::Menu);
+			mReturn.select();
 			break;
 		
 		default:
