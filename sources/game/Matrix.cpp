@@ -37,7 +37,7 @@ bool Matrix::tetrominoCompatible(std::vector<sf::Vector2i> pos)
     for (auto p : pos)
     {
         if(p.y>=0)
-            if (mPos[codePosition(p.x,p.y)] != AvailableColors::TRANSPARENT) 
+            if (mPos[codePosition(p.x,p.y)] != AvailableColors::TRANSPARENT  ) 
                 return false;
     }
     

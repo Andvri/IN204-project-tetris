@@ -14,7 +14,8 @@ GameScene::GameScene(StateManager& stack, Context context)
 	timeSinceLastUpdate(sf::Time::Zero),
 	timeLevel(sf::Time::Zero),
 	mMatrix(10, 20),
-	mTetromino(nullptr)
+	mTetromino(nullptr),
+	mPlayGame(true)
 {
 	sf::RenderWindow& window = *getContext().window;
 	sf::Vector2f ws(window.getSize());
@@ -77,6 +78,11 @@ bool GameScene::handleEvent(const sf::Event& event)
 			    requestStackPush(States::Title);
 			    break;
 			}
+		}
+
+		if (mPlayGame){
+			switch (event.key.code)
+			{
 			case (sf::Keyboard::Left):
 			case (sf::Keyboard::A):
 			{
@@ -97,7 +103,7 @@ bool GameScene::handleEvent(const sf::Event& event)
 				descend();
 				break;
 			}
-		
+			}
 		}
 	}
 
@@ -130,8 +136,12 @@ std::string GameScene::getHumanTime(sf::Time dt) const
 
 void GameScene::handlerCollisionEvent( CollisionDirection cd)
 {
-	if (cd == SOUTH)
+	if (mPlayGame) {
+
+       if (cd == SOUTH)
 		  {
+			  mPlayGame = mTetromino->lowestPosition() >= 0;
+			  if (!mPlayGame) std::cout << "END GAME" << std::endl;
 			  mMatrix = (mMatrix + (*mTetromino));
 			  mTetromino = new Tetromino(10, 20);
 			  mTetromino->setCollisionEvent([this](CollisionDirection cd)
@@ -140,18 +150,21 @@ void GameScene::handlerCollisionEvent( CollisionDirection cd)
 			  }
 			  );
 		  }
+	}
+	
 }
 
 void GameScene::descend()
 {
 	Tetromino tmp = *mTetromino;
-	  tmp++;
-	  if (mMatrix == tmp) {
-	    (*mTetromino)++;
-	  } else
-	  {
-		  handlerCollisionEvent(SOUTH);
-	  }
+	tmp++;
 	  
-      timeLevel = sf::Time::Zero;
+	if (mMatrix == tmp) {
+	    (*mTetromino)++;
+		
+	} else
+	{
+		handlerCollisionEvent(SOUTH);
+	}
+	timeLevel = sf::Time::Zero;
 }

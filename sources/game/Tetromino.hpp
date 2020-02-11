@@ -19,6 +19,7 @@ class Tetromino
 
 public:
     typedef std::function<void(CollisionDirection cd)>		Callback;
+    int lowestPosition(bool axisY = true);
 private:    
     std::vector<sf::Vector2i> mPos;
     int mBorderX;
@@ -36,6 +37,7 @@ private:
         sf::Vector2i(-1,0)
     };
     void callCollisionEvent(CollisionDirection cd);
+    bool callEvent = true;
 public:
     Tetromino(int mBorderX, int mBorderY, AvailableColors mColor);
     Tetromino(int mBorderX, int mBorderY);
@@ -63,6 +65,9 @@ public:
     friend Tetromino& operator +(const Tetromino &t1,const int offsetX);
 
     friend Tetromino& operator -(const Tetromino &t1,const int offsetX);
+
+    void disableEvent();
+    void enableEvent();
 
 }; 
 

@@ -24,7 +24,6 @@ Z::~Z()
 
 void Z::rotate(Direction d)
 {
-    std::cout << "Me gustan los perritos" << std:: endl;
 }
 
 #endif

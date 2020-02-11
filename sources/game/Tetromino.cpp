@@ -88,8 +88,8 @@ Tetromino& Tetromino::operator++ (int)
         }
         catch(ExceptionType outLimits)
         {
-            *this = copy;
-            copy.callCollisionEvent((p.x < 0) ? NORTH : SOUTH);
+
+            //this->callCollisionEvent((p.y < 0) ? NORTH : SOUTH);
             
             break;
         }
@@ -110,7 +110,7 @@ Tetromino& Tetromino::operator-- (int)
         }
         catch(ExceptionType outLimits)
         {
-            copy.callCollisionEvent((p.x < 0) ? NORTH : SOUTH);
+            //copy.callCollisionEvent((p.y < 0) ? NORTH : SOUTH);
             *this = copy;
             break;
         }
@@ -131,7 +131,7 @@ Tetromino& operator+(const Tetromino &t1, const int offsetX)
         }
         catch(ExceptionType outLimits)
         {
-            n->callCollisionEvent((i.x < 0) ? WEST : EAST);
+            //n->callCollisionEvent((i.x < 0) ? WEST : EAST);
             n = new Tetromino(t1);
             break;
         }
@@ -156,7 +156,7 @@ Tetromino& operator-(const Tetromino &t1, const int offsetX)
         }
         catch(ExceptionType outLimits)
         {
-            n->callCollisionEvent((i.x < 0) ? WEST : EAST);
+            //n->callCollisionEvent((i.x < 0) ? WEST : EAST);
             n = new Tetromino(t1);
             break;
         }
@@ -189,10 +189,31 @@ void Tetromino::rotate(Direction d)
 
 void Tetromino::callCollisionEvent(CollisionDirection cd)
 {
-    if (mOnCollisionEvent) mOnCollisionEvent(cd);
+    if (mOnCollisionEvent && callEvent) mOnCollisionEvent(cd);
 }
 
 void Tetromino::setCollisionEvent(Callback callback)
 {
     mOnCollisionEvent = std::move(callback);
+}
+
+int Tetromino::lowestPosition(bool axisY)
+{
+    int pos = -999999;
+    for (auto &&i : mPos)
+    {
+        if (axisY && i.y > pos) pos = i.y;
+        else if (!axisY && i.x > pos) pos = i.x;
+    }
+    return pos;
+}
+
+void Tetromino::disableEvent()
+{
+    callEvent = false;
+}
+
+void Tetromino::enableEvent()
+{
+    callEvent = true;
 }
