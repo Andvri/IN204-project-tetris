@@ -11,13 +11,16 @@ GameScene::GameScene(StateManager& stack, Context context)
 	mScoreText("Score: ", "media/fonts/Blanka-Regular.otf", true, 30),
 	mNextText("Next piece: ", "media/fonts/Blanka-Regular.otf", true, 30),
 	mGrid(20, 10, 20),
+	mNextGrid(20, 10, 12),
 	timeSinceLastUpdate(sf::Time::Zero),
 	timeLevel(sf::Time::Zero),
 	mMatrix(10, 20),
+	mNextMatrix(10, 20),
 	mTetromino(nullptr),
 	mPlayGame(true),
 	mPause(false),
-	mHardDrop(false)
+	mHardDrop(false),
+	mNextTetromino(nullptr)
 {
 	sf::RenderWindow& window = *getContext().window;
 	sf::Vector2f ws(window.getSize());
@@ -34,7 +37,10 @@ GameScene::GameScene(StateManager& stack, Context context)
                  handlerCollisionEvent(cd);
 			  }
 			  );
+	generateNextTetromino();
 	mGrid.setPosition(Utility::getPositionRelative(ws, 2u, 2u,1, 1));
+
+	mNextGrid.setPosition(Utility::getPositionRelative(ws, 8u, 8u, 7, 4));
 }
 
 
@@ -44,7 +50,7 @@ void GameScene::draw()
 	window.draw(mBackground);
 
     
-
+	mNextGrid.setColors((mNextMatrix + (*mNextTetromino)).getPos());
 	mGrid.setColors((mMatrix + (*mTetromino)).getPos());
 	
 	if(mPlayerText.isActive()) window.draw(mPlayerText);
@@ -52,6 +58,7 @@ void GameScene::draw()
 	if(mNextText.isActive()) window.draw(mNextText);
 	window.draw(mNextRec);
 	window.draw(mGrid);
+	window.draw(mNextGrid);
 }
 
 bool GameScene::update(sf::Time dt)
@@ -79,9 +86,11 @@ bool GameScene::handleEvent(const sf::Event& event)
 		{
 		    case (sf::Keyboard::P):
 			{
-				
-				(getContext()).player->setPause(true);
-				requestStackPush(States::Pause);
+				if (!(getContext()).player->getPause()) {
+
+					(getContext()).player->setPause(true);
+					requestStackPush(States::Pause);
+				}
 			    break;
 			}
 		}
@@ -176,21 +185,24 @@ void GameScene::handlerCollisionEvent( CollisionDirection cd)
        if (cd == SOUTH)
 		  {
 			mPlayGame = mTetromino->offsetAxis();
-			  if (!mPlayGame) {
-				  std::cout << "END GAME" << std::endl;
-				  return;
+			if (!mPlayGame) {
+				std::cout << "END GAME" << std::endl;
+				return;
 
-			  } else {
+			} else {
 
-			  	mMatrix = (mMatrix + (*mTetromino));
-			  }
+				mMatrix = (mMatrix + (*mTetromino));
+			}
 
-			  mTetromino = new Tetromino(10, 20);
-			  mTetromino->setCollisionEvent([this](CollisionDirection cd)
-			  {
-                 handlerCollisionEvent(cd);
-			  }
-			  );
+			 
+			updateNextTetromino();
+			mTetromino = mNextTetromino;
+			generateNextTetromino();
+			mTetromino->setCollisionEvent([this](CollisionDirection cd)
+				{
+						handlerCollisionEvent(cd);
+				}
+			);
 		  }
 	}
 	
@@ -211,4 +223,24 @@ void GameScene::descend()
 		handlerCollisionEvent(SOUTH);
 	}
 	timeLevel = sf::Time::Zero;
+}
+
+void GameScene::generateNextTetromino()
+{
+	mNextTetromino = new Tetromino(10,20);
+
+	(*mNextTetromino) = (*mNextTetromino) + 5;
+	for (size_t i = 0; i < 10; i++)
+	{
+			(*mNextTetromino)++;
+	}
+
+}
+void GameScene::updateNextTetromino()
+{
+	(*mNextTetromino) = (*mNextTetromino) - 5;
+	for (size_t i = 0; i < 10; i++)
+	{
+			(*mNextTetromino)--;
+	}
 }

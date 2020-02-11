@@ -23,6 +23,7 @@ PauseScene::PauseScene(StateManager& stack, Context context):
 
         if (i == mButtonLabels.size()-1)
 			b->setCallback([this](){
+				getContext().player->setPause(false);
 				requestStateClear();
 			});
         else if (mButtonLabels[i] == "Resume")
@@ -32,6 +33,7 @@ PauseScene::PauseScene(StateManager& stack, Context context):
 			});
         else if (mButtonLabels[i] == "Return")
 			b->setCallback([this](){
+				getContext().player->setPause(false);
 				requestStateClear();
 				requestStackPush(States::Menu);
 			});
