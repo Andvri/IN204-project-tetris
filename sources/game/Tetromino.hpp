@@ -28,13 +28,17 @@ private:
     AvailableColors mColor;
     void callCollisionEvent(CollisionDirection cd);
 public:
-    Tetromino(int mBorderX, int mBorderY, AvailableColors mColor = AvailableColors::TRANSPARENT);
+    Tetromino(int mBorderX, int mBorderY, AvailableColors mColor = AvailableColors::GREEN);
     Tetromino(AvailableColors mColor = AvailableColors::TRANSPARENT);
     Tetromino(const Tetromino &t);
 
     virtual				~Tetromino();
     virtual void rotate(Direction d = Direction::CLOCKWISE);
+
+    // TODO: Overloading the corresponding operator std::ostream << 
     void print();
+
+    
     void setPos(std::vector<sf::Vector2i> pos);
 
     AvailableColors getColor();

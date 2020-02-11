@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "AvailableColors.hpp"
+#include <iostream>
+
 
 #ifndef CLASS_TETROMINO
 #define CLASS_TETROMINO
@@ -13,17 +15,13 @@ class Tetromino;
 
 class Matrix
 {
-public:
-    typedef std::function<void()>		Callback;
 private:
-    Callback		mOnCollisionEvent;
     bool tetrominoCompatible(std::vector<sf::Vector2i> pos);
     int mHeight;
     int mWidth;
     std::vector<int> mPos;
 
-    void callCollisionEvent();
-
+ 
 public:
     int codePosition(int x, int y);
     sf::Vector2i decodePosition(int code);
@@ -31,11 +29,12 @@ public:
     int getWidth();
     int getHeight();
 
-    void setCollisionEvent(Callback callback);
     Matrix();
     Matrix(int width, int height);
     ~Matrix();
     bool    operator ==( Tetromino &t);
+    friend Matrix& operator +(Matrix &m,Tetromino &t);
+    friend std::ostream& operator << (std::ostream &o,Matrix &m);
 };
 
 

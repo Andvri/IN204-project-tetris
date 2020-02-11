@@ -30,10 +30,7 @@ bool Matrix::tetrominoCompatible(std::vector<sf::Vector2i> pos)
     for (auto p : pos)
     {
         if (mPos[codePosition(p.x,p.y)] != AvailableColors::TRANSPARENT) 
-        {
-            callCollisionEvent();
             return false;
-        }
     }
     
     return true;
@@ -60,13 +57,27 @@ sf::Vector2i Matrix::decodePosition(int code)
     return sf::Vector2i(x,y);
 }
 
-
-void Matrix::callCollisionEvent()
+Matrix& operator+(Matrix &m,Tetromino &t)
 {
-    if (mOnCollisionEvent) mOnCollisionEvent();
+    std::vector<sf::Vector2i> pos(t.getPos());
+    for (auto &&p : pos)
+        m.mPos[m.codePosition(p.x,p.y)] = t.getColor();
+    
+    return m;
 }
 
-void Matrix::setCollisionEvent(Callback callback)
+
+std::ostream& operator << (std::ostream &o, Matrix &m)
 {
-    mOnCollisionEvent = std::move(callback);
+    for (size_t i = 0; i < m.mHeight; i++)
+    {
+        for (size_t j = 0; j < m.mWidth; j++)
+        {
+            o << m.mPos[m.codePosition(j,i)];
+        }
+        o << std::endl;
+        
+    }
+    
+    return o;
 }

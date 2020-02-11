@@ -8,21 +8,15 @@ int main()
 {
     try
 	{
-          Tetromino a(20,10);
-		  a.setCollisionEvent( [&] (CollisionDirection cd) {
-			  std::cout << cd << std::endl;
-		  });
+          Tetromino a(10,10);
 		  a.print();
-		  a = a+1;
-		  a.print();
-		  a--;
-		  a.print();
-		  a--;
-		  a = a+3;
-		  a.print();
-		  Tetromino b(a);
-		  b--;
-		  b.print();
+		  
+		  Matrix m(10, 20);
+		  m = (m+a);
+          Tetromino b = a+1;
+		  b++;
+		  m = (m+b);
+		  std::cout << m << std::endl;
 
 
 	}
