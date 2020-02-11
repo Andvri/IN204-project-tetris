@@ -56,17 +56,8 @@ bool GameScene::update(sf::Time dt)
 	timeSinceLastUpdate += dt;
 	timeLevel+= dt;
 	
-	if (timeLevel >= sf::seconds(0.1f)) {
-	  Tetromino tmp = *mTetromino;
-	  tmp++;
-	  if (mMatrix == tmp) {
-	    (*mTetromino)++;
-	  } else
-	  {
-		  handlerCollisionEvent(SOUTH);
-	  }
-	  
-      timeLevel = sf::Time::Zero;
+	if (timeLevel >= sf::seconds(1.0f)) {
+	  descend();
 	}
     
 
@@ -89,13 +80,21 @@ bool GameScene::handleEvent(const sf::Event& event)
 			case (sf::Keyboard::Left):
 			case (sf::Keyboard::A):
 			{
-				*mTetromino = (*mTetromino - 1);
+				Tetromino tmp = (*mTetromino - 1);
+				*mTetromino = (tmp == mMatrix) ? tmp : *mTetromino;
 				break;
 			}
 			case (sf::Keyboard::Right):
 			case (sf::Keyboard::D):
 			{
-				*mTetromino = (*mTetromino + 1);
+				Tetromino tmp = (*mTetromino + 1);
+				*mTetromino = (tmp == mMatrix) ? tmp : *mTetromino;
+				break;
+			}
+			case (sf::Keyboard::Down):
+			case (sf::Keyboard::S):
+			{
+				descend();
 				break;
 			}
 		
@@ -141,4 +140,18 @@ void GameScene::handlerCollisionEvent( CollisionDirection cd)
 			  }
 			  );
 		  }
+}
+
+void GameScene::descend()
+{
+	Tetromino tmp = *mTetromino;
+	  tmp++;
+	  if (mMatrix == tmp) {
+	    (*mTetromino)++;
+	  } else
+	  {
+		  handlerCollisionEvent(SOUTH);
+	  }
+	  
+      timeLevel = sf::Time::Zero;
 }

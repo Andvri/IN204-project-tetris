@@ -32,6 +32,7 @@ private:
     sf::Time                timeLevel;
     Matrix                  mMatrix;
     Tetromino*              mTetromino;
+    void descend();
 
     void handlerCollisionEvent(CollisionDirection cd);
 };
