@@ -8,11 +8,17 @@ int main()
 {
     try
 	{
-         Matrix m(5,5);
-		 std::cout << m.codePosition(4,3) << std::endl;
-		 std::cout << m.decodePosition(11).x << "," << m.decodePosition(11).y << std::endl;
-		 
-
+          Tetromino a(20,10);
+		  a.print();
+		  a = a+1;
+		  a.print();
+		  a--;
+		  a.print();
+		  a--;
+		  a = a+3;
+		  a.print();
+		  a--;
+		  a.print();
 	}
 	catch (std::exception& e)
 	{

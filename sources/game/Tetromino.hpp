@@ -15,9 +15,15 @@ class Tetromino
 {
 private:    
     std::vector<sf::Vector2i> mPos;
+    int mBorderX;
+    int mBorderY;
+
     AvailableColors mColor;
 public:
+    Tetromino(int mBorderX, int mBorderY, AvailableColors mColor = AvailableColors::TRANSPARENT);
     Tetromino(AvailableColors mColor = AvailableColors::TRANSPARENT);
+    Tetromino(const Tetromino &t);
+
     virtual				~Tetromino();
     virtual void rotate(Direction d = Direction::CLOCKWISE);
     void print();
