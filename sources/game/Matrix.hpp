@@ -16,13 +16,13 @@ class Tetromino;
 class Matrix
 {
 private:
-    bool tetrominoCompatible(std::vector<sf::Vector2i> pos);
     int mHeight;
     int mWidth;
     std::vector<int> mPos;
 
  
 public:
+    bool tetrominoCompatible(std::vector<sf::Vector2i> pos);
     int codePosition(int x, int y);
     sf::Vector2i decodePosition(int code);
 

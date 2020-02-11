@@ -281,14 +281,80 @@ int Tetromino::getBorderY()
     return mBorderY;
 }
 
-Tetromino& Tetromino::cloneAndRotate(Direction d)
+Tetromino Tetromino::cloneAndRotate(Direction d)
 {
-    return *(new Tetromino(
+    Tetromino t(
         this->getBorderX(), 
         this->getBorderY(),
         this->getAxisCoordinates().x, 
         this->getAxisCoordinates().y, 
         this->rotateFigureStructure(d),
         this->getColor()
-    ));
+    );
+    return t;
+}
+
+void Tetromino::correctBorder()
+{
+    this->disableEvent();
+    int lMaxWidht = this->getBorderX()-1;
+    int lMaxHeight = this->getBorderY()-1;
+    int lMinimumWidht = 0;
+    for (auto &&i : this->getPos())
+    {
+        if (i.x > lMaxWidht) {
+            lMaxWidht++;
+        }
+    }
+
+    lMaxWidht -=(this->getBorderX()-1); 
+
+    for (size_t i = 0; i < lMaxWidht; i++)
+    {
+        (*this) = (*this) - 1;
+    }
+    
+
+    for (auto &&i : this->getPos())
+    {
+        if (i.x < lMinimumWidht) {
+            lMinimumWidht--;
+        }
+    }
+
+    lMinimumWidht *= (-1); 
+
+    for (size_t i = 0; i < lMinimumWidht; i++)
+    {
+        (*this) = (*this) + 1;
+    }
+
+    for (auto &&i : this->getPos())
+    {
+        if (i.y > lMaxHeight) {
+            lMaxHeight++;
+        }
+    }
+
+    lMaxHeight -=(this->getBorderY()-1); 
+
+    for (size_t i = 0; i < lMaxHeight; i++)
+    {
+        (*this)--;
+    }
+    this->enableEvent();
+    
+}
+
+
+bool Tetromino::operator==( Tetromino &t)
+{
+
+    for (size_t i = 0; i < t.getPos().size(); i++)
+    {
+        if (this->getPos()[i] != t.getPos()[i]) return false;
+    }
+    
+
+    return true;
 }

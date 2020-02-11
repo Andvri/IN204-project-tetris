@@ -64,6 +64,7 @@ public:
     Tetromino& operator --(int);
 
     bool    operator ==( Matrix &m);
+    bool    operator ==( Tetromino &t);
     friend Tetromino& operator +(const Tetromino &t1,const int offsetX);
 
     friend Tetromino& operator -(const Tetromino &t1,const int offsetX);
@@ -77,7 +78,8 @@ public:
     int getBorderX();
     int getBorderY();
 
-    Tetromino& cloneAndRotate(Direction d = Direction::CLOCKWISE);
+    Tetromino cloneAndRotate(Direction d = Direction::CLOCKWISE);
+    void correctBorder();
 }; 
 
 

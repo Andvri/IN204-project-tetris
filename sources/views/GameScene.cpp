@@ -110,12 +110,21 @@ bool GameScene::handleEvent(const sf::Event& event)
 			}
 			case (sf::Keyboard::Up):
 			{
-				*mTetromino = mTetromino->cloneAndRotate();
+				Tetromino tmp = mTetromino->cloneAndRotate();
+				tmp.correctBorder();
+				*mTetromino = (mMatrix == tmp) ? tmp : *mTetromino; 
+				tmp.print();
+
 				break;
 			}
             case (sf::Keyboard::R):
 			{
-				*mTetromino = mTetromino->cloneAndRotate(Direction::COUNTERCLOCKWISE);
+				Tetromino tmp = mTetromino->cloneAndRotate(Direction::COUNTERCLOCKWISE);
+				tmp.correctBorder();
+				*mTetromino = (mMatrix == tmp) ? tmp : *mTetromino; 
+				tmp.print();
+
+
 				break;
 			}
 			}
