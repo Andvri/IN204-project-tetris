@@ -24,6 +24,9 @@ public:
     void setPos(std::vector<sf::Vector2i> pos);
 
     AvailableColors getColor();
+    std::vector<sf::Vector2i> getPos();
+
+
     Tetromino& operator ++(int);
     Tetromino& operator --(int);
 

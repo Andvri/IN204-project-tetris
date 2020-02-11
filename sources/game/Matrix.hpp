@@ -1,6 +1,10 @@
 #ifndef MATRIX_CLASS
 #define MATRIX_CLASS
+
+#include <SFML/Graphics.hpp>
+#include <vector>
 #include "AvailableColors.hpp"
+
 #ifndef CLASS_TETROMINO
 #define CLASS_TETROMINO
 class Tetromino;
@@ -10,9 +14,21 @@ class Tetromino;
 class Matrix
 {
 private:
-    bool egalTetromino(AvailableColors c);
+    bool tetrominoCompatible(std::vector<sf::Vector2i> pos);
+    int mHeight;
+    int mWidth;
+    std::vector<int> mPos;
+
+
 public:
-    Matrix(/* args */);
+    int codePosition(int x, int y);
+    sf::Vector2i decodePosition(int code);
+
+    int getWidth();
+    int getHeight();
+
+    Matrix();
+    Matrix(int width, int height);
     ~Matrix();
     bool    operator ==( Tetromino &t);
 };

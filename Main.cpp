@@ -8,29 +8,10 @@ int main()
 {
     try
 	{
-         Tetromino a(AvailableColors::BLUE);
-		 Tetromino b(AvailableColors::BLUE);
-		 Z z;
-		 Tetromino *zz= new Z();
-		 Matrix m;
-		 a.rotate();
-		 a.rotate(Direction::COUNTERCLOCKWISE);
-		 static_cast<Tetromino>(z).rotate();
-		 zz->print();
-		 (*zz)++;
-		 zz->print();
-         if (a == m) {
-			 std::cout << "a = m" << std::endl;
-		 }
-		 if (!(m == z))
-		 {
-			 std::cout << "m != z" << std::endl;
-		 }
-
-		 if (!(z == m))
-		 {
-			 std::cout << "z != m" << std::endl;
-		 }
+         Matrix m(5,5);
+		 std::cout << m.codePosition(4,3) << std::endl;
+		 std::cout << m.decodePosition(11).x << "," << m.decodePosition(11).y << std::endl;
+		 
 
 	}
 	catch (std::exception& e)

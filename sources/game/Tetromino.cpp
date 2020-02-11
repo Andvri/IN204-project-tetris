@@ -72,6 +72,11 @@ AvailableColors Tetromino::getColor()
     return mColor;
 }
 
+std::vector<sf::Vector2i> Tetromino::getPos()
+{
+    return mPos;
+}
+
 
 bool Tetromino::operator==( Matrix &m)
 {
