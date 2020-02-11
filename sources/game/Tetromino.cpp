@@ -10,7 +10,6 @@ Tetromino::Tetromino(int mBorderX, int mBorderY, AvailableColors mColor):
     mBorderX(mBorderX),
     mBorderY(mBorderY)
 {
-    sf::Vector2i axis = mFigureStructure[structuralAxis];
     int axisY = -1*offsetX;
     int axisX = (mBorderX/2);
 
@@ -21,6 +20,28 @@ Tetromino::Tetromino(int mBorderX, int mBorderY, AvailableColors mColor):
     }
     
 }
+
+Tetromino::Tetromino(int mBorderX, int mBorderY, int offsetX, int offsetY, std::vector<sf::Vector2i> figureStructure, AvailableColors mColor):
+    mPos(),
+    mColor(mColor),
+    mBorderX(mBorderX),
+    mBorderY(mBorderY),
+    mFigureStructure(figureStructure)
+{
+
+    /**
+     * TODO: Validate the distances between the size 
+     * 
+     * add cassert
+     * 
+     */
+    for (auto pixel : mFigureStructure)
+    {
+        mPos.push_back(sf::Vector2i(offsetX+pixel.x,offsetY+pixel.y));
+    }
+}
+
+
 
 Tetromino::Tetromino(int mBorderX, int mBorderY): 
     mPos(),
@@ -64,6 +85,7 @@ Tetromino::Tetromino(const Tetromino &t)
     this->mColor = t.mColor;
     if (t.mOnCollisionEvent) this->setCollisionEvent(t.mOnCollisionEvent);
 }
+
 
 void Tetromino::print()
 {
@@ -226,4 +248,47 @@ void Tetromino::disableEvent()
 void Tetromino::enableEvent()
 {
     callEvent = true;
+}
+
+std::vector<sf::Vector2i> Tetromino::rotateFigureStructure(Direction d)
+{
+    int coefX = (d == Direction::CLOCKWISE) ? -1 : 1;
+    int coefY = (d == Direction::CLOCKWISE) ? 1 : -1;
+    std::vector<sf::Vector2i> copy(mFigureStructure);
+
+    for (auto &&i : copy)
+    {
+        int oldX = i.x;
+        int oldY = i.y;
+
+        i.x = oldY * coefX;
+        i.y = oldX * coefY;
+    }
+    
+    return copy;
+}
+
+sf::Vector2i Tetromino::getAxisCoordinates()
+{
+    return sf::Vector2i(mPos[0]);
+}
+int Tetromino::getBorderX()
+{
+    return mBorderX;
+}
+int Tetromino::getBorderY()
+{
+    return mBorderY;
+}
+
+Tetromino& Tetromino::cloneAndRotate(Direction d)
+{
+    return *(new Tetromino(
+        this->getBorderX(), 
+        this->getBorderY(),
+        this->getAxisCoordinates().x, 
+        this->getAxisCoordinates().y, 
+        this->rotateFigureStructure(d),
+        this->getColor()
+    ));
 }

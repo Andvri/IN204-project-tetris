@@ -108,6 +108,16 @@ bool GameScene::handleEvent(const sf::Event& event)
 				descend();
 				break;
 			}
+			case (sf::Keyboard::Up):
+			{
+				*mTetromino = mTetromino->cloneAndRotate();
+				break;
+			}
+            case (sf::Keyboard::R):
+			{
+				*mTetromino = mTetromino->cloneAndRotate(Direction::COUNTERCLOCKWISE);
+				break;
+			}
 			}
 		}
 	}
