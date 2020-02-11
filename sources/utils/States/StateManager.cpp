@@ -16,7 +16,7 @@ StateManager::~StateManager()
 
 void StateManager::update(sf::Time dt)
 {
-	// Iterate from top to bottom, stop as soon as update() returns false
+	
 	for (auto itr = mStack.rbegin(); itr != mStack.rend(); ++itr)
 	{
 		if (!(*itr)->update(dt))
@@ -28,14 +28,14 @@ void StateManager::update(sf::Time dt)
 
 void StateManager::draw()
 {
-	// Draw all active states from bottom to top
+	
 	for(State::Ptr& state : mStack)
 		state->draw();
 }
 
 void StateManager::handleEvent(const sf::Event& event)
 {
-	// Iterate from top to bottom, stop as soon as handleEvent() returns false
+	
 	for (auto itr = mStack.rbegin(); itr != mStack.rend(); ++itr)
 	{
 		if (!(*itr)->handleEvent(event))

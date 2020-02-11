@@ -1,6 +1,10 @@
 #ifndef STATEIDENTIFIERS_ENUM
 #define STATEIDENTIFIERS_ENUM
 
+/**
+ * @brief Each view existing in game
+ * 
+ */
 namespace States
 {
 	enum ID
@@ -10,7 +14,8 @@ namespace States
 		Menu,
         Game,
 		MultiPlayer,
-		Help
+		Help,
+		Pause
 	};
 }
 

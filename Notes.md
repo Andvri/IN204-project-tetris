@@ -16,6 +16,6 @@ Bugs found:
 
 TODO: 
     - Create a resource manager, so as not to recreate the resources  
-    - Modify class background - change paths/opacity
+    - Modify class background - change paths/opacity (ok)
     - Documentation (ok)
     - Pause Menu
