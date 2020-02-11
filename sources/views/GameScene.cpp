@@ -15,7 +15,8 @@ GameScene::GameScene(StateManager& stack, Context context)
 	timeLevel(sf::Time::Zero),
 	mMatrix(10, 20),
 	mTetromino(nullptr),
-	mPlayGame(true)
+	mPlayGame(true),
+	mPause(false)
 {
 	sf::RenderWindow& window = *getContext().window;
 	sf::Vector2f ws(window.getSize());
@@ -54,15 +55,18 @@ void GameScene::draw()
 
 bool GameScene::update(sf::Time dt)
 {	
-	timeSinceLastUpdate += dt;
-	timeLevel+= dt;
-	
-	if (timeLevel >= sf::seconds(1.0f)) {
-	  descend();
-	}
-    
+	if (!(getContext()).player->getPause()) 
+	{
+		timeSinceLastUpdate += dt;
+		timeLevel+= dt;
+		
+		if (timeLevel >= sf::seconds(1.0f)) {
+		descend();
+		}
+		
 
-	mPlayerText.setText(getHumanTime(dt));
+		mPlayerText.setText(getHumanTime(dt));
+	}
 	return true;
 }
 
@@ -74,12 +78,14 @@ bool GameScene::handleEvent(const sf::Event& event)
 		{
 		    case (sf::Keyboard::P):
 			{
+				
+				(getContext()).player->setPause(true);
 				requestStackPush(States::Pause);
 			    break;
 			}
 		}
 
-		if (mPlayGame){
+		if (mPlayGame && !(getContext()).player->getPause()){
 			switch (event.key.code)
 			{
 			case (sf::Keyboard::Left):

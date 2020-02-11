@@ -65,6 +65,7 @@ private:
     bool                    mPlayGame;
     void descend();
     void handlerCollisionEvent(CollisionDirection cd);
+    bool                    mPause;
 };
 
 #endif

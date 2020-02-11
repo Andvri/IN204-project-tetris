@@ -5,6 +5,7 @@
 #include <SFML/Window/Event.hpp>
 
 #include "StateIdentifiers.hpp"
+#include "../Player.hpp"
 
 namespace sf
 {
@@ -12,7 +13,6 @@ namespace sf
 }
 
 class StateManager;
-
 
 
 class State
@@ -26,8 +26,9 @@ class State
          */
         struct Context
         {
-            Context(sf::RenderWindow& window);
+            Context(sf::RenderWindow& window, Player& player);
             sf::RenderWindow*	window;
+            Player              *player;
         };
 
         /**

@@ -27,6 +27,7 @@ PauseScene::PauseScene(StateManager& stack, Context context):
 			});
         else if (mButtonLabels[i] == "Resume")
 			b->setCallback([this](){
+				getContext().player->setPause(false);
 				requestStackPop();
 			});
         else if (mButtonLabels[i] == "Return")

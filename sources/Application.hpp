@@ -64,6 +64,8 @@ class Application
          */
         sf::RenderWindow		mWindow;
 
+        Player                  mPlayer;
+
         /**
          * @brief stack
          * 
