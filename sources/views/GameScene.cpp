@@ -113,8 +113,7 @@ bool GameScene::handleEvent(const sf::Event& event)
 				Tetromino tmp = mTetromino->cloneAndRotate();
 				tmp.correctBorder();
 				*mTetromino = (mMatrix == tmp) ? tmp : *mTetromino; 
-				tmp.print();
-
+				
 				break;
 			}
             case (sf::Keyboard::R):
@@ -122,9 +121,7 @@ bool GameScene::handleEvent(const sf::Event& event)
 				Tetromino tmp = mTetromino->cloneAndRotate(Direction::COUNTERCLOCKWISE);
 				tmp.correctBorder();
 				*mTetromino = (mMatrix == tmp) ? tmp : *mTetromino; 
-				tmp.print();
-
-
+				
 				break;
 			}
 			}
