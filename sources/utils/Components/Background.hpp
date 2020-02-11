@@ -25,8 +25,9 @@ public:
      * 
      * @param path background
      * @param repeat if the image isn't large enough
+     * @param opacity number from 0 to 255 for opacity; 128 for half transparent
      */
-    Background(const std::string path = "media/images/Galaxy2.png",bool repeat = true);
+    Background(std::string path = "media/images/Galaxy2.png", bool repeat = true, int opacity = 255);
 
     virtual bool		isSelectable() const;
     virtual bool        update(sf::Time dt);
@@ -38,6 +39,20 @@ public:
      * @param rect sf::IntRect object
      */
             void        setSize(sf::IntRect rect);
+
+    /**
+     * @brief Set the Path to where is the figure
+     * 
+     * @param path 
+     */
+            void        setPath(std::string path);
+    
+    /**
+     * @brief Set the background transparency level 
+     * 
+     * @param value between 0(total invisble) and 255(normal)
+     */
+            void        setTransparency(float value);
 };
 
 

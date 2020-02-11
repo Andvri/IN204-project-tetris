@@ -44,8 +44,15 @@ bool GameScene::handleEvent(const sf::Event& event)
 {
 	if (event.type == sf::Event::KeyPressed)
 	{
-		requestStackPop();
-		requestStackPush(States::Title);
+		switch (event.key.code)
+		{
+		case sf::Keyboard::P:
+			requestStackPush(States::Pause);
+			break;
+		
+		default:
+			break;
+		}
 	}
 
 	return true;

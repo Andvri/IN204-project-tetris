@@ -76,4 +76,5 @@ void Application::registerStates()
 	mStateStack.registerState<GameScene>(States::Game);
 	mStateStack.registerState<MultiplayerScene>(States::MultiPlayer);
 	mStateStack.registerState<HelpScene>(States::Help);
+	mStateStack.registerState<PauseScene>(States::Pause);
 }

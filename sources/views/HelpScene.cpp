@@ -14,7 +14,8 @@ HelpScene::HelpScene(StateManager& stack, Context context) :
 	sf::Vector2f ws(window.getSize());
 	
 	mBackground.setSize(Utility::getRectWindow());
-	
+	mBackground.setPath("media/images/galaxy.jpg");
+
 	mTitleHelp.setPosition(Utility::getPositionRelative(ws, 2u, 4u, 1, 1));
 	mSubTitleButton.setPosition(Utility::getPositionRelative(ws, 6u, 6u, 1, 3));
 	mSubTitleText.setPosition(Utility::getPositionRelative(ws, 6u, 6u, 5, 3));

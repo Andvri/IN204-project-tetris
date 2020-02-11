@@ -5,7 +5,7 @@
 #include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 
-Background::Background(const std::string path, bool repeat) : 
+Background::Background(std::string path, bool repeat, int opacity) : 
     Component(),
     mBackgroundSprite(),
     mBackground()
@@ -16,6 +16,7 @@ Background::Background(const std::string path, bool repeat) :
 
     mBackground.setRepeated(repeat);
     mBackgroundSprite.setTexture(mBackground);
+    mBackgroundSprite.setColor(sf::Color(255, 255, 255, opacity));
 
 }
 
@@ -43,4 +44,16 @@ void Background::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     states.transform *= getTransform();
 	target.draw(mBackgroundSprite, states);
+}
+
+void Background::setPath(std::string path)
+{
+    mBackground.loadFromFile(path);
+    mBackgroundSprite.setTexture(mBackground);
+}
+
+void Background::setTransparency(float value)
+{
+    int mValue = value * 255;
+    mBackgroundSprite.setColor(sf::Color(255, 255, 255, mValue));
 }
