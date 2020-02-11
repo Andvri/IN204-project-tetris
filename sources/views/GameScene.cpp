@@ -57,7 +57,15 @@ bool GameScene::update(sf::Time dt)
 	timeLevel+= dt;
 	
 	if (timeLevel >= sf::seconds(0.1f)) {
-	  (*mTetromino)++;
+	  Tetromino tmp = *mTetromino;
+	  tmp++;
+	  if (mMatrix == tmp) {
+	    (*mTetromino)++;
+	  } else
+	  {
+		  handlerCollisionEvent(SOUTH);
+	  }
+	  
       timeLevel = sf::Time::Zero;
 	}
     
