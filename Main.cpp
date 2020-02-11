@@ -11,11 +11,11 @@ int main()
          Tetromino a(AvailableColors::BLUE);
 		 Tetromino b(AvailableColors::BLUE);
 		 Z z;
-		 Z *zz= new Z();
+		 Tetromino *zz= new Z();
 		 Matrix m;
 		 a.rotate();
 		 a.rotate(Direction::COUNTERCLOCKWISE);
-		 z.rotate();
+		 static_cast<Tetromino>(z).rotate();
 		 zz->print();
 		 (*zz)++;
 		 zz->print();
