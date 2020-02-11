@@ -208,6 +208,16 @@ int Tetromino::lowestPosition(bool axisY)
     return pos;
 }
 
+bool Tetromino::offsetAxis(bool axisY)
+{
+    for (auto &&i : mPos)
+    {
+        if (axisY && i.y < 0) return false;
+        else if (!axisY && i.x < 0) return false;
+    }
+    return true;
+}
+
 void Tetromino::disableEvent()
 {
     callEvent = false;

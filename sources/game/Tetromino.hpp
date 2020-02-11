@@ -29,12 +29,15 @@ private:
     AvailableColors mColor;
 
     int structuralAxis = 2;
-    int offsetX = 1;
+    int offsetX = 2;
     std::vector<sf::Vector2i> mFigureStructure = {
         sf::Vector2i(0,-2),
         sf::Vector2i(0,-1),
         sf::Vector2i(0,0),
-        sf::Vector2i(-1,0)
+        sf::Vector2i(-1,0),
+        sf::Vector2i(0,2),
+        sf::Vector2i(0,1),
+        sf::Vector2i(1,0),
     };
     void callCollisionEvent(CollisionDirection cd);
     bool callEvent = true;
@@ -50,7 +53,7 @@ public:
     // TODO: Overloading the corresponding operator std::ostream << 
     void print();
 
-    
+    bool offsetAxis(bool axixY = true);
     void setPos(std::vector<sf::Vector2i> pos);
 
     AvailableColors getColor();

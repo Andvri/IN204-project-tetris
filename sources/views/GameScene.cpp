@@ -140,9 +140,16 @@ void GameScene::handlerCollisionEvent( CollisionDirection cd)
 
        if (cd == SOUTH)
 		  {
-			  mPlayGame = mTetromino->lowestPosition() >= 0;
-			  if (!mPlayGame) std::cout << "END GAME" << std::endl;
-			  mMatrix = (mMatrix + (*mTetromino));
+			mPlayGame = mTetromino->offsetAxis();
+			  if (!mPlayGame) {
+				  std::cout << "END GAME" << std::endl;
+				  return;
+
+			  } else {
+
+			  	mMatrix = (mMatrix + (*mTetromino));
+			  }
+
 			  mTetromino = new Tetromino(10, 20);
 			  mTetromino->setCollisionEvent([this](CollisionDirection cd)
 			  {
