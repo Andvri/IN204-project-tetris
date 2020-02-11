@@ -1,6 +1,7 @@
 #include "GameScene.hpp"
 #include "../utils/Utility.hpp"
 
+#include <iostream>
 
 GameScene::GameScene(StateManager& stack, Context context) 
 :   State(stack, context),
@@ -8,19 +9,30 @@ GameScene::GameScene(StateManager& stack, Context context)
 	mNextRec(),
 	mPlayerText("Player info: ", "media/fonts/Blanka-Regular.otf", true, 30),
 	mScoreText("Score: ", "media/fonts/Blanka-Regular.otf", true, 30),
-	mNextText("Next piece: ", "media/fonts/Blanka-Regular.otf", true, 30)
+	mNextText("Next piece: ", "media/fonts/Blanka-Regular.otf", true, 30),
+	mGrid(20, 10, 20),
+	timeSinceLastUpdate(sf::Time::Zero),
+	timeLevel(sf::Time::Zero),
+	mMatrix(10, 20),
+	mTetromino(nullptr),
+	mPlayGame(true)
 {
 	sf::RenderWindow& window = *getContext().window;
 	sf::Vector2f ws(window.getSize());
 
-	mBackground.setSize(sf::IntRect(0, 0, window.getSize().x, window.getSize().y));
+	mBackground.setSize(Utility::getRectWindow());
 
 	mPlayerText.setPosition(Utility::getPositionRelative(ws, 8u, 8u, 1, 4));
 	mScoreText.setPosition(Utility::getPositionRelative(ws, 16u, 8u, 1, 1));
 	mNextText.setPosition(Utility::getPositionRelative(ws, 8u, 8u, 7, 1));
 
-
-
+    mTetromino = new Tetromino(10, 20);
+	mTetromino->setCollisionEvent([this](CollisionDirection cd)
+			  {
+                 handlerCollisionEvent(cd);
+			  }
+			  );
+	mGrid.setPosition(Utility::getPositionRelative(ws, 2u, 2u,1, 1));
 }
 
 
@@ -28,15 +40,29 @@ void GameScene::draw()
 {
 	sf::RenderWindow& window = *getContext().window;
 	window.draw(mBackground);
+
+    
+
+	mGrid.setColors((mMatrix + (*mTetromino)).getPos());
 	
 	if(mPlayerText.isActive()) window.draw(mPlayerText);
 	if(mScoreText.isActive()) window.draw(mScoreText);
 	if(mNextText.isActive()) window.draw(mNextText);
 	window.draw(mNextRec);
+	window.draw(mGrid);
 }
 
 bool GameScene::update(sf::Time dt)
-{
+{	
+	timeSinceLastUpdate += dt;
+	timeLevel+= dt;
+	
+	if (timeLevel >= sf::seconds(1.0f)) {
+	  descend();
+	}
+    
+
+	mPlayerText.setText(getHumanTime(dt));
 	return true;
 }
 
@@ -46,14 +72,107 @@ bool GameScene::handleEvent(const sf::Event& event)
 	{
 		switch (event.key.code)
 		{
-		case sf::Keyboard::P:
-			requestStackPush(States::Pause);
-			break;
-		
-		default:
-			break;
+		    case (sf::Keyboard::P):
+			{
+				requestStackPush(States::Pause);
+			    break;
+			}
+		}
+
+		if (mPlayGame){
+			switch (event.key.code)
+			{
+			case (sf::Keyboard::Left):
+			case (sf::Keyboard::A):
+			{
+				Tetromino tmp = (*mTetromino - 1);
+				*mTetromino = (tmp == mMatrix) ? tmp : *mTetromino;
+				break;
+			}
+			case (sf::Keyboard::Right):
+			case (sf::Keyboard::D):
+			{
+				Tetromino tmp = (*mTetromino + 1);
+				*mTetromino = (tmp == mMatrix) ? tmp : *mTetromino;
+				break;
+			}
+			case (sf::Keyboard::Down):
+			case (sf::Keyboard::S):
+			{
+				descend();
+				break;
+			}
+			}
 		}
 	}
 
 	return true;
+}
+
+std::string GameScene::getHumanTime(sf::Time dt) const
+{
+	std::string text;
+	int seconds = timeSinceLastUpdate.asSeconds();
+	int hours   = (seconds / 3600);
+
+	text += (hours < 10) ? ("0"):"";
+	text +=	std::to_string(hours) + " : ";
+
+	seconds -= (hours*3600);
+	int minutes = (seconds / 60);
+
+	text += (minutes < 10) ? ("0"):"";
+	text +=	std::to_string(minutes) + " : ";
+
+
+	seconds -= (minutes*60);
+	text += (seconds < 10) ? ("0"):"";
+	text += std::to_string(seconds)	;
+	
+		
+	return  text;
+}
+
+void GameScene::handlerCollisionEvent( CollisionDirection cd)
+{
+	if (mPlayGame) {
+
+       if (cd == SOUTH)
+		  {
+			mPlayGame = mTetromino->offsetAxis();
+			  if (!mPlayGame) {
+				  std::cout << "END GAME" << std::endl;
+				  return;
+
+			  } else {
+
+			  	mMatrix = (mMatrix + (*mTetromino));
+			  }
+
+			  mTetromino = new Tetromino(10, 20);
+			  mTetromino->setCollisionEvent([this](CollisionDirection cd)
+			  {
+                 handlerCollisionEvent(cd);
+			  }
+			  );
+		  }
+	}
+	
+}
+
+void GameScene::descend()
+{
+	Tetromino tmp = *mTetromino;
+	tmp.disableEvent();
+	tmp++;
+	tmp.enableEvent();
+	
+	if (mMatrix == tmp) {
+	    (*mTetromino)++;
+		
+	} else
+	{
+		handlerCollisionEvent(SOUTH);
+	}
+	timeLevel = sf::Time::Zero;
 }

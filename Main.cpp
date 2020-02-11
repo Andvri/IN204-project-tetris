@@ -13,6 +13,8 @@
 #include "sources/Application.hpp"
 #include <iostream>
 #include <stdexcept>
+#include<ctime>
+#include<cstdlib>
 /**
  *  @brief  Global function named main, which is the designated start of the program
  *
@@ -22,8 +24,10 @@
  */
 int main()
 {
+	
     try
 	{
+		srand(time(NULL));
 		Application app;
 		app.run();
 	}

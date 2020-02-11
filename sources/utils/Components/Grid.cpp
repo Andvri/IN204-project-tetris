@@ -4,15 +4,15 @@
 
 #include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
-
+#include "../../game/AvailableColors.hpp"
 Grid::Grid(int mHeight, int mWidth, float mPixel):
     mHeight(mHeight),
     mWidth(mWidth),
     mPixel(mPixel),
-    mTable(mWidth*mHeight),
+    mTable(mWidth*mHeight, AvailableColors::TRANSPARENT),
     mBackground(sf::Vector2f(mWidth*mPixel, mHeight*mPixel))
 {
-    mBackground.setFillColor(sf::Color::White);
+    mBackground.setFillColor(sf::Color::Transparent);
     Utility::centerOrigin(mBackground);
 }
 
@@ -45,8 +45,9 @@ void Grid::draw(sf::RenderTarget& target, sf::RenderStates states) const
         {
             sf::RectangleShape tmp;
             int color = mTable[i*mWidth +j];
-            tmp.setFillColor(ButtonsLabel[color]);
-            tmp.setOutlineColor(sf::Color::White);
+            sf::Color tmpC = ButtonsLabel[color];;
+            tmp.setFillColor(tmpC);
+            tmp.setOutlineColor(sf::Color(224, 224, 224));
             tmp.setOutlineThickness(mPixel/20);
             tmp.setSize(sf::Vector2f(mPixel, mPixel));
             tmp.setPosition(sf::Vector2f(posBase.x + (j*mPixel),posBase.y + (i*mPixel)));
@@ -58,7 +59,7 @@ void Grid::draw(sf::RenderTarget& target, sf::RenderStates states) const
     
 }
 
-void   Grid::setColors(std::vector<int> &v)
+void   Grid::setColors(const std::vector<int> &v)
 {
     mTable = v;
 }

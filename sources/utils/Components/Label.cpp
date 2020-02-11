@@ -93,3 +93,9 @@ void Label::setBorder(sf::Color borderColor, sf::Color outline, int outlineSize)
     mBorder.setOutlineColor(outline);
     mBorder.setOutlineThickness(outlineSize);
 }
+
+void Label::setText(const std::string& text)
+{
+	mText.setString(text);
+	Utility::centerOrigin(mText);
+}

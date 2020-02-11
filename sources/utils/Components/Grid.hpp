@@ -5,21 +5,6 @@
 #include <vector>
 
 /**
- * @brief color list
- * 
- */
-enum ColorAvalibles {
-    GREY,
-    GREEN,
-    BLUE,
-    RED,
-    YELLOW,
-    ORANGE,
-    MAGENTA,
-    CYAN,
-};
-
-/**
  * @brief build the meshes responsible for making the tetris table
  * 
  */
@@ -34,14 +19,15 @@ private:
     std::vector<int> mTable;
 
     std::vector<sf::Color> ButtonsLabel = { 
-        sf::Color(192,192,192), // Grey
-        sf::Color::Green,
-        sf::Color::Blue,
+        sf::Color(32,32,32), // Grey
+        sf::Color(0,153,0),
+        sf::Color(0,0,153),
+        sf::Color(153,0,0),
+        sf::Color(153,0,76),
         sf::Color::Red,
-        sf::Color::Yellow,
-        sf::Color(255,165,0), // Orange
         sf::Color::Magenta,
         sf::Color::Cyan,
+        sf::Color::Transparent
     };
 
     /**
@@ -73,7 +59,7 @@ public:
      * 
      * @param v color value in enum
      */
-    void                setColors(std::vector<int> &v);
+    void                setColors(const std::vector<int> &v);
     
 };
 
