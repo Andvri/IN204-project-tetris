@@ -6,14 +6,44 @@
 #include "../utils/Components/Label.hpp"
 #include "../utils/Components/Background.hpp"
 
+/**
+ * @brief responsible for sampling the main screen of the singleplayer game
+ * 
+ */
 class GameScene
     : public State
 {
 public:
+    /**
+     * @brief Construct a new Multiplayer Scene object, standard builder
+     * 
+     * @param stack stack responsible for managing the views
+     * @param context relates all current context
+     */
     GameScene(StateManager& stack, Context context);
 
+    /**
+     * @brief overwriting the function drawing by adding new elements
+     * responsible for sampling new elements added to this view
+     */
     virtual void		draw();
+
+    /**
+     * @brief overwriting the function update by adding new elements
+     * responsible for sampling new elements added to this view
+     * @param dt Fraction of time
+     * @return true 
+     * @return false if have a problem
+     */
     virtual bool		update(sf::Time dt);
+    
+    /**
+     * @brief Adds new features to the function responsible for handling the events, adding a specific function for each key depending on the view
+     * 
+     * @param event getted action
+     * @return true 
+     * @return false if have a problem
+     */
     virtual bool		handleEvent(const sf::Event& event);
 
 private: 
