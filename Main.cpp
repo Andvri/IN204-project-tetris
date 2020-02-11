@@ -11,6 +11,8 @@
  */
 
 #include "sources/Application.hpp"
+#include "sources/game/Tetromino.hpp"
+#include "sources/game/Matrix.hpp"
 #include <iostream>
 #include <stdexcept>
 #include<ctime>
