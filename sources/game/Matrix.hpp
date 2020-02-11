@@ -13,12 +13,16 @@ class Tetromino;
 
 class Matrix
 {
+public:
+    typedef std::function<void()>		Callback;
 private:
+    Callback		mOnCollisionEvent;
     bool tetrominoCompatible(std::vector<sf::Vector2i> pos);
     int mHeight;
     int mWidth;
     std::vector<int> mPos;
 
+    void callCollisionEvent();
 
 public:
     int codePosition(int x, int y);
@@ -27,6 +31,7 @@ public:
     int getWidth();
     int getHeight();
 
+    void setCollisionEvent(Callback callback);
     Matrix();
     Matrix(int width, int height);
     ~Matrix();
