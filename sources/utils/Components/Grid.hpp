@@ -60,7 +60,7 @@ public:
      * @param v color value in enum
      */
     void                setColors(const std::vector<int> &v);
-    
+    void                restart();  
 };
 
 #endif

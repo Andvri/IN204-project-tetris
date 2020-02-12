@@ -69,9 +69,12 @@ private:
     void handlerCollisionEvent(CollisionDirection cd);
     bool                    mPause;
     bool                    mHardDrop;
-    void                    generateNextTetromino();
+    void                    restart();
     void                    updateNextTetromino();
     int                     mPoints;
+    sf::Time                mTimeNotification;
+    Label                   mNotification;
+    Label                   mNotification2;
 };
 
 #endif

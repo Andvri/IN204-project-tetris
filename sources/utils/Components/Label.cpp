@@ -32,8 +32,7 @@ Label::Label(const std::string& text, const std::string& path, bool active, floa
         mText.setOutlineColor(sf::Color(255,255,255,25));
     
     }
-    Utility::centerOrigin(mBorder);
-    Utility::centerOrigin(mText);
+    centerToOrigin();
 }
 
 bool Label::update(sf::Time dt) 
@@ -98,4 +97,10 @@ void Label::setText(const std::string& text)
 {
 	mText.setString(text);
 	Utility::centerOrigin(mText);
+}
+
+void Label::centerToOrigin()
+{
+    Utility::centerOrigin(mBorder);
+    Utility::centerOrigin(mText);
 }

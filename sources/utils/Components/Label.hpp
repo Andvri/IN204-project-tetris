@@ -3,6 +3,7 @@
 #include "Component.hpp"
 #include "SFML/Graphics.hpp"
 
+
 enum Effect {
     NONE,
     TOGGLE_LOOP,
@@ -85,6 +86,13 @@ private:
     sf::Color               mColor;
     Effect                  mEffect;
     sf::RectangleShape      mBorder;
+
+    /**
+     * @brief cCnters the elements
+     * 
+     * @param void
+     */
+    void                    centerToOrigin();
 };
 
 #endif

@@ -65,6 +65,7 @@
         "cassert": "cpp",
         "codecvt": "cpp",
         "future": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "*.ipp": "cpp"
     }
 }

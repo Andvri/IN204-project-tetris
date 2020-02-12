@@ -152,3 +152,12 @@ int Matrix::updateLines (Tetromino t)
 
     return deleteLines;
 }
+
+void   Matrix::restart()
+{
+    for (auto &&i : mPos)
+    {
+        i = AvailableColors::TRANSPARENT;
+    }
+    
+}

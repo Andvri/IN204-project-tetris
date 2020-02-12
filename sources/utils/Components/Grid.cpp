@@ -63,3 +63,12 @@ void   Grid::setColors(const std::vector<int> &v)
 {
     mTable = v;
 }
+
+void   Grid::restart()
+{
+    for (auto &&i : mTable)
+    {
+        i = AvailableColors::TRANSPARENT;
+    }
+    
+}
