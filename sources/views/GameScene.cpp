@@ -3,14 +3,17 @@
 
 #include <iostream>
 
+const int GameScene::linesPerLevel = 6;
+
 GameScene::GameScene(StateManager& stack, Context context) 
 :   State(stack, context),
     mBackground(),
 	mNextRec(),
-	mPlayerText("Player info: ", "media/fonts/Blanka-Regular.otf", true, 30),
-	mScoreText("Score: ", "media/fonts/Blanka-Regular.otf", true, 30),
+	mTimeInfo("00:00:00", "media/fonts/Blanka-Regular.otf", true, 30),
+	mScoreLabel("Score: ", "media/fonts/Blanka-Regular.otf", true, 30),
 	mNextText("Next piece: ", "media/fonts/Blanka-Regular.otf", true, 30),
 	mScoreValue("0 ", "media/fonts/Blanka-Regular.otf", true, 30),
+	mPlayerInfo("Level: 1 Lines: 0 of 6", "media/fonts/Blanka-Regular.otf", true, 30),
 	mGrid(20, 10, 20),
 	timeSinceLastUpdate(sf::Time::Zero),
 	timeLevel(sf::Time::Zero),
@@ -30,18 +33,15 @@ GameScene::GameScene(StateManager& stack, Context context)
 
 	mBackground.setSize(Utility::getRectWindow());
 
-	mPlayerText.setPosition(Utility::getPositionRelative(ws, 8u, 8u, 1, 4));
-	mScoreText.setPosition(Utility::getPositionRelative(ws, 16u, 8u, 2, 1));
-	mScoreValue.setPosition(Utility::getPositionRelative(ws, 16u, 8u, 2, 2));
-	mNextText.setPosition(Utility::getPositionRelative(ws, 8u, 8u, 7, 1));
-	mNotification.setPosition(Utility::getPositionRelative(ws, 2u, 2u, 1, 1));
-
-	mNotification2.setPosition(Utility::getPositionRelative(ws, 2u, 8u, 1, 7));
-
-    
 	restart();
 
-
+	mTimeInfo.setPosition(Utility::getPositionRelative(ws, 16u, 8u, 3, 4));
+	mScoreLabel.setPosition(Utility::getPositionRelative(ws, 16u, 8u, 3, 1));
+	mScoreValue.setPosition(Utility::getPositionRelative(ws, 16u, 8u, 3, 2));
+	mPlayerInfo.setPosition(Utility::getPositionRelative(ws, 16u, 8u, 3, 5));
+	mNextText.setPosition(Utility::getPositionRelative(ws, 8u, 8u, 7, 1));
+	mNotification.setPosition(Utility::getPositionRelative(ws, 2u, 2u, 1, 1));
+	mNotification2.setPosition(Utility::getPositionRelative(ws, 2u, 8u, 1, 7));
 	mGrid.setPosition(Utility::getPositionRelative(ws, 2u, 2u,1, 1));
 
 	mNotification.deactivate();
@@ -76,10 +76,11 @@ void GameScene::draw()
 
 	mGrid.setColors((mMatrix + (*mTetromino)).getPos());
 	
-	if(mPlayerText.isActive()) window.draw(mPlayerText);
-	if(mScoreText.isActive()) window.draw(mScoreText);
+	if(mTimeInfo.isActive()) window.draw(mTimeInfo);
+	if(mScoreLabel.isActive()) window.draw(mScoreLabel);
 	if(mScoreValue.isActive()) window.draw(mScoreValue);
 	if(mNextText.isActive()) window.draw(mNextText);
+	window.draw(mPlayerInfo);
 	window.draw(mNextRec);
 	window.draw(mGrid);
 	window.draw(tmpGrid);
@@ -96,14 +97,15 @@ bool GameScene::update(sf::Time dt)
 		restart();
 	}
 
-	
+
 	if (!(getContext()).player->getPause()) 
 	{
 		timeSinceLastUpdate += dt;
 		timeLevel+= dt;
 		mTimeNotification -=dt;
-		
-		if (timeLevel >= sf::seconds(1.0f)) {
+		float velocity = 1.0/(float)(getContext().player->getLevel());
+		std::cout << velocity << std::endl;
+		if (timeLevel >= sf::seconds(velocity)) {
 			descend();
 		}
 
@@ -118,7 +120,7 @@ bool GameScene::update(sf::Time dt)
 		
 		
 
-		mPlayerText.setText(getHumanTime(dt));
+		mTimeInfo.setText(getHumanTime(dt));
 	}
 	return true;
 }
@@ -240,24 +242,7 @@ void GameScene::handlerCollisionEvent( CollisionDirection cd)
 
 				mMatrix = (mMatrix + (*mTetromino));
 				int lines = mMatrix.updateLines((*mTetromino));
-				int points = 0;
-				switch (lines)
-				{
-				case 1:
-					points = 40;
-					break;
-				case 2:
-					points = 100;
-					break;
-				case 3:
-					points = 300;
-					break;
-				case 4:
-					points = 1200;
-					break;
-				}
-				mPoints+= points;
-				mScoreValue.setText(std::to_string(mPoints));
+				updateScore(lines);
 
 				
 				updateNextTetromino();
@@ -307,6 +292,8 @@ void GameScene::restart()
 	mGrid.restart();
 	mMatrix.restart();
 	mPlayGame = true;
+	mLines = 0;
+	mPlayerInfo.setText("Level: 1 Lines: 0 of 6");
 	/**
 	 *  TODO: Improve and use dynamic constants
 	 */
@@ -323,4 +310,42 @@ void GameScene::restart()
 void GameScene::updateNextTetromino()
 {
 	
+}
+
+void GameScene::updateScore(int lines)
+{
+	int points = 0;
+	switch (lines)
+	{
+	case 1:
+		points = 40;
+		break;
+	case 2:
+		points = 100;
+		break;
+	case 3:
+		points = 300;
+		break;
+	case 4:
+		points = 1200;
+		break;
+	}
+	mPoints+= (getContext().player->getLevel()) * points;
+	mLines+= lines;
+	std::cout << mLines << std::endl;
+	if(mLines >= GameScene::linesPerLevel) {
+		getContext().player->setLevel( getContext().player->getLevel()+1 );
+		mLines = 0;
+	}
+
+	mPlayerInfo.setText(
+		"Level: " + 
+		std::to_string(getContext().player->getLevel()) + 
+		"Lines: " +
+		std::to_string(mLines) +
+		" of " + 
+		std::to_string(GameScene::linesPerLevel)
+	);
+
+	mScoreValue.setText(std::to_string(mPoints));
 }

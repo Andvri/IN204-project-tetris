@@ -4,6 +4,72 @@
 #include<cstdlib>
 #include "../utils/ExceptionType.hpp"
 
+const std::vector<std::vector<sf::Vector2i>> Tetromino::figuresAvalibles = {
+        // T
+        {
+            sf::Vector2i(0,0),
+            sf::Vector2i(1,0),
+            sf::Vector2i(-1,0),
+            sf::Vector2i(0,-1)
+        },
+        // Z
+        {
+            sf::Vector2i(0,0),
+            sf::Vector2i(1,0),
+            sf::Vector2i(0,-1),
+            sf::Vector2i(-1,-1)
+        },
+        // S
+        {
+            sf::Vector2i(0,0),
+            sf::Vector2i(-1,0),
+            sf::Vector2i(1,-1),
+            sf::Vector2i(0,-1)
+        },
+        // I
+        {
+            sf::Vector2i(0,0),
+            sf::Vector2i(1,0),
+            sf::Vector2i(-1,0),
+            sf::Vector2i(-2,0)
+        },
+        // O
+        {
+            sf::Vector2i(0,0),
+            sf::Vector2i(1,0),
+            sf::Vector2i(1,-1),
+            sf::Vector2i(0,-1)
+        },
+        // L
+        {
+            sf::Vector2i(0,0),
+            sf::Vector2i(1,0),
+            sf::Vector2i(-1,-1),
+            sf::Vector2i(-1,0)
+        },
+        // J
+        {
+            sf::Vector2i(0,0),
+            sf::Vector2i(1,0),
+            sf::Vector2i(1,-1),
+            sf::Vector2i(-1,0)
+        },
+        // .
+        {
+            sf::Vector2i(0,0),
+        },
+        // M
+        {
+            sf::Vector2i(0,0),
+            sf::Vector2i(2,0),
+            sf::Vector2i(-2,0),
+            sf::Vector2i(-1,-1),
+            sf::Vector2i(1,-1),
+        }
+};
+
+
+
 Tetromino::Tetromino(int mBorderX, int mBorderY, AvailableColors mColor): 
     mPos(),
     mColor(mColor),
@@ -45,12 +111,16 @@ Tetromino::Tetromino(int mBorderX, int mBorderY, int offsetX, int offsetY, std::
 
 Tetromino::Tetromino(int mBorderX, int mBorderY): 
     mPos(),
-    mColor(static_cast<AvailableColors>(rand()%6)),
+    mColor(TRANSPARENT),
     mBorderX(mBorderX),
     mBorderY(mBorderY),
     mFigureStructure()
 {
-    mFigureStructure = figuresAvalibles[(rand()%7)];
+    
+    int structIndex = (rand()%(Tetromino::figuresAvalibles.size()-1));
+    mFigureStructure = figuresAvalibles[structIndex];
+
+    mColor = static_cast<AvailableColors>(structIndex%TRANSPARENT);
     sf::Vector2i axis = mFigureStructure[0];
     int axisY = -1*offsetX;
     int axisX = (mBorderX/2);

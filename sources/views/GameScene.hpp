@@ -52,8 +52,8 @@ public:
     std::string         getHumanTime(sf::Time dt) const;
 
 private: 
-    Label			        mPlayerText;
-    Label			        mScoreText;
+    Label			        mTimeInfo;
+    Label			        mScoreLabel;
     Label			        mScoreValue;
     Label			        mNextText;
     sf::RectangleShape      mNextRec;
@@ -75,6 +75,14 @@ private:
     sf::Time                mTimeNotification;
     Label                   mNotification;
     Label                   mNotification2;
+    int                     mLines;
+
+
+    void                    updateScore(int lines);
+
+    Label                   mPlayerInfo;
+
+    const static int linesPerLevel;
 };
 
 #endif

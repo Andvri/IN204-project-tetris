@@ -19,14 +19,14 @@ private:
     std::vector<int> mTable;
 
     std::vector<sf::Color> ButtonsLabel = { 
-        sf::Color(32,32,32), // Grey
+        sf::Color(0,153,153), // Grey
         sf::Color(0,153,0),
         sf::Color(0,0,153),
         sf::Color(153,0,0),
         sf::Color(153,0,76),
-        sf::Color::Red,
-        sf::Color::Magenta,
-        sf::Color::Cyan,
+        sf::Color(153,153,0),
+        sf::Color(153,153,153),
+        sf::Color(153,0,153),
         sf::Color::Transparent
     };
 
