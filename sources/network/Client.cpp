@@ -52,6 +52,7 @@ RESPONSE_STATUS Client::searchConection()
         }
         elapsedSeconds = std::chrono::system_clock::now() - start;
     } while(elapsedSeconds.count() <= MAX_SEARCH_TIME);
+    std::cout << "NONE_RESPONSE" << std::endl;
     return RESPONSE_STATUS::NONE_RESPONSE;
 }
 
@@ -86,6 +87,7 @@ RESPONSE_STATUS Client::listenConection()
 
         elapsedSeconds = std::chrono::system_clock::now() - start;
     } while(elapsedSeconds.count() <= MAX_LISTEN_TIME);
+    std::cout << "NONE_RESPONSE" << std::endl;
     return RESPONSE_STATUS::NONE_RESPONSE;
 }
 
