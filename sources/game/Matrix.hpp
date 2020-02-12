@@ -37,7 +37,7 @@ public:
     bool    operator ==( Tetromino &t);
     friend Matrix& operator +(Matrix &m,Tetromino &t);
     friend std::ostream& operator << (std::ostream &o,Matrix &m);
-    void updateLines(Tetromino t);
+    int updateLines(Tetromino t);
 };
 
 

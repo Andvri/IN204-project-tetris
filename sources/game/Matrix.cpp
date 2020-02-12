@@ -101,8 +101,9 @@ std::vector<int> Matrix::getPos() const
     return mPos;
 }
 
-void Matrix::updateLines (Tetromino t)
+int Matrix::updateLines (Tetromino t)
 {
+    int deleteLines = 0;
     std::vector<int> linesToReview;
     std::vector<sf::Vector2i> pos(t.getPos());
     for (auto &&p : pos){
@@ -130,6 +131,7 @@ void Matrix::updateLines (Tetromino t)
         
 
         if (check) {
+            deleteLines++;
             for (size_t i = line; i >0; i--)
             {
                 for (size_t j = 0; j < this->getWidth(); j++)
@@ -146,4 +148,6 @@ void Matrix::updateLines (Tetromino t)
         
         
     }
+
+    return deleteLines;
 }

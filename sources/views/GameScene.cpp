@@ -10,6 +10,7 @@ GameScene::GameScene(StateManager& stack, Context context)
 	mPlayerText("Player info: ", "media/fonts/Blanka-Regular.otf", true, 30),
 	mScoreText("Score: ", "media/fonts/Blanka-Regular.otf", true, 30),
 	mNextText("Next piece: ", "media/fonts/Blanka-Regular.otf", true, 30),
+	mScoreValue("0 ", "media/fonts/Blanka-Regular.otf", true, 30),
 	mGrid(20, 10, 20),
 	mNextGrid(20, 10, 12),
 	timeSinceLastUpdate(sf::Time::Zero),
@@ -20,7 +21,8 @@ GameScene::GameScene(StateManager& stack, Context context)
 	mPlayGame(true),
 	mPause(false),
 	mHardDrop(false),
-	mNextTetromino(nullptr)
+	mNextTetromino(nullptr),
+	mPoints(0)
 {
 	sf::RenderWindow& window = *getContext().window;
 	sf::Vector2f ws(window.getSize());
@@ -28,7 +30,8 @@ GameScene::GameScene(StateManager& stack, Context context)
 	mBackground.setSize(Utility::getRectWindow());
 
 	mPlayerText.setPosition(Utility::getPositionRelative(ws, 8u, 8u, 1, 4));
-	mScoreText.setPosition(Utility::getPositionRelative(ws, 16u, 8u, 1, 1));
+	mScoreText.setPosition(Utility::getPositionRelative(ws, 16u, 8u, 2, 1));
+	mScoreValue.setPosition(Utility::getPositionRelative(ws, 16u, 8u, 2, 2));
 	mNextText.setPosition(Utility::getPositionRelative(ws, 8u, 8u, 7, 1));
 
     mTetromino = new Tetromino(10, 20);
@@ -55,6 +58,7 @@ void GameScene::draw()
 	
 	if(mPlayerText.isActive()) window.draw(mPlayerText);
 	if(mScoreText.isActive()) window.draw(mScoreText);
+	if(mScoreValue.isActive()) window.draw(mScoreValue);
 	if(mNextText.isActive()) window.draw(mNextText);
 	window.draw(mNextRec);
 	window.draw(mGrid);
@@ -192,7 +196,27 @@ void GameScene::handlerCollisionEvent( CollisionDirection cd)
 			} else {
 
 				mMatrix = (mMatrix + (*mTetromino));
-				mMatrix.updateLines((*mTetromino));
+				int lines = mMatrix.updateLines((*mTetromino));
+				int points = 0;
+				switch (lines)
+				{
+				case 1:
+					points = 40;
+					break;
+				case 2:
+					points = 100;
+					break;
+				case 3:
+					points = 300;
+					break;
+				case 4:
+					points = 1200;
+					break;
+				}
+				mPoints+= points;
+				mScoreValue.setText(std::to_string(mPoints));
+
+				
 				updateNextTetromino();
 				mTetromino = mNextTetromino;
 				generateNextTetromino();

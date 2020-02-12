@@ -54,6 +54,7 @@ public:
 private: 
     Label			        mPlayerText;
     Label			        mScoreText;
+    Label			        mScoreValue;
     Label			        mNextText;
     sf::RectangleShape      mNextRec;
     Background              mBackground;
@@ -72,6 +73,7 @@ private:
     bool                    mHardDrop;
     void                    generateNextTetromino();
     void                    updateNextTetromino();
+    int                     mPoints;
 };
 
 #endif
