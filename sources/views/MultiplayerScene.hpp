@@ -61,6 +61,7 @@ private:
     Background                      mBackground;
     std::vector<Button *>           mButtons;
     int                             mButtonChoice;
+    sf::Thread                  *th;
 };
 
 #endif
