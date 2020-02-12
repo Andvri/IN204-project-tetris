@@ -59,11 +59,9 @@ private:
     sf::RectangleShape      mNextRec;
     Background              mBackground;
     Grid                    mGrid;
-    Grid                    mNextGrid;
     sf::Time                timeSinceLastUpdate;
     sf::Time                timeLevel;
     Matrix                  mMatrix;
-    Matrix                  mNextMatrix;
     Tetromino*              mTetromino;
     Tetromino*              mNextTetromino;
     bool                    mPlayGame;

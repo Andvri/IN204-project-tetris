@@ -12,11 +12,9 @@ GameScene::GameScene(StateManager& stack, Context context)
 	mNextText("Next piece: ", "media/fonts/Blanka-Regular.otf", true, 30),
 	mScoreValue("0 ", "media/fonts/Blanka-Regular.otf", true, 30),
 	mGrid(20, 10, 20),
-	mNextGrid(20, 10, 12),
 	timeSinceLastUpdate(sf::Time::Zero),
 	timeLevel(sf::Time::Zero),
 	mMatrix(10, 20),
-	mNextMatrix(10, 20),
 	mTetromino(nullptr),
 	mPlayGame(true),
 	mPause(false),
@@ -43,7 +41,6 @@ GameScene::GameScene(StateManager& stack, Context context)
 	generateNextTetromino();
 	mGrid.setPosition(Utility::getPositionRelative(ws, 2u, 2u,1, 1));
 
-	mNextGrid.setPosition(Utility::getPositionRelative(ws, 8u, 8u, 7, 4));
 }
 
 
@@ -52,8 +49,11 @@ void GameScene::draw()
 	sf::RenderWindow& window = *getContext().window;
 	window.draw(mBackground);
 
-    
-	mNextGrid.setColors((mNextMatrix + (*mNextTetromino)).getPos());
+    Grid tmpGrid(20,10, 10);
+	Matrix tmpMatrix(20,10);
+
+	tmpGrid.setColors((tmpMatrix + (*mNextTetromino)).getPos());
+	tmpGrid.setPosition(Utility::getPositionRelative(sf::Vector2f(window.getSize()), 8u, 8u, 7, 4));
 	mGrid.setColors((mMatrix + (*mTetromino)).getPos());
 	
 	if(mPlayerText.isActive()) window.draw(mPlayerText);
@@ -62,7 +62,7 @@ void GameScene::draw()
 	if(mNextText.isActive()) window.draw(mNextText);
 	window.draw(mNextRec);
 	window.draw(mGrid);
-	window.draw(mNextGrid);
+	window.draw(tmpGrid);
 }
 
 bool GameScene::update(sf::Time dt)
