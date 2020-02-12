@@ -195,7 +195,9 @@ void GameScene::handlerCollisionEvent( CollisionDirection cd)
 
 			} else {
 
+				mTetromino->print();
 				mMatrix = (mMatrix + (*mTetromino));
+				mTetromino->print();
 				int lines = mMatrix.updateLines((*mTetromino));
 				int points = 0;
 				switch (lines)

@@ -65,7 +65,7 @@ sf::Vector2i Matrix::decodePosition(int code)
     return sf::Vector2i(x,y);
 }
 
-Matrix& operator+(Matrix &m,Tetromino &t)
+Matrix& operator+(Matrix m,Tetromino &t)
 {
     Matrix *copy = new Matrix(m);
     std::vector<sf::Vector2i> pos(t.getPos());
@@ -73,6 +73,7 @@ Matrix& operator+(Matrix &m,Tetromino &t)
     for (auto &&p : pos){
         if(p.y>=0)
         {
+            if(p.y >= m.getHeight()) p.y--;
             copy->mPos[m.codePosition(p.x,p.y)] = t.getColor();
         }
     }
