@@ -3,7 +3,7 @@
 
 Client::Client()
 {
-    if (socket.bind(PORTS::RECIVE) != sf::Socket::Done)
+    if (socket.bind(PORTS::SEND_CLIENT_RECEPTION_SERVER) != sf::Socket::Done)
     {
         return;
     }
@@ -13,6 +13,27 @@ Client::~Client()
 {
 }
 
+
+void Client::establishPort(bool create)
+{
+    socket.unbind();
+    if (create)
+    {
+        if (socket.bind(PORTS::SEND_SERVER_RECEPTION_CLIENT) != sf::Socket::Done)
+        {
+            return;
+        }
+    }
+    else 
+    {
+        if (socket.bind(PORTS::SEND_CLIENT_RECEPTION_SERVER) != sf::Socket::Done)
+        {
+            return;
+        }
+    }
+}
+
+//Client
 RESPONSE_STATUS Client::searchConection() 
 {
     std::cout << "Init search conection" << std::endl;
@@ -21,8 +42,10 @@ RESPONSE_STATUS Client::searchConection()
     socket.setBlocking(true);
 
     std::cout << "Start send package broadcast" << std::endl;
-    if (socket.send(packetSend, sf::IpAddress::Broadcast, PORTS::SEND) != sf::Socket::Done) {
+    if (socket.send(packetSend, sf::IpAddress::Broadcast, PORTS::SEND_CLIENT_RECEPTION_SERVER) != sf::Socket::Done) {
+        std::cout << "NONE_RESPONSE" << std::endl;
         return RESPONSE_STATUS::NONE_RESPONSE;
+        
     }
     std::cout << "End send package broadcast" << std::endl;
 
@@ -77,7 +100,7 @@ RESPONSE_STATUS Client::listenConection()
             std::cout << "Reception Package" << std::endl;
 
             std::cout << "Client:" << address << std::endl;
-            if (socket.send(packetSend, sender, PORTS::SEND) != sf::Socket::Done)
+            if (socket.send(packetSend, sender, PORTS::SEND_SERVER_RECEPTION_CLIENT) != sf::Socket::Done)
             {
                 std::cout << "Send error" << std::endl;
             }

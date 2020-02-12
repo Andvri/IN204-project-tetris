@@ -21,6 +21,7 @@ public:
 
     sf::IpAddress getReceiver();
     void setReceiver(sf::IpAddress ia);
+    void establishPort(bool create);
 };
 
 

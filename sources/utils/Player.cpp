@@ -73,7 +73,7 @@ void Player::setRestart(bool restart)
 void Player::establishConnection(bool create)
 {
     RESPONSE_STATUS r;
-
+    mMultiplayerController.establishPort(create);
     if (create)
     {
         r = mMultiplayerController.listenConection();

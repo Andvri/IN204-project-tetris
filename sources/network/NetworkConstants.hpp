@@ -3,7 +3,7 @@
 
 
 #define MAX_SEARCH_TIME 10
-#define MAX_LISTEN_TIME 10
+#define MAX_LISTEN_TIME 100
 
 enum REQUEST_STATUS {
   SEARCH_CONNECTION,
@@ -19,8 +19,8 @@ enum RESPONSE_STATUS
 
 
 namespace PORTS {
-    const unsigned short SEND = 7008;
-    const unsigned short RECIVE = 8007;
+    const unsigned short SEND_SERVER_RECEPTION_CLIENT = 7008;
+    const unsigned short SEND_CLIENT_RECEPTION_SERVER = 8007;
 }
 
 #endif
