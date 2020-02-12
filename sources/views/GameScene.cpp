@@ -192,17 +192,18 @@ void GameScene::handlerCollisionEvent( CollisionDirection cd)
 			} else {
 
 				mMatrix = (mMatrix + (*mTetromino));
+				mMatrix.updateLines((*mTetromino));
+				updateNextTetromino();
+				mTetromino = mNextTetromino;
+				generateNextTetromino();
+				mTetromino->setCollisionEvent([this](CollisionDirection cd)
+					{
+							handlerCollisionEvent(cd);
+					}
+				);
 			}
 
 			 
-			updateNextTetromino();
-			mTetromino = mNextTetromino;
-			generateNextTetromino();
-			mTetromino->setCollisionEvent([this](CollisionDirection cd)
-				{
-						handlerCollisionEvent(cd);
-				}
-			);
 		  }
 	}
 	
@@ -225,8 +226,15 @@ void GameScene::descend()
 	timeLevel = sf::Time::Zero;
 }
 
+
+
+
 void GameScene::generateNextTetromino()
 {
+
+	/**
+	 *  TODO: Improve and use dynamic constants
+	 */
 	mNextTetromino = new Tetromino(10,20);
 
 	(*mNextTetromino) = (*mNextTetromino) + 5;
@@ -238,6 +246,9 @@ void GameScene::generateNextTetromino()
 }
 void GameScene::updateNextTetromino()
 {
+	/**
+	 *  TODO: Improve and use dynamic constants
+	 */
 	(*mNextTetromino) = (*mNextTetromino) - 5;
 	for (size_t i = 0; i < 10; i++)
 	{
