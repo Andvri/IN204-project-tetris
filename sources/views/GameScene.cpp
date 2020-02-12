@@ -90,6 +90,13 @@ void GameScene::draw()
 
 bool GameScene::update(sf::Time dt)
 {	
+	if ((getContext()).player->getRestart()) 
+	{
+		(getContext()).player->setRestart(false);
+		restart();
+	}
+
+	
 	if (!(getContext()).player->getPause()) 
 	{
 		timeSinceLastUpdate += dt;

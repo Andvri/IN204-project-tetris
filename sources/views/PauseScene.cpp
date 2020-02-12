@@ -31,11 +31,18 @@ PauseScene::PauseScene(StateManager& stack, Context context):
 				getContext().player->setPause(false);
 				requestStackPop();
 			});
-        else if (mButtonLabels[i] == "Return")
+        else if (mButtonLabels[i] == "Main menu")
 			b->setCallback([this](){
 				getContext().player->setPause(false);
 				requestStateClear();
 				requestStackPush(States::Menu);
+			});
+
+		else if (mButtonLabels[i] == "Restart")
+			b->setCallback([this](){
+				getContext().player->setPause(false);
+				getContext().player->setRestart(true);
+				requestStackPop();
 			});
 
         mButtons.push_back(b);

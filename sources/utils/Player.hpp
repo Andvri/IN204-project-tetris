@@ -4,6 +4,8 @@ class Player
 {
     private:
         bool mPause;
+        bool mRestart;
+        bool mMultiplayer;
         int mScore;   
         int mLevel;         
     public:
@@ -13,7 +15,11 @@ class Player
         bool getPause();
         int getScore();
         int getLevel();
+        int getRestart();
+        int getMultiplayer();
 
+        void setRestart(bool pause);
+        void setMultiplayer(bool score);
         void setPause(bool pause);
         void setScore(int score);
         void setLevel(int level);

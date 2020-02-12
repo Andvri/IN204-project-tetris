@@ -11,7 +11,7 @@ class PauseScene
     : public State
 {
 private:
-    std::vector<std::string>        mButtonLabels = {"Resume", "Return", "Exit"};
+    std::vector<std::string>        mButtonLabels = {"Resume", "Restart", "Main menu", "Exit"};
 
     void                            moveFocus(bool asc);
 public:
