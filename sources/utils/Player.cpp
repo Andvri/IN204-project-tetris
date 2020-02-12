@@ -12,7 +12,8 @@ Player::Player(bool pause, int score, int level) :
     mScore(score),
     mPause(pause),
     mMultiplayer(false),
-    mRestart(false)
+    mRestart(false),
+    mMultiplayerController()
 {
 }
 
@@ -66,6 +67,22 @@ void Player::setMultiplayer(bool multiplayer)
 void Player::setRestart(bool restart)
 {
     mRestart = restart;
+}
+
+
+void Player::establishConnection(bool create)
+{
+    RESPONSE_STATUS r;
+    mMultiplayerController.establishPort(create);
+    if (create)
+    {
+        r = mMultiplayerController.listenConection();
+    }
+    else 
+    {
+        r = mMultiplayerController.searchConection();
+    }
+    setMultiplayer(r != RESPONSE_STATUS::NONE_RESPONSE);
 }
 
 

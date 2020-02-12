@@ -8,7 +8,8 @@ MultiplayerScene::MultiplayerScene(StateManager& stack, Context contex)
     mBackground(),
     mMultiplayerTitle("MultiPlayer", "media/fonts/Blanka-Regular.otf", true, 100, false, true, sf::Color::Green),
     mButtons(),
-    mButtonChoice(0)
+    mButtonChoice(0),
+	th(nullptr)
 {
     sf::RenderWindow& window = *getContext().window;
     sf::Vector2f ws(window.getSize());
@@ -16,7 +17,6 @@ MultiplayerScene::MultiplayerScene(StateManager& stack, Context contex)
     mBackground.setSize(sf::IntRect(0, 0, window.getSize().x, window.getSize().y));
 
     mMultiplayerTitle.setPosition(Utility::getPositionRelative(ws, 2u, 4u, 1, 1));
-
     for (int i = 0; i < ButtonsLabel.size(); i++)
     {
         Button *b = new Button(ButtonsLabel[i], "media/fonts/Blanka-Regular.otf", true, 30, (i==0));
@@ -33,13 +33,22 @@ MultiplayerScene::MultiplayerScene(StateManager& stack, Context contex)
 			
 		else if (ButtonsLabel[i] == "Create")
 			b->setCallback([this](){
-				requestStackPop();
-				requestStackPush(States::Game);
+				th = new sf::Thread([&] () {
+					(getContext().player)->establishConnection(true);
+				});
+				th->launch();
+				
+				//requestStackPop();
+				//requestStackPush(States::Game);
 			});
 		else if (ButtonsLabel[i] == "Join")
 			b->setCallback([this](){
-				requestStackPop();
-				requestStackPush(States::Title);
+				th = new sf::Thread([&] () {
+					(getContext().player)->establishConnection(false);
+				});
+				th->launch();
+				//requestStackPop();
+				//requestStackPush(States::Title);
 			});
 		mButtons.push_back(b);
     }

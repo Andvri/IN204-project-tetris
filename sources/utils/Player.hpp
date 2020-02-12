@@ -1,5 +1,8 @@
 #ifndef PLAYER_CLASS
 #define PLAYER_CLASS
+#include <SFML/Network.hpp>
+#include "../network/Client.hpp"
+
 class Player
 {
     private:
@@ -7,7 +10,8 @@ class Player
         bool mRestart;
         bool mMultiplayer;
         int mScore;   
-        int mLevel;         
+        int mLevel;
+        Client mMultiplayerController;
     public:
         Player();
         Player(bool pause, int score, int level);
@@ -23,5 +27,7 @@ class Player
         void setPause(bool pause);
         void setScore(int score);
         void setLevel(int level);
+
+        void establishConnection(bool create);
 };
 #endif

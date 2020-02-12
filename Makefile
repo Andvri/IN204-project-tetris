@@ -1,0 +1,2 @@
+compile:
+	/usr/bin/g++ -g Main.cpp sources/*.cpp sources/views/*.cpp sources/network/*.cpp sources/game/*.cpp sources/utils/*.cpp sources/utils/States/*.cpp sources/utils/Components/*.cpp -o build/program -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lsfml-audio -lsfml-network

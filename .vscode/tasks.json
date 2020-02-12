@@ -12,6 +12,7 @@
                 "${workspaceRoot}/Main.cpp",
                 "${workspaceRoot}/sources/*.cpp",
                 "${workspaceRoot}/sources/views/*.cpp",
+                "${workspaceRoot}/sources/network/*.cpp",
                 "${workspaceRoot}/sources/game/*.cpp",
                 "${workspaceRoot}/sources/utils/*.cpp",
                 "${workspaceRoot}/sources/utils/States/*.cpp",
@@ -21,7 +22,9 @@
                 "-lsfml-graphics",
                 "-lsfml-window",
                 "-lsfml-system",
-                "-lsfml-audio"
+                "-lsfml-audio",
+                "-lsfml-audio",
+                "-lsfml-network"
             ],
             "options": {
                 "cwd": "${fileDirname}"
