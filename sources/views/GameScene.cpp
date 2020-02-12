@@ -49,11 +49,24 @@ void GameScene::draw()
 	sf::RenderWindow& window = *getContext().window;
 	window.draw(mBackground);
 
-    Grid tmpGrid(20,10, 10);
-	Matrix tmpMatrix(20,10);
+    Grid tmpGrid(20,10, 12);
+	Matrix tmpMatrix(10,20);
 
-	tmpGrid.setColors((tmpMatrix + (*mNextTetromino)).getPos());
+	Tetromino tmpTetromino(
+		mNextTetromino->getBorderX(),
+		mNextTetromino->getBorderY(),
+		5,
+		10,
+		mNextTetromino->getStucture(),
+		mNextTetromino->getColor()
+	);
+	
+	tmpMatrix = tmpMatrix + (tmpTetromino);
+	
+	tmpGrid.setColors((tmpMatrix).getPos());
 	tmpGrid.setPosition(Utility::getPositionRelative(sf::Vector2f(window.getSize()), 8u, 8u, 7, 4));
+
+
 	mGrid.setColors((mMatrix + (*mTetromino)).getPos());
 	
 	if(mPlayerText.isActive()) window.draw(mPlayerText);
@@ -195,9 +208,7 @@ void GameScene::handlerCollisionEvent( CollisionDirection cd)
 
 			} else {
 
-				mTetromino->print();
 				mMatrix = (mMatrix + (*mTetromino));
-				mTetromino->print();
 				int lines = mMatrix.updateLines((*mTetromino));
 				int points = 0;
 				switch (lines)
@@ -263,21 +274,8 @@ void GameScene::generateNextTetromino()
 	 */
 	mNextTetromino = new Tetromino(10,20);
 
-	(*mNextTetromino) = (*mNextTetromino) + 5;
-	for (size_t i = 0; i < 10; i++)
-	{
-			(*mNextTetromino)++;
-	}
-
 }
 void GameScene::updateNextTetromino()
 {
-	/**
-	 *  TODO: Improve and use dynamic constants
-	 */
-	(*mNextTetromino) = (*mNextTetromino) - 5;
-	for (size_t i = 0; i < 10; i++)
-	{
-			(*mNextTetromino)--;
-	}
+	
 }

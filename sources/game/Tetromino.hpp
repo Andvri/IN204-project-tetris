@@ -39,23 +39,54 @@ private:
 
 
     std::vector<std::vector<sf::Vector2i>> figuresAvalibles {
+        // T
         {
             sf::Vector2i(0,0),
-            sf::Vector2i(0,1),
-            sf::Vector2i(0,-1),
-            sf::Vector2i(-1,0)
+            sf::Vector2i(1,0),
+            sf::Vector2i(-1,0),
+            sf::Vector2i(0,-1)
         },
+        // Z
         {
             sf::Vector2i(0,0),
             sf::Vector2i(1,0),
             sf::Vector2i(0,-1),
             sf::Vector2i(-1,-1)
         },
+        // S
+        {
+            sf::Vector2i(0,0),
+            sf::Vector2i(-1,0),
+            sf::Vector2i(1,-1),
+            sf::Vector2i(-1,-1)
+        },
+        // I
         {
             sf::Vector2i(0,0),
             sf::Vector2i(1,0),
             sf::Vector2i(-1,0),
             sf::Vector2i(-2,0)
+        },
+        // O
+        {
+            sf::Vector2i(0,0),
+            sf::Vector2i(1,0),
+            sf::Vector2i(1,-1),
+            sf::Vector2i(0,-1)
+        },
+        // L
+        {
+            sf::Vector2i(0,0),
+            sf::Vector2i(1,0),
+            sf::Vector2i(-1,-1),
+            sf::Vector2i(-1,0)
+        },
+        // J
+        {
+            sf::Vector2i(0,0),
+            sf::Vector2i(1,0),
+            sf::Vector2i(1,-1),
+            sf::Vector2i(-1,0)
         }
     };
 
@@ -63,6 +94,7 @@ private:
     bool callEvent = true;
 
 public:
+    const std::vector<sf::Vector2i> getStucture();
     Tetromino(int mBorderX, int mBorderY, AvailableColors mColor);
     Tetromino(int mBorderX, int mBorderY);
     Tetromino(AvailableColors mColor = AvailableColors::TRANSPARENT);

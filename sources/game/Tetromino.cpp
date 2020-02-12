@@ -37,7 +37,7 @@ Tetromino::Tetromino(int mBorderX, int mBorderY, int offsetX, int offsetY, std::
      */
     for (auto pixel : mFigureStructure)
     {
-        mPos.push_back(sf::Vector2i(offsetX+pixel.x,offsetY+pixel.y));
+        mPos.push_back(sf::Vector2i(offsetX+pixel.x, offsetY+pixel.y));
     }
 }
 
@@ -50,7 +50,7 @@ Tetromino::Tetromino(int mBorderX, int mBorderY):
     mBorderY(mBorderY),
     mFigureStructure()
 {
-    mFigureStructure = figuresAvalibles[2];
+    mFigureStructure = figuresAvalibles[(rand()%7)];
     sf::Vector2i axis = mFigureStructure[0];
     int axisY = -1*offsetX;
     int axisX = (mBorderX/2);
@@ -85,6 +85,7 @@ Tetromino::Tetromino(const Tetromino &t)
     this->mBorderY = t.mBorderY;
     this->mPos = t.mPos;
     this->mColor = t.mColor;
+    this->mFigureStructure = t.mFigureStructure;
     if (t.mOnCollisionEvent) this->setCollisionEvent(t.mOnCollisionEvent);
 }
 
@@ -256,9 +257,9 @@ std::vector<sf::Vector2i> Tetromino::rotateFigureStructure(Direction d)
 {
     int coefX = (d == Direction::CLOCKWISE) ? -1 : 1;
     int coefY = (d == Direction::CLOCKWISE) ? 1 : -1;
-    std::vector<sf::Vector2i> copy(mFigureStructure);
+    std::vector<sf::Vector2i> copy(getStucture());
 
-    for (auto &&i : copy)
+    for (auto &i : copy)
     {
         int oldX = i.x;
         int oldY = i.y;
@@ -359,4 +360,9 @@ bool Tetromino::operator==( Tetromino &t)
     
 
     return true;
+}
+
+const std::vector<sf::Vector2i> Tetromino::getStucture()
+{
+    return mFigureStructure;
 }
