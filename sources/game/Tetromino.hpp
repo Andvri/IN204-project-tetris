@@ -36,6 +36,29 @@ private:
         sf::Vector2i(0,-1),
         sf::Vector2i(-1,0)
     };
+
+
+    std::vector<std::vector<sf::Vector2i>> figuresAvalibles {
+        {
+            sf::Vector2i(0,0),
+            sf::Vector2i(0,1),
+            sf::Vector2i(0,-1),
+            sf::Vector2i(-1,0)
+        },
+        {
+            sf::Vector2i(0,0),
+            sf::Vector2i(1,0),
+            sf::Vector2i(0,-1),
+            sf::Vector2i(-1,-1)
+        },
+        {
+            sf::Vector2i(0,0),
+            sf::Vector2i(1,0),
+            sf::Vector2i(-1,0),
+            sf::Vector2i(-2,0)
+        }
+    };
+
     void callCollisionEvent(CollisionDirection cd);
     bool callEvent = true;
 

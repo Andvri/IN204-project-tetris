@@ -49,7 +49,8 @@ Tetromino::Tetromino(int mBorderX, int mBorderY):
     mBorderX(mBorderX),
     mBorderY(mBorderY)
 {
-    sf::Vector2i axis = mFigureStructure[structuralAxis];
+    mFigureStructure = figuresAvalibles[rand()%3];
+    sf::Vector2i axis = mFigureStructure[0];
     int axisY = -1*offsetX;
     int axisX = (mBorderX/2);
 
