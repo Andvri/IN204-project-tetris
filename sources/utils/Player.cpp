@@ -12,7 +12,8 @@ Player::Player(bool pause, int score, int level) :
     mScore(score),
     mPause(pause),
     mMultiplayer(false),
-    mRestart(false)
+    mRestart(false),
+    mMultiplayerController()
 {
 }
 

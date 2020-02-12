@@ -1,0 +1,26 @@
+#ifndef NETWORK_CONSTANTS
+#define NETWORK_CONSTANTS
+
+
+#define MAX_SEARCH_TIME 10
+#define MAX_LISTEN_TIME 100
+
+enum REQUEST_STATUS {
+  SEARCH_CONNECTION,
+  ESTABLISHED_CONNECTION
+};
+
+enum RESPONSE_STATUS
+{
+    NONE,
+    CONNECTION_AVAILABLE,
+    ESTABLISHED_CONNECTION
+};
+
+
+namespace PORTS {
+    const unsigned short SEND = 7008;
+    const unsigned short RECIVE = 8007;
+}
+
+#endif
