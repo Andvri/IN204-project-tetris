@@ -70,3 +70,19 @@ void Player::setRestart(bool restart)
 }
 
 
+void Player::establishConnection(bool create)
+{
+    RESPONSE_STATUS r;
+
+    if (create)
+    {
+        r = mMultiplayerController.listenConection();
+    }
+    else 
+    {
+        r = mMultiplayerController.searchConection();
+    }
+    setMultiplayer(r != RESPONSE_STATUS::NONE_RESPONSE);
+}
+
+

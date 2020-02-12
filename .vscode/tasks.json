@@ -23,7 +23,8 @@
                 "-lsfml-window",
                 "-lsfml-system",
                 "-lsfml-audio",
-                "-lsfml-audio"
+                "-lsfml-audio",
+                "-lsfml-network"
             ],
             "options": {
                 "cwd": "${fileDirname}"

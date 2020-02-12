@@ -33,13 +33,24 @@ MultiplayerScene::MultiplayerScene(StateManager& stack, Context contex)
 			
 		else if (ButtonsLabel[i] == "Create")
 			b->setCallback([this](){
-				requestStackPop();
-				requestStackPush(States::Game);
+				Player *p = (getContext().player);
+				sf::Thread thread([&] () {
+					p->establishConnection(true);
+				});
+				thread.launch();
+				
+				//requestStackPop();
+				//requestStackPush(States::Game);
 			});
 		else if (ButtonsLabel[i] == "Join")
 			b->setCallback([this](){
-				requestStackPop();
-				requestStackPush(States::Title);
+				Player *p = (getContext().player);
+				sf::Thread thread([&] () {
+					p->establishConnection(false);
+				});
+				thread.launch();
+				//requestStackPop();
+				//requestStackPush(States::Title);
 			});
 		mButtons.push_back(b);
     }

@@ -104,7 +104,6 @@ bool GameScene::update(sf::Time dt)
 		timeLevel+= dt;
 		mTimeNotification -=dt;
 		float velocity = 1.0/(float)(getContext().player->getLevel());
-		std::cout << velocity << std::endl;
 		if (timeLevel >= sf::seconds(velocity)) {
 			descend();
 		}
@@ -332,7 +331,6 @@ void GameScene::updateScore(int lines)
 	}
 	mPoints+= (getContext().player->getLevel()) * points;
 	mLines+= lines;
-	std::cout << mLines << std::endl;
 	if(mLines >= GameScene::linesPerLevel) {
 		getContext().player->setLevel( getContext().player->getLevel()+1 );
 		mLines = 0;

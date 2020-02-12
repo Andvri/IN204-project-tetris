@@ -11,6 +11,7 @@ class Player
         bool mMultiplayer;
         int mScore;   
         int mLevel;
+        Client mMultiplayerController;
     public:
         Player();
         Player(bool pause, int score, int level);
@@ -27,6 +28,6 @@ class Player
         void setScore(int score);
         void setLevel(int level);
 
-        Client mMultiplayerController;
+        void establishConnection(bool create);
 };
 #endif
