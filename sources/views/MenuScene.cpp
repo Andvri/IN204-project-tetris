@@ -28,6 +28,7 @@ MenuScene::MenuScene(StateManager& stack, Context context) :
 			});
 		else if (ButtonsLabel[i] == "Singleplayer")
 			b->setCallback([this](){
+				getContext().player->setMultiplayer(false);
 				requestStackPop();
 				requestStackPush(States::Game);
 			});

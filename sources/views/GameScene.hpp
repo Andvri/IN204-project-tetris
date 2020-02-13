@@ -65,6 +65,7 @@ private:
     Tetromino*              mTetromino;
     Tetromino*              mNextTetromino;
     bool                    mPlayGame;
+    bool                    isMultiplayer;
     void descend();
     void handlerCollisionEvent(CollisionDirection cd);
     bool                    mPause;

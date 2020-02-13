@@ -29,16 +29,22 @@ GameScene::GameScene(StateManager& stack, Context context)
 	mNotification2("Restart in: 0 ", "media/fonts/Blanka-Regular.otf", true, 30),
 	thSend(nullptr),
 	thRecv(nullptr),
-	mOtherPlayer(20*10, TRANSPARENT)
+	mOtherPlayer(20*10, TRANSPARENT),
+	isMultiplayer(false)
 {
 	sf::RenderWindow& window = *getContext().window;
 	sf::Vector2f ws(window.getSize());
 
 	mBackground.setSize(Utility::getRectWindow());
 
+	std::cout << getContext().player->getMultiplayer() << std::endl;
+
 	restart(true);
+	std::cout << getContext().player->getMultiplayer() << std::endl;
 	if (getContext().player->getMultiplayer()) 
 	{
+		isMultiplayer = true;
+		std::cout << isMultiplayer << std::endl;
 		mNextText.setText("Player 2");
 		thRecv = new sf::Thread([&] () {
 			while (true)
@@ -84,7 +90,7 @@ void GameScene::draw()
 	
 	tmpMatrix = tmpMatrix + (tmpTetromino);
 	
-	if (getContext().player->getMultiplayer()) {
+	if (isMultiplayer) {
 		tmpGrid.setColors(mOtherPlayer);
 	}
 	else {
@@ -93,9 +99,8 @@ void GameScene::draw()
 
 	tmpGrid.setPosition(Utility::getPositionRelative(sf::Vector2f(window.getSize()), 8u, 8u, 7, 4));
 
-	if (getContext().player->getMultiplayer()) 
+	if (isMultiplayer) 
 	{
-		std::cout << "deberia enviar" << std::endl;
 		thSend = new sf::Thread([&] () {
 			while (true)
 			{
@@ -341,6 +346,9 @@ void GameScene::restart(bool firstTime )
 			  );
 
 	mNextTetromino = new Tetromino(10,20);
+
+	if (thRecv != nullptr) thRecv->terminate();
+	if (thSend != nullptr) thSend->terminate();
 
 }
 void GameScene::updateNextTetromino()
