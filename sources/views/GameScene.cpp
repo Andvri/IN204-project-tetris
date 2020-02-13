@@ -37,19 +37,22 @@ GameScene::GameScene(StateManager& stack, Context context)
 
 	mBackground.setSize(Utility::getRectWindow());
 
-	std::cout << getContext().player->getMultiplayer() << std::endl;
 
 	restart(true);
-	std::cout << getContext().player->getMultiplayer() << std::endl;
+
+	/**
+	 *	TODO:  Optimize the exchange between single and multiplayer
+	 *	Optimize the change of variables between singleplayer and multiplayer
+	 */
 	if (getContext().player->getMultiplayer()) 
 	{
 		isMultiplayer = true;
-		std::cout << isMultiplayer << std::endl;
 		mNextText.setText("Player 2");
 		thRecv = new sf::Thread([&] () {
 			while (true)
 			{
 				getContext().player->recvData(mOtherPlayer);
+				sf::sleep(sf::seconds(1));
 			}
 		});
 		thRecv->launch();
@@ -102,10 +105,7 @@ void GameScene::draw()
 	if (isMultiplayer) 
 	{
 		thSend = new sf::Thread([&] () {
-			while (true)
-			{
-				getContext().player->sendData((mMatrix + (*mTetromino)).getPos());
-			}
+			getContext().player->sendData((mMatrix + (*mTetromino)).getPos());
 		});
 		thSend->launch();
 	}
