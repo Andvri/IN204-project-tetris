@@ -1,0 +1,184 @@
+\hypertarget{classLabel}{}\section{Label Class Reference}
+\label{classLabel}\index{Label@{Label}}
+
+
+compiles within itself the tools to create a label through S\+F\+ML  
+
+
+
+
+{\ttfamily \#include $<$Label.\+hpp$>$}
+
+
+
+Inheritance diagram for Label\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLabel__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Label\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLabel__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLabel_ab2454e0a3b79602c481d48f40b5f7a41}{Label} (const std\+::string \&text, const std\+::string \&path, bool \hyperlink{classComponent_aaab29ea159109b4d0f63e9c519be6139}{activate}, float size, bool toogle=false, bool highlighted=false, const sf\+::\+Color color=sf\+::\+Color\+::\+White)
+\begin{DoxyCompactList}\small\item\em Construct a new \hyperlink{classLabel}{Label} object, standart constructor, get all the information you need to get it started. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classLabel_ac27e6e31942be4612d282af282b65051}{is\+Selectable} () const
+\begin{DoxyCompactList}\small\item\em Open for check-\/in implementations. \end{DoxyCompactList}\item 
+void \hyperlink{classLabel_a2bd65842919bc965ff8482407b34f097}{set\+Text} (const std\+::string \&text)
+\begin{DoxyCompactList}\small\item\em Set the Text object. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classLabel_a5f1713cf4793b46cf0370ce2d447e722}{update} (sf\+::\+Time dt)
+\begin{DoxyCompactList}\small\item\em Responsible for the effects of the texts, such as shining or even appearing with outline. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classLabel_a2fd9614a68f0a6b89d3a50316ec4172c}{handle\+Event} (const sf\+::\+Event \&event)
+\begin{DoxyCompactList}\small\item\em Here in case you need an implementation. \end{DoxyCompactList}\item 
+void \hyperlink{classLabel_ab881215fca0b1450c7c725c333c86220}{set\+Border} (sf\+::\+Color border\+Color, sf\+::\+Color outline, int outline\+Size)
+\begin{DoxyCompactList}\small\item\em Set the Border object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+compiles within itself the tools to create a label through S\+F\+ML 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLabel_ab2454e0a3b79602c481d48f40b5f7a41}\label{classLabel_ab2454e0a3b79602c481d48f40b5f7a41}} 
+\index{Label@{Label}!Label@{Label}}
+\index{Label@{Label}!Label@{Label}}
+\subsubsection{\texorpdfstring{Label()}{Label()}}
+{\footnotesize\ttfamily Label\+::\+Label (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text,  }\item[{const std\+::string \&}]{path,  }\item[{bool}]{activate,  }\item[{float}]{size,  }\item[{bool}]{toogle = {\ttfamily false},  }\item[{bool}]{highlighted = {\ttfamily false},  }\item[{const sf\+::\+Color}]{color = {\ttfamily sf\+:\+:Color\+:\+:White} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \hyperlink{classLabel}{Label} object, standart constructor, get all the information you need to get it started. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & needed into label \\
+\hline
+{\em path} & font path \\
+\hline
+{\em activate} & visible or not \\
+\hline
+{\em size} & text size \\
+\hline
+{\em toogle} & \\
+\hline
+{\em highlighted} & \\
+\hline
+{\em color} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classLabel_a2fd9614a68f0a6b89d3a50316ec4172c}\label{classLabel_a2fd9614a68f0a6b89d3a50316ec4172c}} 
+\index{Label@{Label}!handle\+Event@{handle\+Event}}
+\index{handle\+Event@{handle\+Event}!Label@{Label}}
+\subsubsection{\texorpdfstring{handle\+Event()}{handleEvent()}}
+{\footnotesize\ttfamily void Label\+::handle\+Event (\begin{DoxyParamCaption}\item[{const sf\+::\+Event \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Here in case you need an implementation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & getted action \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classComponent}{Component}.
+
+\mbox{\Hypertarget{classLabel_ac27e6e31942be4612d282af282b65051}\label{classLabel_ac27e6e31942be4612d282af282b65051}} 
+\index{Label@{Label}!is\+Selectable@{is\+Selectable}}
+\index{is\+Selectable@{is\+Selectable}!Label@{Label}}
+\subsubsection{\texorpdfstring{is\+Selectable()}{isSelectable()}}
+{\footnotesize\ttfamily bool Label\+::is\+Selectable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Open for check-\/in implementations. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classComponent_aede74a18a443413465216f383a046028}{Component}.
+
+\mbox{\Hypertarget{classLabel_ab881215fca0b1450c7c725c333c86220}\label{classLabel_ab881215fca0b1450c7c725c333c86220}} 
+\index{Label@{Label}!set\+Border@{set\+Border}}
+\index{set\+Border@{set\+Border}!Label@{Label}}
+\subsubsection{\texorpdfstring{set\+Border()}{setBorder()}}
+{\footnotesize\ttfamily void Label\+::set\+Border (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{border\+Color,  }\item[{sf\+::\+Color}]{outline,  }\item[{int}]{outline\+Size }\end{DoxyParamCaption})}
+
+
+
+Set the Border object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em border\+Color} & \\
+\hline
+{\em outline} & \\
+\hline
+{\em outline\+Size} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLabel_a2bd65842919bc965ff8482407b34f097}\label{classLabel_a2bd65842919bc965ff8482407b34f097}} 
+\index{Label@{Label}!set\+Text@{set\+Text}}
+\index{set\+Text@{set\+Text}!Label@{Label}}
+\subsubsection{\texorpdfstring{set\+Text()}{setText()}}
+{\footnotesize\ttfamily void Label\+::set\+Text (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text }\end{DoxyParamCaption})}
+
+
+
+Set the Text object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLabel_a5f1713cf4793b46cf0370ce2d447e722}\label{classLabel_a5f1713cf4793b46cf0370ce2d447e722}} 
+\index{Label@{Label}!update@{update}}
+\index{update@{update}!Label@{Label}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily bool Label\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Responsible for the effects of the texts, such as shining or even appearing with outline. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Fraction of time \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false if have a problem 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classComponent}{Component}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/utils/\+Components/Label.\+hpp\item 
+sources/utils/\+Components/Label.\+cpp\end{DoxyCompactItemize}

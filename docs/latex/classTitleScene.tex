@@ -1,0 +1,124 @@
+\hypertarget{classTitleScene}{}\section{Title\+Scene Class Reference}
+\label{classTitleScene}\index{Title\+Scene@{Title\+Scene}}
+
+
+class responsible for taking care of the initial screen of the game  
+
+
+
+
+{\ttfamily \#include $<$Title\+Scene.\+hpp$>$}
+
+
+
+Inheritance diagram for Title\+Scene\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=143pt]{classTitleScene__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Title\+Scene\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=143pt]{classTitleScene__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTitleScene_a2542c8d7f2bcd75f69d79ec96cf75859}{Title\+Scene} (\hyperlink{classStateManager}{State\+Manager} \&stack, \hyperlink{structState_1_1Context}{Context} context)
+\begin{DoxyCompactList}\small\item\em Construct a new Title Scene object, standard builder. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTitleScene_af9939b69acd5a381b53678f022928110}\label{classTitleScene_af9939b69acd5a381b53678f022928110}} 
+virtual void \hyperlink{classTitleScene_af9939b69acd5a381b53678f022928110}{draw} ()
+\begin{DoxyCompactList}\small\item\em overwriting the function drawing by adding new elements responsible for sampling new elements added to this view \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classTitleScene_a7da09182894a7a48a12ed0e170e5b5f3}{update} (sf\+::\+Time dt)
+\begin{DoxyCompactList}\small\item\em overwriting the function update by adding new elements responsible for sampling new elements added to this view \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classTitleScene_ae965e4a6c1435246fcbdd487bbc58468}{handle\+Event} (const sf\+::\+Event \&event)
+\begin{DoxyCompactList}\small\item\em Adds new features to the function responsible for handling the events, adding a specific function for each key depending on the view. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+class responsible for taking care of the initial screen of the game 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTitleScene_a2542c8d7f2bcd75f69d79ec96cf75859}\label{classTitleScene_a2542c8d7f2bcd75f69d79ec96cf75859}} 
+\index{Title\+Scene@{Title\+Scene}!Title\+Scene@{Title\+Scene}}
+\index{Title\+Scene@{Title\+Scene}!Title\+Scene@{Title\+Scene}}
+\subsubsection{\texorpdfstring{Title\+Scene()}{TitleScene()}}
+{\footnotesize\ttfamily Title\+Scene\+::\+Title\+Scene (\begin{DoxyParamCaption}\item[{\hyperlink{classStateManager}{State\+Manager} \&}]{stack,  }\item[{\hyperlink{structState_1_1Context}{Context}}]{context }\end{DoxyParamCaption})}
+
+
+
+Construct a new Title Scene object, standard builder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & stack responsible for managing the views \\
+\hline
+{\em context} & relates all current context \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTitleScene_ae965e4a6c1435246fcbdd487bbc58468}\label{classTitleScene_ae965e4a6c1435246fcbdd487bbc58468}} 
+\index{Title\+Scene@{Title\+Scene}!handle\+Event@{handle\+Event}}
+\index{handle\+Event@{handle\+Event}!Title\+Scene@{Title\+Scene}}
+\subsubsection{\texorpdfstring{handle\+Event()}{handleEvent()}}
+{\footnotesize\ttfamily bool Title\+Scene\+::handle\+Event (\begin{DoxyParamCaption}\item[{const sf\+::\+Event \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Adds new features to the function responsible for handling the events, adding a specific function for each key depending on the view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & getted action \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false if have a problem 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_a19965f83460b248c42952aac8d001206}{State}.
+
+\mbox{\Hypertarget{classTitleScene_a7da09182894a7a48a12ed0e170e5b5f3}\label{classTitleScene_a7da09182894a7a48a12ed0e170e5b5f3}} 
+\index{Title\+Scene@{Title\+Scene}!update@{update}}
+\index{update@{update}!Title\+Scene@{Title\+Scene}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily bool Title\+Scene\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+overwriting the function update by adding new elements responsible for sampling new elements added to this view 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Fraction of time \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false if have a problem 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_acd5926bc7a373edff9e57f3ffe94ca13}{State}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/views/Title\+Scene.\+hpp\item 
+sources/views/Title\+Scene.\+cpp\end{DoxyCompactItemize}

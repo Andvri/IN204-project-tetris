@@ -1,0 +1,6 @@
+<map id="Component" name="Component">
+<area shape="rect" id="node5" href="$classBackground.html" title="Background" alt="" coords="5,155,96,181"/>
+<area shape="rect" id="node6" href="$classButton.html" title="abstraction of a button component to implement in the view " alt="" coords="121,155,181,181"/>
+<area shape="rect" id="node7" href="$classGrid.html" title="build the meshes responsible for making the tetris table " alt="" coords="205,155,251,181"/>
+<area shape="rect" id="node8" href="$classLabel.html" title="compiles within itself the tools to create a label through SFML " alt="" coords="276,155,329,181"/>
+</map>

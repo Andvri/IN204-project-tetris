@@ -1,0 +1,116 @@
+\hypertarget{classComponent}{}\section{Component Class Reference}
+\label{classComponent}\index{Component@{Component}}
+
+
+Mother class for the components created, which compiles S\+F\+ML functions.  
+
+
+
+
+{\ttfamily \#include $<$Component.\+hpp$>$}
+
+
+
+Inheritance diagram for Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classComponent__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classComponent_a8775db6d1a2c1afc2e77cd3c8f39da6f}\label{classComponent_a8775db6d1a2c1afc2e77cd3c8f39da6f}} 
+\hyperlink{classComponent_a8775db6d1a2c1afc2e77cd3c8f39da6f}{Component} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \hyperlink{classComponent}{Component} object. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classComponent_aede74a18a443413465216f383a046028}{is\+Selectable} () const =0
+\begin{DoxyCompactList}\small\item\em get a confirmation bool \end{DoxyCompactList}\item 
+bool \hyperlink{classComponent_a4c480061afaabc44339ca63916711294}{is\+Selected} () const
+\begin{DoxyCompactList}\small\item\em get a confirmation bool \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classComponent_ad92e03b1674737ed690eb72a0ad507f2}\label{classComponent_ad92e03b1674737ed690eb72a0ad507f2}} 
+virtual void \hyperlink{classComponent_ad92e03b1674737ed690eb72a0ad507f2}{select} ()
+\begin{DoxyCompactList}\small\item\em select the component \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classComponent_abe3bf558cf657c6da9ac30929fce5ed2}\label{classComponent_abe3bf558cf657c6da9ac30929fce5ed2}} 
+virtual void \hyperlink{classComponent_abe3bf558cf657c6da9ac30929fce5ed2}{deselect} ()
+\begin{DoxyCompactList}\small\item\em deselect the component \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classComponent_ad9a1fae6416df7f295c603483f15ce4a}{is\+Active} () const
+\begin{DoxyCompactList}\small\item\em get a confirmation bool \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classComponent_aaab29ea159109b4d0f63e9c519be6139}\label{classComponent_aaab29ea159109b4d0f63e9c519be6139}} 
+virtual void \hyperlink{classComponent_aaab29ea159109b4d0f63e9c519be6139}{activate} ()
+\begin{DoxyCompactList}\small\item\em active the component \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classComponent_aa4d1e5e0656ed03f7ff469db25f65053}\label{classComponent_aa4d1e5e0656ed03f7ff469db25f65053}} 
+virtual void \hyperlink{classComponent_aa4d1e5e0656ed03f7ff469db25f65053}{deactivate} ()
+\begin{DoxyCompactList}\small\item\em deactive the component \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classComponent_a090d3bc2747d4538799a1f92599ec899}\label{classComponent_a090d3bc2747d4538799a1f92599ec899}} 
+virtual bool {\bfseries update} (sf\+::\+Time dt)=0
+\item 
+\mbox{\Hypertarget{classComponent_a75ed67b03624574c7c45a26eda11a46e}\label{classComponent_a75ed67b03624574c7c45a26eda11a46e}} 
+virtual void {\bfseries handle\+Event} (const sf\+::\+Event \&event)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Mother class for the components created, which compiles S\+F\+ML functions. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classComponent_ad9a1fae6416df7f295c603483f15ce4a}\label{classComponent_ad9a1fae6416df7f295c603483f15ce4a}} 
+\index{Component@{Component}!is\+Active@{is\+Active}}
+\index{is\+Active@{is\+Active}!Component@{Component}}
+\subsubsection{\texorpdfstring{is\+Active()}{isActive()}}
+{\footnotesize\ttfamily bool Component\+::is\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get a confirmation bool 
+
+\begin{DoxyReturn}{Returns}
+the state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classComponent_aede74a18a443413465216f383a046028}\label{classComponent_aede74a18a443413465216f383a046028}} 
+\index{Component@{Component}!is\+Selectable@{is\+Selectable}}
+\index{is\+Selectable@{is\+Selectable}!Component@{Component}}
+\subsubsection{\texorpdfstring{is\+Selectable()}{isSelectable()}}
+{\footnotesize\ttfamily virtual bool Component\+::is\+Selectable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+get a confirmation bool 
+
+\begin{DoxyReturn}{Returns}
+the state 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classButton_a6f51f01b72f9c3319e96263dc59a677f}{Button}, \hyperlink{classGrid_a4ef4763b55dc2696af8a71fdeabe999a}{Grid}, \hyperlink{classLabel_ac27e6e31942be4612d282af282b65051}{Label}, and \hyperlink{classBackground_acc764dce6ac4f8843bc9950dad313ee4}{Background}.
+
+\mbox{\Hypertarget{classComponent_a4c480061afaabc44339ca63916711294}\label{classComponent_a4c480061afaabc44339ca63916711294}} 
+\index{Component@{Component}!is\+Selected@{is\+Selected}}
+\index{is\+Selected@{is\+Selected}!Component@{Component}}
+\subsubsection{\texorpdfstring{is\+Selected()}{isSelected()}}
+{\footnotesize\ttfamily bool Component\+::is\+Selected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get a confirmation bool 
+
+\begin{DoxyReturn}{Returns}
+the state 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/utils/\+Components/Component.\+hpp\item 
+sources/utils/\+Components/Component.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,118 @@
+\hypertarget{classGrid}{}\section{Grid Class Reference}
+\label{classGrid}\index{Grid@{Grid}}
+
+
+build the meshes responsible for making the tetris table  
+
+
+
+
+{\ttfamily \#include $<$Grid.\+hpp$>$}
+
+
+
+Inheritance diagram for Grid\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGrid__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Grid\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGrid__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGrid_ae4e9e4e01ed8d1ffe5f4bf560680362e}{Grid} (int m\+Height, int m\+Width, float m\+Pixel=30)
+\begin{DoxyCompactList}\small\item\em Construct a new \hyperlink{classGrid}{Grid} object. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classGrid_a4ef4763b55dc2696af8a71fdeabe999a}{is\+Selectable} () const
+\begin{DoxyCompactList}\small\item\em get a confirmation bool \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGrid_acaae18fea153b8ad2973597b7db449f9}\label{classGrid_acaae18fea153b8ad2973597b7db449f9}} 
+void {\bfseries set\+Text} (const std\+::string \&text)
+\item 
+\mbox{\Hypertarget{classGrid_aa933917cfed17cc246121c16ee2621ed}\label{classGrid_aa933917cfed17cc246121c16ee2621ed}} 
+virtual bool {\bfseries update} (sf\+::\+Time dt)
+\item 
+\mbox{\Hypertarget{classGrid_a2e0f15ff4079c91bfb40e519268a09b9}\label{classGrid_a2e0f15ff4079c91bfb40e519268a09b9}} 
+virtual void {\bfseries handle\+Event} (const sf\+::\+Event \&event)
+\item 
+void \hyperlink{classGrid_a7a93d93a3acaac29bc8fa81ecf30f877}{set\+Colors} (const std\+::vector$<$ int $>$ \&v)
+\begin{DoxyCompactList}\small\item\em Set the Colors object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGrid_a4a7063b92ed09312e51c4a7fa0c2a0f0}\label{classGrid_a4a7063b92ed09312e51c4a7fa0c2a0f0}} 
+void {\bfseries restart} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+build the meshes responsible for making the tetris table 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGrid_ae4e9e4e01ed8d1ffe5f4bf560680362e}\label{classGrid_ae4e9e4e01ed8d1ffe5f4bf560680362e}} 
+\index{Grid@{Grid}!Grid@{Grid}}
+\index{Grid@{Grid}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{Grid()}{Grid()}}
+{\footnotesize\ttfamily Grid\+::\+Grid (\begin{DoxyParamCaption}\item[{int}]{m\+Height,  }\item[{int}]{m\+Width,  }\item[{float}]{m\+Pixel = {\ttfamily 30} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \hyperlink{classGrid}{Grid} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m\+Height} & \\
+\hline
+{\em m\+Width} & \\
+\hline
+{\em m\+Pixel} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classGrid_a4ef4763b55dc2696af8a71fdeabe999a}\label{classGrid_a4ef4763b55dc2696af8a71fdeabe999a}} 
+\index{Grid@{Grid}!is\+Selectable@{is\+Selectable}}
+\index{is\+Selectable@{is\+Selectable}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{is\+Selectable()}{isSelectable()}}
+{\footnotesize\ttfamily bool Grid\+::is\+Selectable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get a confirmation bool 
+
+\begin{DoxyReturn}{Returns}
+the state 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classComponent_aede74a18a443413465216f383a046028}{Component}.
+
+\mbox{\Hypertarget{classGrid_a7a93d93a3acaac29bc8fa81ecf30f877}\label{classGrid_a7a93d93a3acaac29bc8fa81ecf30f877}} 
+\index{Grid@{Grid}!set\+Colors@{set\+Colors}}
+\index{set\+Colors@{set\+Colors}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{set\+Colors()}{setColors()}}
+{\footnotesize\ttfamily void Grid\+::set\+Colors (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ int $>$ \&}]{v }\end{DoxyParamCaption})}
+
+
+
+Set the Colors object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & color value in enum \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/utils/\+Components/Grid.\+hpp\item 
+sources/utils/\+Components/Grid.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,182 @@
+\hypertarget{classButton}{}\section{Button Class Reference}
+\label{classButton}\index{Button@{Button}}
+
+
+abstraction of a button component to implement in the view  
+
+
+
+
+{\ttfamily \#include $<$Button.\+hpp$>$}
+
+
+
+Inheritance diagram for Button\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classButton__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Button\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classButton__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classButton_a9e04a84d89368e9a5b1205bbcdd1a9b0}\label{classButton_a9e04a84d89368e9a5b1205bbcdd1a9b0}} 
+typedef std\+::function$<$ void()$>$ {\bfseries Callback}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classButton_a421ba03df1f2038625a179d72ade06a8}{Button} (const std\+::string \&text, const std\+::string \&path, bool active, float size, bool pred=false)
+\begin{DoxyCompactList}\small\item\em Construct a new \hyperlink{classButton}{Button} object. \end{DoxyCompactList}\item 
+void \hyperlink{classButton_ac6a233c876164a52d54ef7f1b3fb78d1}{set\+Text} (const std\+::string \&text)
+\begin{DoxyCompactList}\small\item\em Set the Text object. \end{DoxyCompactList}\item 
+void \hyperlink{classButton_a694455fc4d23bf1dd91836f9692933ad}{set\+Callback} (Callback callback)
+\begin{DoxyCompactList}\small\item\em Set the Callback function in which the button will then activate. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classButton_a6f51f01b72f9c3319e96263dc59a677f}{is\+Selectable} () const
+\begin{DoxyCompactList}\small\item\em Return state of selecting. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classButton_a0d567e275b73139fe0300f395f657656}\label{classButton_a0d567e275b73139fe0300f395f657656}} 
+virtual void \hyperlink{classButton_a0d567e275b73139fe0300f395f657656}{select} ()
+\begin{DoxyCompactList}\small\item\em changes the button layout and plays selection music \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classButton_a565331dbe481e0f55e26a4a1f36ee40e}\label{classButton_a565331dbe481e0f55e26a4a1f36ee40e}} 
+virtual void \hyperlink{classButton_a565331dbe481e0f55e26a4a1f36ee40e}{deselect} ()
+\begin{DoxyCompactList}\small\item\em deselect the button \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classButton_a78bc21a32f143adf0de1204e6f230629}\label{classButton_a78bc21a32f143adf0de1204e6f230629}} 
+void \hyperlink{classButton_a78bc21a32f143adf0de1204e6f230629}{toggle} ()
+\begin{DoxyCompactList}\small\item\em Alternate button status and play switching music. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classButton_a2fe7d7228fb882c5c992ed07341d45be}{activate} ()
+\begin{DoxyCompactList}\small\item\em Take action if this going to be activate unimplemented. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classButton_a57efb09b51a4846a25e7f61abee78cd6}{deactivate} ()
+\begin{DoxyCompactList}\small\item\em Take action if this going to be activate unimplemented. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classButton_ac0c49438494d666916359871ce76f541}\label{classButton_ac0c49438494d666916359871ce76f541}} 
+virtual bool {\bfseries update} (sf\+::\+Time dt)
+\item 
+\mbox{\Hypertarget{classButton_a1c97f0b778e1b6cb45818b3573b71487}\label{classButton_a1c97f0b778e1b6cb45818b3573b71487}} 
+virtual void {\bfseries handle\+Event} (const sf\+::\+Event \&event)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+abstraction of a button component to implement in the view 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classButton_a421ba03df1f2038625a179d72ade06a8}\label{classButton_a421ba03df1f2038625a179d72ade06a8}} 
+\index{Button@{Button}!Button@{Button}}
+\index{Button@{Button}!Button@{Button}}
+\subsubsection{\texorpdfstring{Button()}{Button()}}
+{\footnotesize\ttfamily Button\+::\+Button (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text,  }\item[{const std\+::string \&}]{path,  }\item[{bool}]{active,  }\item[{float}]{size,  }\item[{bool}]{pred = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \hyperlink{classButton}{Button} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & button text \\
+\hline
+{\em path} & font path \\
+\hline
+{\em active} & visible or not \\
+\hline
+{\em size} & \\
+\hline
+{\em pred} & selected or not \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classButton_a2fe7d7228fb882c5c992ed07341d45be}\label{classButton_a2fe7d7228fb882c5c992ed07341d45be}} 
+\index{Button@{Button}!activate@{activate}}
+\index{activate@{activate}!Button@{Button}}
+\subsubsection{\texorpdfstring{activate()}{activate()}}
+{\footnotesize\ttfamily void Button\+::activate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Take action if this going to be activate unimplemented. 
+
+T\+O\+DO\+: In the future place here what to do when selected and activated or deactivated
+
+Reimplemented from \hyperlink{classComponent_aaab29ea159109b4d0f63e9c519be6139}{Component}.
+
+\mbox{\Hypertarget{classButton_a57efb09b51a4846a25e7f61abee78cd6}\label{classButton_a57efb09b51a4846a25e7f61abee78cd6}} 
+\index{Button@{Button}!deactivate@{deactivate}}
+\index{deactivate@{deactivate}!Button@{Button}}
+\subsubsection{\texorpdfstring{deactivate()}{deactivate()}}
+{\footnotesize\ttfamily void Button\+::deactivate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Take action if this going to be activate unimplemented. 
+
+T\+O\+DO\+: In the future place here what to do when selected and activated or deactivated
+
+Reimplemented from \hyperlink{classComponent_aa4d1e5e0656ed03f7ff469db25f65053}{Component}.
+
+\mbox{\Hypertarget{classButton_a6f51f01b72f9c3319e96263dc59a677f}\label{classButton_a6f51f01b72f9c3319e96263dc59a677f}} 
+\index{Button@{Button}!is\+Selectable@{is\+Selectable}}
+\index{is\+Selectable@{is\+Selectable}!Button@{Button}}
+\subsubsection{\texorpdfstring{is\+Selectable()}{isSelectable()}}
+{\footnotesize\ttfamily bool Button\+::is\+Selectable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return state of selecting. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classComponent_aede74a18a443413465216f383a046028}{Component}.
+
+\mbox{\Hypertarget{classButton_a694455fc4d23bf1dd91836f9692933ad}\label{classButton_a694455fc4d23bf1dd91836f9692933ad}} 
+\index{Button@{Button}!set\+Callback@{set\+Callback}}
+\index{set\+Callback@{set\+Callback}!Button@{Button}}
+\subsubsection{\texorpdfstring{set\+Callback()}{setCallback()}}
+{\footnotesize\ttfamily void Button\+::set\+Callback (\begin{DoxyParamCaption}\item[{Callback}]{callback }\end{DoxyParamCaption})}
+
+
+
+Set the Callback function in which the button will then activate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classButton_ac6a233c876164a52d54ef7f1b3fb78d1}\label{classButton_ac6a233c876164a52d54ef7f1b3fb78d1}} 
+\index{Button@{Button}!set\+Text@{set\+Text}}
+\index{set\+Text@{set\+Text}!Button@{Button}}
+\subsubsection{\texorpdfstring{set\+Text()}{setText()}}
+{\footnotesize\ttfamily void Button\+::set\+Text (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text }\end{DoxyParamCaption})}
+
+
+
+Set the Text object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/utils/\+Components/Button.\+hpp\item 
+sources/utils/\+Components/Button.\+cpp\end{DoxyCompactItemize}

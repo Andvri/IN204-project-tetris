@@ -1,0 +1,134 @@
+\hypertarget{classBackground}{}\section{Background Class Reference}
+\label{classBackground}\index{Background@{Background}}
+
+
+Inheritance diagram for Background\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBackground__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Background\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBackground__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBackground_a7b34d3f65318880a36d9db9a5df60d85}{Background} (std\+::string path=\char`\"{}media/images/Galaxy2.\+png\char`\"{}, bool repeat=true, int opacity=255)
+\begin{DoxyCompactList}\small\item\em Construct a new \hyperlink{classBackground}{Background} object. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classBackground_acc764dce6ac4f8843bc9950dad313ee4}{is\+Selectable} () const
+\begin{DoxyCompactList}\small\item\em get a confirmation bool \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBackground_a931546a41fa369074a955f806f7013ba}\label{classBackground_a931546a41fa369074a955f806f7013ba}} 
+virtual bool {\bfseries update} (sf\+::\+Time dt)
+\item 
+\mbox{\Hypertarget{classBackground_ad8df5f7d22a79df18fb9b12058b09eb8}\label{classBackground_ad8df5f7d22a79df18fb9b12058b09eb8}} 
+virtual void {\bfseries handle\+Event} (const sf\+::\+Event \&event)
+\item 
+void \hyperlink{classBackground_a015a2adae388abae75d6451273c61099}{set\+Size} (sf\+::\+Int\+Rect rect)
+\begin{DoxyCompactList}\small\item\em Set the Size object. \end{DoxyCompactList}\item 
+void \hyperlink{classBackground_a3c7b1c14ebc2ddad845e55eb2e214ce5}{set\+Path} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em Set the Path to where is the figure. \end{DoxyCompactList}\item 
+void \hyperlink{classBackground_adee3f510209c8a2a53b4b2b2d27d27e5}{set\+Transparency} (float value)
+\begin{DoxyCompactList}\small\item\em Set the background transparency level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBackground_a7b34d3f65318880a36d9db9a5df60d85}\label{classBackground_a7b34d3f65318880a36d9db9a5df60d85}} 
+\index{Background@{Background}!Background@{Background}}
+\index{Background@{Background}!Background@{Background}}
+\subsubsection{\texorpdfstring{Background()}{Background()}}
+{\footnotesize\ttfamily Background\+::\+Background (\begin{DoxyParamCaption}\item[{std\+::string}]{path = {\ttfamily \char`\"{}media/images/Galaxy2.png\char`\"{}},  }\item[{bool}]{repeat = {\ttfamily true},  }\item[{int}]{opacity = {\ttfamily 255} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \hyperlink{classBackground}{Background} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & background \\
+\hline
+{\em repeat} & if the image isn\textquotesingle{}t large enough \\
+\hline
+{\em opacity} & number from 0 to 255 for opacity; 128 for half transparent \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBackground_acc764dce6ac4f8843bc9950dad313ee4}\label{classBackground_acc764dce6ac4f8843bc9950dad313ee4}} 
+\index{Background@{Background}!is\+Selectable@{is\+Selectable}}
+\index{is\+Selectable@{is\+Selectable}!Background@{Background}}
+\subsubsection{\texorpdfstring{is\+Selectable()}{isSelectable()}}
+{\footnotesize\ttfamily bool Background\+::is\+Selectable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get a confirmation bool 
+
+\begin{DoxyReturn}{Returns}
+the state 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classComponent_aede74a18a443413465216f383a046028}{Component}.
+
+\mbox{\Hypertarget{classBackground_a3c7b1c14ebc2ddad845e55eb2e214ce5}\label{classBackground_a3c7b1c14ebc2ddad845e55eb2e214ce5}} 
+\index{Background@{Background}!set\+Path@{set\+Path}}
+\index{set\+Path@{set\+Path}!Background@{Background}}
+\subsubsection{\texorpdfstring{set\+Path()}{setPath()}}
+{\footnotesize\ttfamily void Background\+::set\+Path (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+
+
+Set the Path to where is the figure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBackground_a015a2adae388abae75d6451273c61099}\label{classBackground_a015a2adae388abae75d6451273c61099}} 
+\index{Background@{Background}!set\+Size@{set\+Size}}
+\index{set\+Size@{set\+Size}!Background@{Background}}
+\subsubsection{\texorpdfstring{set\+Size()}{setSize()}}
+{\footnotesize\ttfamily void Background\+::set\+Size (\begin{DoxyParamCaption}\item[{sf\+::\+Int\+Rect}]{rect }\end{DoxyParamCaption})}
+
+
+
+Set the Size object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & sf\+::\+Int\+Rect object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBackground_adee3f510209c8a2a53b4b2b2d27d27e5}\label{classBackground_adee3f510209c8a2a53b4b2b2d27d27e5}} 
+\index{Background@{Background}!set\+Transparency@{set\+Transparency}}
+\index{set\+Transparency@{set\+Transparency}!Background@{Background}}
+\subsubsection{\texorpdfstring{set\+Transparency()}{setTransparency()}}
+{\footnotesize\ttfamily void Background\+::set\+Transparency (\begin{DoxyParamCaption}\item[{float}]{value }\end{DoxyParamCaption})}
+
+
+
+Set the background transparency level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & between 0(total invisble) and 255(normal) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/utils/\+Components/Background.\+hpp\item 
+sources/utils/\+Components/Background.\+cpp\end{DoxyCompactItemize}

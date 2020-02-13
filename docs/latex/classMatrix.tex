@@ -1,0 +1,205 @@
+\hypertarget{classMatrix}{}\section{Matrix Class Reference}
+\label{classMatrix}\index{Matrix@{Matrix}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classMatrix_a2f7248b95312e5ecabeab518cd584774}{tetromino\+Compatible} (std\+::vector$<$ sf\+::\+Vector2i $>$ pos)
+\begin{DoxyCompactList}\small\item\em Check all the board positions according to the next positions to check if it is possible to fit the piece. \end{DoxyCompactList}\item 
+int \hyperlink{classMatrix_ac4c14902c7108f0f9ac46ee9d1ef92f9}{code\+Position} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Encodes received coordinates; from 2D to 1D. \end{DoxyCompactList}\item 
+sf\+::\+Vector2i \hyperlink{classMatrix_a5680e2198758d4b7524810d0e0fe4021}{decode\+Position} (int code)
+\begin{DoxyCompactList}\small\item\em Retrieves the coded message from one dimension to two dimensions. \end{DoxyCompactList}\item 
+int \hyperlink{classMatrix_a3f51ba6280305f2d692ab754800297fa}{get\+Width} ()
+\begin{DoxyCompactList}\small\item\em Get the Width object. \end{DoxyCompactList}\item 
+int \hyperlink{classMatrix_a3af39c453aeb30c5cb55f72c2e71917f}{get\+Height} ()
+\begin{DoxyCompactList}\small\item\em Get the Height object. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \hyperlink{classMatrix_a9fa09bc31e6e2dfe4ced74eb34de0f70}{get\+Pos} () const
+\begin{DoxyCompactList}\small\item\em Get the Pos object in relation to the two coordinates of the matrix. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMatrix_a765f4dcb51b6829311cc3e7576388423}\label{classMatrix_a765f4dcb51b6829311cc3e7576388423}} 
+{\bfseries Matrix} (const \hyperlink{classMatrix}{Matrix} \&m)
+\item 
+\mbox{\Hypertarget{classMatrix_a5d5b33d74cf6443d9c2b6242b3f7e320}\label{classMatrix_a5d5b33d74cf6443d9c2b6242b3f7e320}} 
+{\bfseries Matrix} (int width, int height)
+\item 
+bool \hyperlink{classMatrix_a993ef93c4c0b32047586dd3e3a981853}{operator==} (\hyperlink{classTetromino}{Tetromino} \&t)
+\begin{DoxyCompactList}\small\item\em It directly compares a tetromino with the place where it will be to place it. \end{DoxyCompactList}\item 
+int \hyperlink{classMatrix_abd7645de0cb39d103a96c0f905a1cebe}{update\+Lines} (\hyperlink{classTetromino}{Tetromino} t)
+\begin{DoxyCompactList}\small\item\em Checks the lines to update according to the parts that are already positioned inside the matrix. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMatrix_abb14e34d409ecd4133c2840755b556b7}\label{classMatrix_abb14e34d409ecd4133c2840755b556b7}} 
+void \hyperlink{classMatrix_abb14e34d409ecd4133c2840755b556b7}{restart} ()
+\begin{DoxyCompactList}\small\item\em Reset \hyperlink{classMatrix}{Matrix}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_ac1bb2cc60467d7aaa22c10217f500ec9}{operator+} (\hyperlink{classMatrix}{Matrix} m, \hyperlink{classTetromino}{Tetromino} \&t)
+\begin{DoxyCompactList}\small\item\em Moves the part in the axis and making the movement of the tetromino simpler. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMatrix_ae94f48053f851e77e8f461e5ab1e3fdd}\label{classMatrix_ae94f48053f851e77e8f461e5ab1e3fdd}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&o, \hyperlink{classMatrix}{Matrix} \&m)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMatrix_ac4c14902c7108f0f9ac46ee9d1ef92f9}\label{classMatrix_ac4c14902c7108f0f9ac46ee9d1ef92f9}} 
+\index{Matrix@{Matrix}!code\+Position@{code\+Position}}
+\index{code\+Position@{code\+Position}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{code\+Position()}{codePosition()}}
+{\footnotesize\ttfamily int Matrix\+::code\+Position (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Encodes received coordinates; from 2D to 1D. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Position value \\
+\hline
+{\em y} & Position value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The coding 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMatrix_a5680e2198758d4b7524810d0e0fe4021}\label{classMatrix_a5680e2198758d4b7524810d0e0fe4021}} 
+\index{Matrix@{Matrix}!decode\+Position@{decode\+Position}}
+\index{decode\+Position@{decode\+Position}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{decode\+Position()}{decodePosition()}}
+{\footnotesize\ttfamily sf\+::\+Vector2i Matrix\+::decode\+Position (\begin{DoxyParamCaption}\item[{int}]{code }\end{DoxyParamCaption})}
+
+
+
+Retrieves the coded message from one dimension to two dimensions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & in 1D \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sf\+::\+Vector2i with 2D 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMatrix_a3af39c453aeb30c5cb55f72c2e71917f}\label{classMatrix_a3af39c453aeb30c5cb55f72c2e71917f}} 
+\index{Matrix@{Matrix}!get\+Height@{get\+Height}}
+\index{get\+Height@{get\+Height}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{get\+Height()}{getHeight()}}
+{\footnotesize\ttfamily int Matrix\+::get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Height object. 
+
+\begin{DoxyReturn}{Returns}
+int value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMatrix_a9fa09bc31e6e2dfe4ced74eb34de0f70}\label{classMatrix_a9fa09bc31e6e2dfe4ced74eb34de0f70}} 
+\index{Matrix@{Matrix}!get\+Pos@{get\+Pos}}
+\index{get\+Pos@{get\+Pos}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{get\+Pos()}{getPos()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ Matrix\+::get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Pos object in relation to the two coordinates of the matrix. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$int$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMatrix_a3f51ba6280305f2d692ab754800297fa}\label{classMatrix_a3f51ba6280305f2d692ab754800297fa}} 
+\index{Matrix@{Matrix}!get\+Width@{get\+Width}}
+\index{get\+Width@{get\+Width}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{get\+Width()}{getWidth()}}
+{\footnotesize\ttfamily int Matrix\+::get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Width object. 
+
+\begin{DoxyReturn}{Returns}
+int value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMatrix_a993ef93c4c0b32047586dd3e3a981853}\label{classMatrix_a993ef93c4c0b32047586dd3e3a981853}} 
+\index{Matrix@{Matrix}!operator==@{operator==}}
+\index{operator==@{operator==}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Matrix\+::operator== (\begin{DoxyParamCaption}\item[{\hyperlink{classTetromino}{Tetromino} \&}]{t }\end{DoxyParamCaption})}
+
+
+
+It directly compares a tetromino with the place where it will be to place it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \hyperlink{classTetromino}{Tetromino} getted for comparation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMatrix_a2f7248b95312e5ecabeab518cd584774}\label{classMatrix_a2f7248b95312e5ecabeab518cd584774}} 
+\index{Matrix@{Matrix}!tetromino\+Compatible@{tetromino\+Compatible}}
+\index{tetromino\+Compatible@{tetromino\+Compatible}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{tetromino\+Compatible()}{tetrominoCompatible()}}
+{\footnotesize\ttfamily bool Matrix\+::tetromino\+Compatible (\begin{DoxyParamCaption}\item[{std\+::vector$<$ sf\+::\+Vector2i $>$}]{pos }\end{DoxyParamCaption})}
+
+
+
+Check all the board positions according to the next positions to check if it is possible to fit the piece. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false if it is not possible to fit the piece 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMatrix_abd7645de0cb39d103a96c0f905a1cebe}\label{classMatrix_abd7645de0cb39d103a96c0f905a1cebe}} 
+\index{Matrix@{Matrix}!update\+Lines@{update\+Lines}}
+\index{update\+Lines@{update\+Lines}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{update\+Lines()}{updateLines()}}
+{\footnotesize\ttfamily int Matrix\+::update\+Lines (\begin{DoxyParamCaption}\item[{\hyperlink{classTetromino}{Tetromino}}]{t }\end{DoxyParamCaption})}
+
+
+
+Checks the lines to update according to the parts that are already positioned inside the matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & positions of tetromino \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classMatrix_ac1bb2cc60467d7aaa22c10217f500ec9}\label{classMatrix_ac1bb2cc60467d7aaa22c10217f500ec9}} 
+\index{Matrix@{Matrix}!operator+@{operator+}}
+\index{operator+@{operator+}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{operator+}{operator+}}
+{\footnotesize\ttfamily \hyperlink{classMatrix}{Matrix}\& operator+ (\begin{DoxyParamCaption}\item[{\hyperlink{classMatrix}{Matrix}}]{m,  }\item[{\hyperlink{classTetromino}{Tetromino} \&}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Moves the part in the axis and making the movement of the tetromino simpler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Base \hyperlink{classMatrix}{Matrix} \\
+\hline
+{\em t} & tetromino for comparation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classMatrix}{Matrix}\& 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/game/Matrix.\+hpp\item 
+sources/game/Matrix.\+cpp\end{DoxyCompactItemize}

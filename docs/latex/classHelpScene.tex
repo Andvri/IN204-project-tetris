@@ -1,0 +1,124 @@
+\hypertarget{classHelpScene}{}\section{Help\+Scene Class Reference}
+\label{classHelpScene}\index{Help\+Scene@{Help\+Scene}}
+
+
+responsible for viewing the help page of the game  
+
+
+
+
+{\ttfamily \#include $<$Help\+Scene.\+hpp$>$}
+
+
+
+Inheritance diagram for Help\+Scene\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{classHelpScene__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Help\+Scene\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{classHelpScene__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classHelpScene_a97b066a6f6341021d0bc07a548ec3f6c}{Help\+Scene} (\hyperlink{classStateManager}{State\+Manager} \&stack, \hyperlink{structState_1_1Context}{Context} context)
+\begin{DoxyCompactList}\small\item\em Construct a new Menu Scene object, standard builder. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classHelpScene_a1c343c3ede7bb3d3a6cb4f0d0eba3e53}\label{classHelpScene_a1c343c3ede7bb3d3a6cb4f0d0eba3e53}} 
+virtual void \hyperlink{classHelpScene_a1c343c3ede7bb3d3a6cb4f0d0eba3e53}{draw} ()
+\begin{DoxyCompactList}\small\item\em overwriting the function drawing by adding new elements responsible for sampling new elements added to this view \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classHelpScene_a2eb8b8e49f206b65291a8972f3c596c0}{update} (sf\+::\+Time dt)
+\begin{DoxyCompactList}\small\item\em overwriting the function update by adding new elements responsible for sampling new elements added to this view \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classHelpScene_adebdd5586b2e0c618134d5bfc38f821b}{handle\+Event} (const sf\+::\+Event \&event)
+\begin{DoxyCompactList}\small\item\em Adds new features to the function responsible for handling the events, adding a specific function for each key depending on the view. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+responsible for viewing the help page of the game 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classHelpScene_a97b066a6f6341021d0bc07a548ec3f6c}\label{classHelpScene_a97b066a6f6341021d0bc07a548ec3f6c}} 
+\index{Help\+Scene@{Help\+Scene}!Help\+Scene@{Help\+Scene}}
+\index{Help\+Scene@{Help\+Scene}!Help\+Scene@{Help\+Scene}}
+\subsubsection{\texorpdfstring{Help\+Scene()}{HelpScene()}}
+{\footnotesize\ttfamily Help\+Scene\+::\+Help\+Scene (\begin{DoxyParamCaption}\item[{\hyperlink{classStateManager}{State\+Manager} \&}]{stack,  }\item[{\hyperlink{structState_1_1Context}{Context}}]{context }\end{DoxyParamCaption})}
+
+
+
+Construct a new Menu Scene object, standard builder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & stack responsible for managing the views \\
+\hline
+{\em context} & relates all current context \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classHelpScene_adebdd5586b2e0c618134d5bfc38f821b}\label{classHelpScene_adebdd5586b2e0c618134d5bfc38f821b}} 
+\index{Help\+Scene@{Help\+Scene}!handle\+Event@{handle\+Event}}
+\index{handle\+Event@{handle\+Event}!Help\+Scene@{Help\+Scene}}
+\subsubsection{\texorpdfstring{handle\+Event()}{handleEvent()}}
+{\footnotesize\ttfamily bool Help\+Scene\+::handle\+Event (\begin{DoxyParamCaption}\item[{const sf\+::\+Event \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Adds new features to the function responsible for handling the events, adding a specific function for each key depending on the view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & getted action \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false if have a problem 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_a19965f83460b248c42952aac8d001206}{State}.
+
+\mbox{\Hypertarget{classHelpScene_a2eb8b8e49f206b65291a8972f3c596c0}\label{classHelpScene_a2eb8b8e49f206b65291a8972f3c596c0}} 
+\index{Help\+Scene@{Help\+Scene}!update@{update}}
+\index{update@{update}!Help\+Scene@{Help\+Scene}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily bool Help\+Scene\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+overwriting the function update by adding new elements responsible for sampling new elements added to this view 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Fraction of time \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false if have a problem 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_acd5926bc7a373edff9e57f3ffe94ca13}{State}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/views/Help\+Scene.\+hpp\item 
+sources/views/Help\+Scene.\+cpp\end{DoxyCompactItemize}

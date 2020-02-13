@@ -6,10 +6,10 @@
 ### Guide: How to compile
 We just need to follow these steps to compile the program:
 
-sh
+```sh
 $ make
 $ ./build/program
-
+```
 
 # Useful information for Alone Compilation
     g++ -c -o nameoutput main.cpp

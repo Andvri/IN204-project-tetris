@@ -1,0 +1,124 @@
+\hypertarget{classMenuScene}{}\section{Menu\+Scene Class Reference}
+\label{classMenuScene}\index{Menu\+Scene@{Menu\+Scene}}
+
+
+responsible for viewing the game\textquotesingle{}s main menu  
+
+
+
+
+{\ttfamily \#include $<$Menu\+Scene.\+hpp$>$}
+
+
+
+Inheritance diagram for Menu\+Scene\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{classMenuScene__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Menu\+Scene\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{classMenuScene__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMenuScene_ad5964f15d3a3f9daa3ab89c8cb4eb3b6}{Menu\+Scene} (\hyperlink{classStateManager}{State\+Manager} \&stack, \hyperlink{structState_1_1Context}{Context} context)
+\begin{DoxyCompactList}\small\item\em Construct a new Menu Scene object, standard builder. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMenuScene_a1950514cb59988544094f4a18feef437}\label{classMenuScene_a1950514cb59988544094f4a18feef437}} 
+virtual void \hyperlink{classMenuScene_a1950514cb59988544094f4a18feef437}{draw} ()
+\begin{DoxyCompactList}\small\item\em overwriting the function drawing by adding new elements responsible for sampling new elements added to this view \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classMenuScene_ab18847a026d82d5ffe8c869bbf78725e}{update} (sf\+::\+Time dt)
+\begin{DoxyCompactList}\small\item\em overwriting the function update by adding new elements responsible for sampling new elements added to this view \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classMenuScene_a47f06ae8b2a4830a0a6d104db52fd624}{handle\+Event} (const sf\+::\+Event \&event)
+\begin{DoxyCompactList}\small\item\em Adds new features to the function responsible for handling the events, adding a specific function for each key depending on the view. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+responsible for viewing the game\textquotesingle{}s main menu 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMenuScene_ad5964f15d3a3f9daa3ab89c8cb4eb3b6}\label{classMenuScene_ad5964f15d3a3f9daa3ab89c8cb4eb3b6}} 
+\index{Menu\+Scene@{Menu\+Scene}!Menu\+Scene@{Menu\+Scene}}
+\index{Menu\+Scene@{Menu\+Scene}!Menu\+Scene@{Menu\+Scene}}
+\subsubsection{\texorpdfstring{Menu\+Scene()}{MenuScene()}}
+{\footnotesize\ttfamily Menu\+Scene\+::\+Menu\+Scene (\begin{DoxyParamCaption}\item[{\hyperlink{classStateManager}{State\+Manager} \&}]{stack,  }\item[{\hyperlink{structState_1_1Context}{Context}}]{context }\end{DoxyParamCaption})}
+
+
+
+Construct a new Menu Scene object, standard builder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & stack responsible for managing the views \\
+\hline
+{\em context} & relates all current context \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMenuScene_a47f06ae8b2a4830a0a6d104db52fd624}\label{classMenuScene_a47f06ae8b2a4830a0a6d104db52fd624}} 
+\index{Menu\+Scene@{Menu\+Scene}!handle\+Event@{handle\+Event}}
+\index{handle\+Event@{handle\+Event}!Menu\+Scene@{Menu\+Scene}}
+\subsubsection{\texorpdfstring{handle\+Event()}{handleEvent()}}
+{\footnotesize\ttfamily bool Menu\+Scene\+::handle\+Event (\begin{DoxyParamCaption}\item[{const sf\+::\+Event \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Adds new features to the function responsible for handling the events, adding a specific function for each key depending on the view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & getted action \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false if have a problem 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_a19965f83460b248c42952aac8d001206}{State}.
+
+\mbox{\Hypertarget{classMenuScene_ab18847a026d82d5ffe8c869bbf78725e}\label{classMenuScene_ab18847a026d82d5ffe8c869bbf78725e}} 
+\index{Menu\+Scene@{Menu\+Scene}!update@{update}}
+\index{update@{update}!Menu\+Scene@{Menu\+Scene}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily bool Menu\+Scene\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+overwriting the function update by adding new elements responsible for sampling new elements added to this view 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Fraction of time \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false if have a problem 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_acd5926bc7a373edff9e57f3ffe94ca13}{State}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/views/Menu\+Scene.\+hpp\item 
+sources/views/Menu\+Scene.\+cpp\end{DoxyCompactItemize}

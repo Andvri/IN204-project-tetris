@@ -1,0 +1,151 @@
+\hypertarget{classState}{}\section{State Class Reference}
+\label{classState}\index{State@{State}}
+
+
+Inheritance diagram for State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classState__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structState_1_1Context}{Context}
+\begin{DoxyCompactList}\small\item\em structure that references the current context screen \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState_a71d9930be1a58be7f711e245b7965d48}\label{classState_a71d9930be1a58be7f711e245b7965d48}} 
+typedef std\+::unique\+\_\+ptr$<$ \hyperlink{classState}{State} $>$ {\bfseries Ptr}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classState_adc4beeb07281ceb685f87f5ccba73057}{State} (\hyperlink{classStateManager}{State\+Manager} \&stack, \hyperlink{structState_1_1Context}{Context} context)
+\begin{DoxyCompactList}\small\item\em Construct a new \hyperlink{classState}{State} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classState_ae261605bc40b7e3959ce5df5457e4942}\label{classState_ae261605bc40b7e3959ce5df5457e4942}} 
+virtual void \hyperlink{classState_ae261605bc40b7e3959ce5df5457e4942}{draw} ()=0
+\begin{DoxyCompactList}\small\item\em Performs the removal of each view from the top of the stack and draws them. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classState_acd5926bc7a373edff9e57f3ffe94ca13}{update} (sf\+::\+Time dt)=0
+\begin{DoxyCompactList}\small\item\em Controls shine and highlight effects. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classState_a19965f83460b248c42952aac8d001206}{handle\+Event} (const sf\+::\+Event \&event)=0
+\begin{DoxyCompactList}\small\item\em responsible for calling events on the screen, which serves as the basis for all input handling \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structState_1_1Context}{Context} \hyperlink{classState_a93a72915d1aad6d8f7eacc81094dc920}{get\+Context} () const
+\begin{DoxyCompactList}\small\item\em Get the \hyperlink{structState_1_1Context}{Context} object, view. \end{DoxyCompactList}\item 
+void \hyperlink{classState_a6763de833ceb9c23df45aff163a4a1cd}{request\+Stack\+Push} (States\+::\+ID state\+ID)
+\begin{DoxyCompactList}\small\item\em Sends for treatment the selected view that was allocated. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classState_aa418660892d6161772c907bd8d70f910}\label{classState_aa418660892d6161772c907bd8d70f910}} 
+void \hyperlink{classState_aa418660892d6161772c907bd8d70f910}{request\+Stack\+Pop} ()
+\begin{DoxyCompactList}\small\item\em Removal from storage of initiated views. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classState_a4b602bed9bf0179ee5f6748fce340ae6}\label{classState_a4b602bed9bf0179ee5f6748fce340ae6}} 
+void \hyperlink{classState_a4b602bed9bf0179ee5f6748fce340ae6}{request\+State\+Clear} ()
+\begin{DoxyCompactList}\small\item\em clean the stack views order \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classState_adc4beeb07281ceb685f87f5ccba73057}\label{classState_adc4beeb07281ceb685f87f5ccba73057}} 
+\index{State@{State}!State@{State}}
+\index{State@{State}!State@{State}}
+\subsubsection{\texorpdfstring{State()}{State()}}
+{\footnotesize\ttfamily State\+::\+State (\begin{DoxyParamCaption}\item[{\hyperlink{classStateManager}{State\+Manager} \&}]{stack,  }\item[{\hyperlink{structState_1_1Context}{Context}}]{context }\end{DoxyParamCaption})}
+
+
+
+Construct a new \hyperlink{classState}{State} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & Stack of views \\
+\hline
+{\em context} & Relative Window \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classState_a93a72915d1aad6d8f7eacc81094dc920}\label{classState_a93a72915d1aad6d8f7eacc81094dc920}} 
+\index{State@{State}!get\+Context@{get\+Context}}
+\index{get\+Context@{get\+Context}!State@{State}}
+\subsubsection{\texorpdfstring{get\+Context()}{getContext()}}
+{\footnotesize\ttfamily \hyperlink{structState_1_1Context}{State\+::\+Context} State\+::get\+Context (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Get the \hyperlink{structState_1_1Context}{Context} object, view. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{structState_1_1Context}{Context} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classState_a19965f83460b248c42952aac8d001206}\label{classState_a19965f83460b248c42952aac8d001206}} 
+\index{State@{State}!handle\+Event@{handle\+Event}}
+\index{handle\+Event@{handle\+Event}!State@{State}}
+\subsubsection{\texorpdfstring{handle\+Event()}{handleEvent()}}
+{\footnotesize\ttfamily virtual bool State\+::handle\+Event (\begin{DoxyParamCaption}\item[{const sf\+::\+Event \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+responsible for calling events on the screen, which serves as the basis for all input handling 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true by default 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classMenuScene_a47f06ae8b2a4830a0a6d104db52fd624}{Menu\+Scene}, \hyperlink{classMultiplayerScene_af2bcc458cda1d272acabc342eb79d25a}{Multiplayer\+Scene}, \hyperlink{classHelpScene_adebdd5586b2e0c618134d5bfc38f821b}{Help\+Scene}, \hyperlink{classGameScene_aa494372b1f451f3c3a268558fddb30f2}{Game\+Scene}, \hyperlink{classPauseScene_ad806125bd5ae985f24ff2cbfffc2c8e7}{Pause\+Scene}, and \hyperlink{classTitleScene_ae965e4a6c1435246fcbdd487bbc58468}{Title\+Scene}.
+
+\mbox{\Hypertarget{classState_a6763de833ceb9c23df45aff163a4a1cd}\label{classState_a6763de833ceb9c23df45aff163a4a1cd}} 
+\index{State@{State}!request\+Stack\+Push@{request\+Stack\+Push}}
+\index{request\+Stack\+Push@{request\+Stack\+Push}!State@{State}}
+\subsubsection{\texorpdfstring{request\+Stack\+Push()}{requestStackPush()}}
+{\footnotesize\ttfamily void State\+::request\+Stack\+Push (\begin{DoxyParamCaption}\item[{States\+::\+ID}]{state\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Sends for treatment the selected view that was allocated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state\+ID} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classState_acd5926bc7a373edff9e57f3ffe94ca13}\label{classState_acd5926bc7a373edff9e57f3ffe94ca13}} 
+\index{State@{State}!update@{update}}
+\index{update@{update}!State@{State}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual bool State\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Controls shine and highlight effects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & refresh time linked to fps \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false if have a problem 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classMenuScene_ab18847a026d82d5ffe8c869bbf78725e}{Menu\+Scene}, \hyperlink{classMultiplayerScene_a7d55178de89a4de08bdd1aaa7561756e}{Multiplayer\+Scene}, \hyperlink{classHelpScene_a2eb8b8e49f206b65291a8972f3c596c0}{Help\+Scene}, \hyperlink{classGameScene_ac47e1a8082955a6c7af92cf7dbdd9347}{Game\+Scene}, \hyperlink{classPauseScene_ab1d5af95abe16f5d7a0cd98b9d1e1c96}{Pause\+Scene}, and \hyperlink{classTitleScene_a7da09182894a7a48a12ed0e170e5b5f3}{Title\+Scene}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/utils/\+States/State.\+hpp\item 
+sources/utils/\+States/State.\+cpp\end{DoxyCompactItemize}
