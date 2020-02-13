@@ -17,6 +17,7 @@ void Client::establishPort(bool create)
 //Client
 RESPONSE_STATUS Client::searchConection() 
 {
+    socket.unbind();
     if (socket.bind(8007) != sf::Socket::Done)
     {
         return RESPONSE_STATUS::NONE_RESPONSE;
@@ -66,7 +67,7 @@ RESPONSE_STATUS Client::searchConection()
 
 RESPONSE_STATUS Client::listenConection()
 {
-
+    socket.unbind();
     if (socket.bind(7008) != sf::Socket::Done)
     {
         return RESPONSE_STATUS::NONE_RESPONSE;
