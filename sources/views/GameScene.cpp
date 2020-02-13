@@ -55,6 +55,16 @@ GameScene::GameScene(StateManager& stack, Context context)
 				sf::sleep(sf::seconds(1));
 			}
 		});
+
+		thSend = new sf::Thread([&] () {
+			while (true)
+			{
+				getContext().player->sendData((mMatrix + (*mTetromino)).getPos());
+				sf::sleep(sf::seconds(1));
+			}
+			
+		});
+		thSend->launch();
 		thRecv->launch();
 	}
 
@@ -104,10 +114,7 @@ void GameScene::draw()
 
 	if (isMultiplayer) 
 	{
-		thSend = new sf::Thread([&] () {
-			getContext().player->sendData((mMatrix + (*mTetromino)).getPos());
-		});
-		thSend->launch();
+		
 	}
 	
 	mGrid.setColors((mMatrix + (*mTetromino)).getPos());
@@ -132,7 +139,7 @@ bool GameScene::update(sf::Time dt)
 	if ((getContext()).player->getRestart()) 
 	{
 		(getContext()).player->setRestart(false);
-		restart();
+		restart(getContext().player->getMultiplayer());
 	}
 
 
@@ -149,7 +156,7 @@ bool GameScene::update(sf::Time dt)
 		if (mTimeNotification <= sf::seconds(0.0f) && mNotification.isActive()) {
 			mNotification.deactivate();
 			mNotification2.deactivate();
-			restart();
+			restart(getContext().player->getMultiplayer());
 		}
 		else {
 			mNotification2.setText("Restart in: " + std::to_string(((int)mTimeNotification.asSeconds())) + " ");
@@ -322,7 +329,11 @@ void GameScene::restart(bool firstTime )
 {
 
 	if (!firstTime)
+	{
 		getContext().player->setMultiplayer(false);
+		if (thRecv != nullptr) thRecv->terminate();
+		if (thSend != nullptr) thSend->terminate();
+	}
 
 	
 	timeLevel = sf::Time::Zero;
@@ -346,9 +357,6 @@ void GameScene::restart(bool firstTime )
 			  );
 
 	mNextTetromino = new Tetromino(10,20);
-
-	if (thRecv != nullptr) thRecv->terminate();
-	if (thSend != nullptr) thSend->terminate();
 
 }
 void GameScene::updateNextTetromino()
