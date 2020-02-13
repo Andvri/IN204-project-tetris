@@ -3,10 +3,6 @@
 
 Client::Client()
 {
-    if (socket.bind(PORTS::SEND_CLIENT_RECEPTION_SERVER) != sf::Socket::Done)
-    {
-        return;
-    }
 }
 
 Client::~Client()
@@ -19,14 +15,14 @@ void Client::establishPort(bool create)
     socket.unbind();
     if (create)
     {
-        if (socket.bind(PORTS::SEND_SERVER_RECEPTION_CLIENT) != sf::Socket::Done)
+        if (socket.bind(7008) != sf::Socket::Done)
         {
             return;
         }
     }
     else 
     {
-        if (socket.bind(PORTS::SEND_CLIENT_RECEPTION_SERVER) != sf::Socket::Done)
+        if (socket.bind(8007) != sf::Socket::Done)
         {
             return;
         }
@@ -42,7 +38,7 @@ RESPONSE_STATUS Client::searchConection()
     socket.setBlocking(true);
 
     std::cout << "Start send package broadcast" << std::endl;
-    if (socket.send(packetSend, sf::IpAddress::Broadcast, PORTS::SEND_CLIENT_RECEPTION_SERVER) != sf::Socket::Done) {
+    if (socket.send(packetSend, sf::IpAddress::Broadcast, 8007) != sf::Socket::Done) {
         std::cout << "NONE_RESPONSE" << std::endl;
         return RESPONSE_STATUS::NONE_RESPONSE;
         
@@ -58,23 +54,23 @@ RESPONSE_STATUS Client::searchConection()
         sf::Packet packetRecv;
         sf::IpAddress sender;
         unsigned short port;
-        
+        std::cout << "DO SEARCH: " << socket.getLocalPort() << std::endl;
         if (socket.receive(packetRecv, sender, port) == sf::Socket::Done) {
             sf::Uint32 datatypeValue;
             std::cout << "Reception Package" << std::endl;
             packetRecv >> datatypeValue;
             RESPONSE_STATUS response = static_cast<RESPONSE_STATUS>(datatypeValue);
 
+            sf::IpAddress address = sender;
+
+            std::cout << "Server: " << address << std::endl;
+            return RESPONSE_STATUS::ESTABLISHED_CONNECTION;
             if(response == RESPONSE_STATUS::CONNECTION_AVAILABLE) {
                 
-                    sf::IpAddress address = sender;
-
-                    std::cout << "Server: " << address << std::endl;
-                    return RESPONSE_STATUS::ESTABLISHED_CONNECTION;
             }
         }
         elapsedSeconds = std::chrono::system_clock::now() - start;
-    } while(elapsedSeconds.count() <= MAX_SEARCH_TIME);
+    } while(elapsedSeconds.count() <= MAX_LISTEN_TIME);
     std::cout << "NONE_RESPONSE" << std::endl;
     return RESPONSE_STATUS::NONE_RESPONSE;
 }
@@ -92,6 +88,7 @@ RESPONSE_STATUS Client::listenConection()
         sf::IpAddress sender;
         unsigned short port;
 
+        std::cout << "DO LISTEN: " << socket.getLocalPort()<< std::endl;
         if (socket.receive(packetRecv, sender, port) == sf::Socket::Done)
         {
             sf::Packet packetSend;
@@ -100,7 +97,7 @@ RESPONSE_STATUS Client::listenConection()
             std::cout << "Reception Package" << std::endl;
 
             std::cout << "Client:" << address << std::endl;
-            if (socket.send(packetSend, sender, PORTS::SEND_SERVER_RECEPTION_CLIENT) != sf::Socket::Done)
+            if (socket.send(packetSend, sender, 7008) != sf::Socket::Done)
             {
                 std::cout << "Send error" << std::endl;
             }

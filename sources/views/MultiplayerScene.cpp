@@ -14,7 +14,7 @@ MultiplayerScene::MultiplayerScene(StateManager& stack, Context contex)
     sf::RenderWindow& window = *getContext().window;
     sf::Vector2f ws(window.getSize());
 
-    mBackground.setSize(sf::IntRect(0, 0, window.getSize().x, window.getSize().y));
+    mBackground.setSize(Utility::getRectWindow());
 
     mMultiplayerTitle.setPosition(Utility::getPositionRelative(ws, 2u, 4u, 1, 1));
     for (int i = 0; i < ButtonsLabel.size(); i++)
@@ -32,6 +32,8 @@ MultiplayerScene::MultiplayerScene(StateManager& stack, Context contex)
         }
 			
 		else if (ButtonsLabel[i] == "Create")
+		{
+				(getContext().player)->establishRole(true);
 			b->setCallback([this](){
 				th = new sf::Thread([&] () {
 					(getContext().player)->establishConnection(true);
@@ -41,7 +43,11 @@ MultiplayerScene::MultiplayerScene(StateManager& stack, Context contex)
 				//requestStackPop();
 				//requestStackPush(States::Game);
 			});
+		}
 		else if (ButtonsLabel[i] == "Join")
+		{
+
+			(getContext().player)->establishRole(false);
 			b->setCallback([this](){
 				th = new sf::Thread([&] () {
 					(getContext().player)->establishConnection(false);
@@ -50,6 +56,7 @@ MultiplayerScene::MultiplayerScene(StateManager& stack, Context contex)
 				//requestStackPop();
 				//requestStackPush(States::Title);
 			});
+		}
 		mButtons.push_back(b);
     }
 }

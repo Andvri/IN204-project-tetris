@@ -73,7 +73,6 @@ void Player::setRestart(bool restart)
 void Player::establishConnection(bool create)
 {
     RESPONSE_STATUS r;
-    mMultiplayerController.establishPort(create);
     if (create)
     {
         r = mMultiplayerController.listenConection();
@@ -85,4 +84,7 @@ void Player::establishConnection(bool create)
     setMultiplayer(r != RESPONSE_STATUS::NONE_RESPONSE);
 }
 
-
+void Player::establishRole(bool create)
+{
+    mMultiplayerController.establishPort(create);
+}

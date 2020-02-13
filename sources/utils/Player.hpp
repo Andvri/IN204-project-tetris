@@ -29,5 +29,6 @@ class Player
         void setLevel(int level);
 
         void establishConnection(bool create);
+        void establishRole(bool create);
 };
 #endif
