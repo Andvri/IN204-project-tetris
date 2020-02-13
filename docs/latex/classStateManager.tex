@@ -1,0 +1,158 @@
+\hypertarget{classStateManager}{}\section{State\+Manager Class Reference}
+\label{classStateManager}\index{State\+Manager@{State\+Manager}}
+
+
+Inheritance diagram for State\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classStateManager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for State\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classStateManager__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classStateManager_a9f2dbb42af0109d58245e9d361df7a7b}\label{classStateManager_a9f2dbb42af0109d58245e9d361df7a7b}} 
+enum \hyperlink{classStateManager_a9f2dbb42af0109d58245e9d361df7a7b}{Action} \{ {\bfseries Push}, 
+{\bfseries Pop}, 
+{\bfseries Clear}
+ \}\begin{DoxyCompactList}\small\item\em three actions possibles for our management \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStateManager_a4fbfb54fde50aefb32f8fd1cfe234c76}{State\+Manager} (\hyperlink{structState_1_1Context}{State\+::\+Context} context)
+\begin{DoxyCompactList}\small\item\em Construct a new \hyperlink{classState}{State} Manager object. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{classStateManager_a82f1a73f868174c930eb3d254b4eb7bb}{register\+State} (States\+::\+ID state\+ID)
+\begin{DoxyCompactList}\small\item\em Polymorphic function to take all contexts as possible to work with. \end{DoxyCompactList}\item 
+void \hyperlink{classStateManager_a07b3a4d61e0f75fc6c8730f9f77449a4}{update} (sf\+::\+Time dt)
+\begin{DoxyCompactList}\small\item\em Iterate from top to bottom, stop as soon as \hyperlink{classStateManager_a07b3a4d61e0f75fc6c8730f9f77449a4}{update()} returns false. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateManager_a22666f2f72320ea3be46e9253b7530e2}\label{classStateManager_a22666f2f72320ea3be46e9253b7530e2}} 
+void \hyperlink{classStateManager_a22666f2f72320ea3be46e9253b7530e2}{draw} ()
+\begin{DoxyCompactList}\small\item\em Draw all active states from bottom to top. \end{DoxyCompactList}\item 
+void \hyperlink{classStateManager_abe6bc824c376c7c5ec22b18b10b3ad92}{handle\+Event} (const sf\+::\+Event \&event)
+\begin{DoxyCompactList}\small\item\em Iterate from top to bottom, stop as soon as \hyperlink{classStateManager_abe6bc824c376c7c5ec22b18b10b3ad92}{handle\+Event()} returns false. \end{DoxyCompactList}\item 
+void \hyperlink{classStateManager_a4f0c970f9f5cdee29b16b1bc50614180}{push\+State} (States\+::\+ID state\+ID)
+\begin{DoxyCompactList}\small\item\em Performing the status change for selected views. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateManager_a1c5f8c0609e74fb2346b6b7f5930bb38}\label{classStateManager_a1c5f8c0609e74fb2346b6b7f5930bb38}} 
+void \hyperlink{classStateManager_a1c5f8c0609e74fb2346b6b7f5930bb38}{pop\+State} ()
+\begin{DoxyCompactList}\small\item\em Putting stored views on the waiting list to active. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateManager_a3b18f37d97a6d9428daa21318b7381b3}\label{classStateManager_a3b18f37d97a6d9428daa21318b7381b3}} 
+void \hyperlink{classStateManager_a3b18f37d97a6d9428daa21318b7381b3}{clear\+States} ()
+\begin{DoxyCompactList}\small\item\em clears all storage states \end{DoxyCompactList}\item 
+bool \hyperlink{classStateManager_ad66deb9a952a99c7c9943ebdbb7263d0}{is\+Empty} () const
+\begin{DoxyCompactList}\small\item\em Check if the battery is empty or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classStateManager_a4fbfb54fde50aefb32f8fd1cfe234c76}\label{classStateManager_a4fbfb54fde50aefb32f8fd1cfe234c76}} 
+\index{State\+Manager@{State\+Manager}!State\+Manager@{State\+Manager}}
+\index{State\+Manager@{State\+Manager}!State\+Manager@{State\+Manager}}
+\subsubsection{\texorpdfstring{State\+Manager()}{StateManager()}}
+{\footnotesize\ttfamily State\+Manager\+::\+State\+Manager (\begin{DoxyParamCaption}\item[{\hyperlink{structState_1_1Context}{State\+::\+Context}}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct a new \hyperlink{classState}{State} Manager object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classStateManager_abe6bc824c376c7c5ec22b18b10b3ad92}\label{classStateManager_abe6bc824c376c7c5ec22b18b10b3ad92}} 
+\index{State\+Manager@{State\+Manager}!handle\+Event@{handle\+Event}}
+\index{handle\+Event@{handle\+Event}!State\+Manager@{State\+Manager}}
+\subsubsection{\texorpdfstring{handle\+Event()}{handleEvent()}}
+{\footnotesize\ttfamily void State\+Manager\+::handle\+Event (\begin{DoxyParamCaption}\item[{const sf\+::\+Event \&}]{event }\end{DoxyParamCaption})}
+
+
+
+Iterate from top to bottom, stop as soon as \hyperlink{classStateManager_abe6bc824c376c7c5ec22b18b10b3ad92}{handle\+Event()} returns false. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStateManager_ad66deb9a952a99c7c9943ebdbb7263d0}\label{classStateManager_ad66deb9a952a99c7c9943ebdbb7263d0}} 
+\index{State\+Manager@{State\+Manager}!is\+Empty@{is\+Empty}}
+\index{is\+Empty@{is\+Empty}!State\+Manager@{State\+Manager}}
+\subsubsection{\texorpdfstring{is\+Empty()}{isEmpty()}}
+{\footnotesize\ttfamily bool State\+Manager\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Check if the battery is empty or not. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateManager_a4f0c970f9f5cdee29b16b1bc50614180}\label{classStateManager_a4f0c970f9f5cdee29b16b1bc50614180}} 
+\index{State\+Manager@{State\+Manager}!push\+State@{push\+State}}
+\index{push\+State@{push\+State}!State\+Manager@{State\+Manager}}
+\subsubsection{\texorpdfstring{push\+State()}{pushState()}}
+{\footnotesize\ttfamily void State\+Manager\+::push\+State (\begin{DoxyParamCaption}\item[{States\+::\+ID}]{state\+ID }\end{DoxyParamCaption})}
+
+
+
+Performing the status change for selected views. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state\+ID} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStateManager_a82f1a73f868174c930eb3d254b4eb7bb}\label{classStateManager_a82f1a73f868174c930eb3d254b4eb7bb}} 
+\index{State\+Manager@{State\+Manager}!register\+State@{register\+State}}
+\index{register\+State@{register\+State}!State\+Manager@{State\+Manager}}
+\subsubsection{\texorpdfstring{register\+State()}{registerState()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void State\+Manager\+::register\+State (\begin{DoxyParamCaption}\item[{States\+::\+ID}]{state\+ID }\end{DoxyParamCaption})}
+
+
+
+Polymorphic function to take all contexts as possible to work with. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state\+ID} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStateManager_a07b3a4d61e0f75fc6c8730f9f77449a4}\label{classStateManager_a07b3a4d61e0f75fc6c8730f9f77449a4}} 
+\index{State\+Manager@{State\+Manager}!update@{update}}
+\index{update@{update}!State\+Manager@{State\+Manager}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void State\+Manager\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{dt }\end{DoxyParamCaption})}
+
+
+
+Iterate from top to bottom, stop as soon as \hyperlink{classStateManager_a07b3a4d61e0f75fc6c8730f9f77449a4}{update()} returns false. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/utils/\+States/State\+Manager.\+hpp\item 
+sources/utils/\+States/State\+Manager.\+cpp\end{DoxyCompactItemize}

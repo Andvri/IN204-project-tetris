@@ -1,0 +1,371 @@
+\hypertarget{classTetromino}{}\section{Tetromino Class Reference}
+\label{classTetromino}\index{Tetromino@{Tetromino}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTetromino_a46651f8ddce680db2062abb69c213206}\label{classTetromino_a46651f8ddce680db2062abb69c213206}} 
+typedef std\+::function$<$ void(Collision\+Direction cd)$>$ {\bfseries Callback}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classTetromino_aa77965d8aa40ea448b5e8c5e288910d0}{lowest\+Position} (bool axisY=true)
+\begin{DoxyCompactList}\small\item\em Look for the smallest position between the X and Y values of the part in question. \end{DoxyCompactList}\item 
+const std\+::vector$<$ sf\+::\+Vector2i $>$ \hyperlink{classTetromino_abbad824f47a492bdc96810908903c7ac}{get\+Stucture} ()
+\begin{DoxyCompactList}\small\item\em Get the Stucture object current. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTetromino_a16b078d3e8a3b75cf0e22aa64c46af5e}\label{classTetromino_a16b078d3e8a3b75cf0e22aa64c46af5e}} 
+{\bfseries Tetromino} (int m\+BorderX, int m\+BorderY, Available\+Colors m\+Color)
+\item 
+\mbox{\Hypertarget{classTetromino_aeca0a1fc3b172f3545f8775e235d2d14}\label{classTetromino_aeca0a1fc3b172f3545f8775e235d2d14}} 
+{\bfseries Tetromino} (int m\+BorderX, int m\+BorderY)
+\item 
+\mbox{\Hypertarget{classTetromino_a24fb8d502facca047e5e192cbc68a5ee}\label{classTetromino_a24fb8d502facca047e5e192cbc68a5ee}} 
+{\bfseries Tetromino} (Available\+Colors m\+Color=Available\+Colors\+::\+T\+R\+A\+N\+S\+P\+A\+R\+E\+NT)
+\item 
+\mbox{\Hypertarget{classTetromino_ac87bbdae1c3c8349081f41327c0b4afb}\label{classTetromino_ac87bbdae1c3c8349081f41327c0b4afb}} 
+{\bfseries Tetromino} (const \hyperlink{classTetromino}{Tetromino} \&t)
+\item 
+\hyperlink{classTetromino_ab2a8b2460d6acaf098cdc257630cd182}{Tetromino} (int m\+BorderX, int m\+BorderY, int offsetX, int offsetY, std\+::vector$<$ sf\+::\+Vector2i $>$ figure\+Structure, Available\+Colors m\+Color)
+\item 
+virtual void \hyperlink{classTetromino_ac1de8d2bbc2e46ee5d5586f25dcd4692}{rotate} (Direction d=Direction\+::\+C\+L\+O\+C\+K\+W\+I\+SE)
+\begin{DoxyCompactList}\small\item\em uses the rotation function (x,y) = (y, -\/x) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTetromino_a79f30c3dd8ea432e0bc5d7d2108e5a17}\label{classTetromino_a79f30c3dd8ea432e0bc5d7d2108e5a17}} 
+void {\bfseries print} ()
+\item 
+\mbox{\Hypertarget{classTetromino_a612c515834ce52a37afe7ae39efcbd57}\label{classTetromino_a612c515834ce52a37afe7ae39efcbd57}} 
+bool {\bfseries offset\+Axis} (bool axixY=true)
+\item 
+\mbox{\Hypertarget{classTetromino_a15a56c14bed5825cbb0da098bdba6ca2}\label{classTetromino_a15a56c14bed5825cbb0da098bdba6ca2}} 
+void {\bfseries set\+Pos} (std\+::vector$<$ sf\+::\+Vector2i $>$ pos)
+\item 
+Available\+Colors \hyperlink{classTetromino_ad5594cc33ab35ec97b8eb3593e74b787}{get\+Color} ()
+\begin{DoxyCompactList}\small\item\em Get the Color object. \end{DoxyCompactList}\item 
+std\+::vector$<$ sf\+::\+Vector2i $>$ \hyperlink{classTetromino_a8c9202a6d41354fd5555cca89cec0703}{get\+Pos} ()
+\begin{DoxyCompactList}\small\item\em Get the Pos of tetromino in table. \end{DoxyCompactList}\item 
+void \hyperlink{classTetromino_a3ac5e896c58ed8490beac9ee833431e6}{set\+Collision\+Event} (Callback callback)
+\begin{DoxyCompactList}\small\item\em Set the Collision Event to treat him and call the collision function. \end{DoxyCompactList}\item 
+\hyperlink{classTetromino}{Tetromino} \& \hyperlink{classTetromino_ab4dd61078d1383df779f5f615d352a17}{operator++} (int)
+\begin{DoxyCompactList}\small\item\em vertical movement of the tetromino \end{DoxyCompactList}\item 
+\hyperlink{classTetromino}{Tetromino} \& \hyperlink{classTetromino_a3921b7fc54aca4d294b74b487d8c4183}{operator-\/-\/} (int)
+\begin{DoxyCompactList}\small\item\em vertical movement of the tetromino \end{DoxyCompactList}\item 
+bool \hyperlink{classTetromino_aea3c0024088f53627d766fba6a3fb4e4}{operator==} (\hyperlink{classMatrix}{Matrix} \&m)
+\begin{DoxyCompactList}\small\item\em Insert value in the matrix directly just checking whether or not the space is available. \end{DoxyCompactList}\item 
+bool \hyperlink{classTetromino_a1fb3c6bd848e94e099f74b7267b09bb2}{operator==} (\hyperlink{classTetromino}{Tetromino} \&t)
+\begin{DoxyCompactList}\small\item\em Comparation between tetrominos. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTetromino_a1b3d40f3fbe6707ade8c4ceabe0b470f}\label{classTetromino_a1b3d40f3fbe6707ade8c4ceabe0b470f}} 
+void {\bfseries disable\+Event} ()
+\item 
+\mbox{\Hypertarget{classTetromino_a7a8183d917efd18738fc83ba86cfb010}\label{classTetromino_a7a8183d917efd18738fc83ba86cfb010}} 
+void {\bfseries enable\+Event} ()
+\item 
+std\+::vector$<$ sf\+::\+Vector2i $>$ \hyperlink{classTetromino_ae067d0f05219f03a6b7f8e15e3cc67d0}{rotate\+Figure\+Structure} (Direction d=Direction\+::\+C\+L\+O\+C\+K\+W\+I\+SE)
+\begin{DoxyCompactList}\small\item\em If it is possible to rotate the part according to the checking function, it is responsible for actually rotating the piece in real positions and fix it. \end{DoxyCompactList}\item 
+sf\+::\+Vector2i \hyperlink{classTetromino_a6bcb8f93c3259bfba0bfa380c900af8a}{get\+Axis\+Coordinates} ()
+\begin{DoxyCompactList}\small\item\em Get the Axis Coordinates object. \end{DoxyCompactList}\item 
+int \hyperlink{classTetromino_aceb82d83a9a0c1d6825855e46c386b20}{get\+BorderX} ()
+\begin{DoxyCompactList}\small\item\em Get the Border X object. \end{DoxyCompactList}\item 
+int \hyperlink{classTetromino_a9ab14cf7ce0a87d9102c6b04f6f2f995}{get\+BorderY} ()
+\begin{DoxyCompactList}\small\item\em Get the Border Y object. \end{DoxyCompactList}\item 
+\hyperlink{classTetromino}{Tetromino} \hyperlink{classTetromino_aaf9f42f0c7432becc4e5f8fe47575f1b}{clone\+And\+Rotate} (Direction d=Direction\+::\+C\+L\+O\+C\+K\+W\+I\+SE)
+\begin{DoxyCompactList}\small\item\em Clone the part before rotating it, if the clone can be fitted into the matrix, it will assume the original position, thus making the rotation movement. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTetromino_a28d82770c123148f13468456a4508353}\label{classTetromino_a28d82770c123148f13468456a4508353}} 
+void \hyperlink{classTetromino_a28d82770c123148f13468456a4508353}{correct\+Border} ()
+\begin{DoxyCompactList}\small\item\em Check if there is a conflict between the edges of the matrix, and if there is, make the right correction so as not to blast the boundaries. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTetromino}{Tetromino} \& \hyperlink{classTetromino_a6df1d7b28f8b0b41027018105153cc42}{operator+} (const \hyperlink{classTetromino}{Tetromino} \&t1, const int offsetX)
+\begin{DoxyCompactList}\small\item\em Make the movement in x, making the horizontal movement of the piece in which we move in the positive direction. \end{DoxyCompactList}\item 
+\hyperlink{classTetromino}{Tetromino} \& \hyperlink{classTetromino_ac382287ca988f74d5a2e517224a1dfd4}{operator-\/} (const \hyperlink{classTetromino}{Tetromino} \&t1, const int offsetX)
+\begin{DoxyCompactList}\small\item\em Make the movement in x, making the horizontal movement of the piece in which we move in the negative direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTetromino_ab2a8b2460d6acaf098cdc257630cd182}\label{classTetromino_ab2a8b2460d6acaf098cdc257630cd182}} 
+\index{Tetromino@{Tetromino}!Tetromino@{Tetromino}}
+\index{Tetromino@{Tetromino}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{Tetromino()}{Tetromino()}}
+{\footnotesize\ttfamily Tetromino\+::\+Tetromino (\begin{DoxyParamCaption}\item[{int}]{m\+BorderX,  }\item[{int}]{m\+BorderY,  }\item[{int}]{offsetX,  }\item[{int}]{offsetY,  }\item[{std\+::vector$<$ sf\+::\+Vector2i $>$}]{figure\+Structure,  }\item[{Available\+Colors}]{m\+Color }\end{DoxyParamCaption})}
+
+T\+O\+DO\+: Validate the distances between the size
+
+add cassert
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTetromino_aaf9f42f0c7432becc4e5f8fe47575f1b}\label{classTetromino_aaf9f42f0c7432becc4e5f8fe47575f1b}} 
+\index{Tetromino@{Tetromino}!clone\+And\+Rotate@{clone\+And\+Rotate}}
+\index{clone\+And\+Rotate@{clone\+And\+Rotate}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{clone\+And\+Rotate()}{cloneAndRotate()}}
+{\footnotesize\ttfamily \hyperlink{classTetromino}{Tetromino} Tetromino\+::clone\+And\+Rotate (\begin{DoxyParamCaption}\item[{Direction}]{d = {\ttfamily Direction\+:\+:CLOCKWISE} }\end{DoxyParamCaption})}
+
+
+
+Clone the part before rotating it, if the clone can be fitted into the matrix, it will assume the original position, thus making the rotation movement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classTetromino}{Tetromino} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTetromino_a6bcb8f93c3259bfba0bfa380c900af8a}\label{classTetromino_a6bcb8f93c3259bfba0bfa380c900af8a}} 
+\index{Tetromino@{Tetromino}!get\+Axis\+Coordinates@{get\+Axis\+Coordinates}}
+\index{get\+Axis\+Coordinates@{get\+Axis\+Coordinates}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{get\+Axis\+Coordinates()}{getAxisCoordinates()}}
+{\footnotesize\ttfamily sf\+::\+Vector2i Tetromino\+::get\+Axis\+Coordinates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Axis Coordinates object. 
+
+\begin{DoxyReturn}{Returns}
+sf\+::\+Vector2i in (x,y) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTetromino_aceb82d83a9a0c1d6825855e46c386b20}\label{classTetromino_aceb82d83a9a0c1d6825855e46c386b20}} 
+\index{Tetromino@{Tetromino}!get\+BorderX@{get\+BorderX}}
+\index{get\+BorderX@{get\+BorderX}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{get\+Border\+X()}{getBorderX()}}
+{\footnotesize\ttfamily int Tetromino\+::get\+BorderX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Border X object. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTetromino_a9ab14cf7ce0a87d9102c6b04f6f2f995}\label{classTetromino_a9ab14cf7ce0a87d9102c6b04f6f2f995}} 
+\index{Tetromino@{Tetromino}!get\+BorderY@{get\+BorderY}}
+\index{get\+BorderY@{get\+BorderY}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{get\+Border\+Y()}{getBorderY()}}
+{\footnotesize\ttfamily int Tetromino\+::get\+BorderY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Border Y object. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTetromino_ad5594cc33ab35ec97b8eb3593e74b787}\label{classTetromino_ad5594cc33ab35ec97b8eb3593e74b787}} 
+\index{Tetromino@{Tetromino}!get\+Color@{get\+Color}}
+\index{get\+Color@{get\+Color}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{get\+Color()}{getColor()}}
+{\footnotesize\ttfamily Available\+Colors Tetromino\+::get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Color object. 
+
+\begin{DoxyReturn}{Returns}
+the color of piece 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTetromino_a8c9202a6d41354fd5555cca89cec0703}\label{classTetromino_a8c9202a6d41354fd5555cca89cec0703}} 
+\index{Tetromino@{Tetromino}!get\+Pos@{get\+Pos}}
+\index{get\+Pos@{get\+Pos}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{get\+Pos()}{getPos()}}
+{\footnotesize\ttfamily std\+::vector$<$ sf\+::\+Vector2i $>$ Tetromino\+::get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Pos of tetromino in table. 
+
+\begin{DoxyReturn}{Returns}
+(x;y) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTetromino_abbad824f47a492bdc96810908903c7ac}\label{classTetromino_abbad824f47a492bdc96810908903c7ac}} 
+\index{Tetromino@{Tetromino}!get\+Stucture@{get\+Stucture}}
+\index{get\+Stucture@{get\+Stucture}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{get\+Stucture()}{getStucture()}}
+{\footnotesize\ttfamily const std\+::vector$<$ sf\+::\+Vector2i $>$ Tetromino\+::get\+Stucture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Stucture object current. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::vector$<$sf\+::\+Vector2i$>$ with positions in content 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTetromino_aa77965d8aa40ea448b5e8c5e288910d0}\label{classTetromino_aa77965d8aa40ea448b5e8c5e288910d0}} 
+\index{Tetromino@{Tetromino}!lowest\+Position@{lowest\+Position}}
+\index{lowest\+Position@{lowest\+Position}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{lowest\+Position()}{lowestPosition()}}
+{\footnotesize\ttfamily int Tetromino\+::lowest\+Position (\begin{DoxyParamCaption}\item[{bool}]{axisY = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Look for the smallest position between the X and Y values of the part in question. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em axisY} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int value of lowest position between x and y 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTetromino_ab4dd61078d1383df779f5f615d352a17}\label{classTetromino_ab4dd61078d1383df779f5f615d352a17}} 
+\index{Tetromino@{Tetromino}!operator++@{operator++}}
+\index{operator++@{operator++}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{operator++()}{operator++()}}
+{\footnotesize\ttfamily \hyperlink{classTetromino}{Tetromino} \& Tetromino\+::operator++ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})}
+
+
+
+vertical movement of the tetromino 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classTetromino}{Tetromino}\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTetromino_a3921b7fc54aca4d294b74b487d8c4183}\label{classTetromino_a3921b7fc54aca4d294b74b487d8c4183}} 
+\index{Tetromino@{Tetromino}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}}
+{\footnotesize\ttfamily \hyperlink{classTetromino}{Tetromino} \& Tetromino\+::operator-\/-\/ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})}
+
+
+
+vertical movement of the tetromino 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classTetromino}{Tetromino}\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTetromino_aea3c0024088f53627d766fba6a3fb4e4}\label{classTetromino_aea3c0024088f53627d766fba6a3fb4e4}} 
+\index{Tetromino@{Tetromino}!operator==@{operator==}}
+\index{operator==@{operator==}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Tetromino\+::operator== (\begin{DoxyParamCaption}\item[{\hyperlink{classMatrix}{Matrix} \&}]{m }\end{DoxyParamCaption})}
+
+
+
+Insert value in the matrix directly just checking whether or not the space is available. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTetromino_a1fb3c6bd848e94e099f74b7267b09bb2}\label{classTetromino_a1fb3c6bd848e94e099f74b7267b09bb2}} 
+\index{Tetromino@{Tetromino}!operator==@{operator==}}
+\index{operator==@{operator==}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Tetromino\+::operator== (\begin{DoxyParamCaption}\item[{\hyperlink{classTetromino}{Tetromino} \&}]{t }\end{DoxyParamCaption})}
+
+
+
+Comparation between tetrominos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTetromino_ac1de8d2bbc2e46ee5d5586f25dcd4692}\label{classTetromino_ac1de8d2bbc2e46ee5d5586f25dcd4692}} 
+\index{Tetromino@{Tetromino}!rotate@{rotate}}
+\index{rotate@{rotate}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily void Tetromino\+::rotate (\begin{DoxyParamCaption}\item[{Direction}]{d = {\ttfamily Direction\+:\+:CLOCKWISE} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+uses the rotation function (x,y) = (y, -\/x) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & orientation\+: Clokwise or anti-\/clockwise \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTetromino_ae067d0f05219f03a6b7f8e15e3cc67d0}\label{classTetromino_ae067d0f05219f03a6b7f8e15e3cc67d0}} 
+\index{Tetromino@{Tetromino}!rotate\+Figure\+Structure@{rotate\+Figure\+Structure}}
+\index{rotate\+Figure\+Structure@{rotate\+Figure\+Structure}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{rotate\+Figure\+Structure()}{rotateFigureStructure()}}
+{\footnotesize\ttfamily std\+::vector$<$ sf\+::\+Vector2i $>$ Tetromino\+::rotate\+Figure\+Structure (\begin{DoxyParamCaption}\item[{Direction}]{d = {\ttfamily Direction\+:\+:CLOCKWISE} }\end{DoxyParamCaption})}
+
+
+
+If it is possible to rotate the part according to the checking function, it is responsible for actually rotating the piece in real positions and fix it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$sf\+::\+Vector2i$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTetromino_a3ac5e896c58ed8490beac9ee833431e6}\label{classTetromino_a3ac5e896c58ed8490beac9ee833431e6}} 
+\index{Tetromino@{Tetromino}!set\+Collision\+Event@{set\+Collision\+Event}}
+\index{set\+Collision\+Event@{set\+Collision\+Event}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{set\+Collision\+Event()}{setCollisionEvent()}}
+{\footnotesize\ttfamily void Tetromino\+::set\+Collision\+Event (\begin{DoxyParamCaption}\item[{Callback}]{callback }\end{DoxyParamCaption})}
+
+
+
+Set the Collision Event to treat him and call the collision function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classTetromino_a6df1d7b28f8b0b41027018105153cc42}\label{classTetromino_a6df1d7b28f8b0b41027018105153cc42}} 
+\index{Tetromino@{Tetromino}!operator+@{operator+}}
+\index{operator+@{operator+}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{operator+}{operator+}}
+{\footnotesize\ttfamily \hyperlink{classTetromino}{Tetromino}\& operator+ (\begin{DoxyParamCaption}\item[{const \hyperlink{classTetromino}{Tetromino} \&}]{t1,  }\item[{const int}]{offsetX }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Make the movement in x, making the horizontal movement of the piece in which we move in the positive direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t1} & \\
+\hline
+{\em offsetX} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classTetromino}{Tetromino}\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTetromino_ac382287ca988f74d5a2e517224a1dfd4}\label{classTetromino_ac382287ca988f74d5a2e517224a1dfd4}} 
+\index{Tetromino@{Tetromino}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Tetromino@{Tetromino}}
+\subsubsection{\texorpdfstring{operator-\/}{operator-}}
+{\footnotesize\ttfamily \hyperlink{classTetromino}{Tetromino}\& operator-\/ (\begin{DoxyParamCaption}\item[{const \hyperlink{classTetromino}{Tetromino} \&}]{t1,  }\item[{const int}]{offsetX }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Make the movement in x, making the horizontal movement of the piece in which we move in the negative direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t1} & \\
+\hline
+{\em offsetX} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classTetromino}{Tetromino}\& 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/game/Tetromino.\+hpp\item 
+sources/game/Tetromino.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,8 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$classComponent.html" title="Mother class for the components created, which compiles SFML functions. " alt="" coords="161,56,251,83"/>
+<area shape="rect" id="node3" href="$classBackground.html" title="Transformable" alt="" coords="305,5,411,32"/>
+<area shape="rect" id="node4" href="$classButton.html" title="abstraction of a button component to implement in the view " alt="" coords="328,56,388,83"/>
+<area shape="rect" id="node5" href="$classGrid.html" title="build the meshes responsible for making the tetris table " alt="" coords="335,107,381,133"/>
+<area shape="rect" id="node6" href="$classLabel.html" title="compiles within itself the tools to create a label through SFML " alt="" coords="331,157,385,184"/>
+<area shape="rect" id="node8" href="$classStateManager.html" title="StateManager" alt="" coords="155,107,257,133"/>
+</map>

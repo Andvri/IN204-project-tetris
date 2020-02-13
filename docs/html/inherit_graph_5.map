@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classState.html" title="State" alt="" coords="5,132,59,159"/>
+<area shape="rect" id="node2" href="$classGameScene.html" title="responsible for sampling the main screen of the singleplayer game " alt="" coords="121,5,215,32"/>
+<area shape="rect" id="node3" href="$classHelpScene.html" title="responsible for viewing the help page of the game " alt="" coords="125,56,211,83"/>
+<area shape="rect" id="node4" href="$classMenuScene.html" title="responsible for viewing the game&#39;s main menu " alt="" coords="123,107,213,133"/>
+<area shape="rect" id="node5" href="$classMultiplayerScene.html" title="class responsible for taking care of the introduction Multiplayer screen of the game ..." alt="" coords="107,157,229,184"/>
+<area shape="rect" id="node6" href="$classPauseScene.html" title="PauseScene" alt="" coords="120,208,216,235"/>
+<area shape="rect" id="node7" href="$classTitleScene.html" title="class responsible for taking care of the initial screen of the game " alt="" coords="126,259,210,285"/>
+</map>

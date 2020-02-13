@@ -1,0 +1,112 @@
+\hypertarget{classPauseScene}{}\section{Pause\+Scene Class Reference}
+\label{classPauseScene}\index{Pause\+Scene@{Pause\+Scene}}
+
+
+Inheritance diagram for Pause\+Scene\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{classPauseScene__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pause\+Scene\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{classPauseScene__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPauseScene_ac9713bd8685f2d6793d8b5379c0e8aa6}{Pause\+Scene} (\hyperlink{classStateManager}{State\+Manager} \&stack, \hyperlink{structState_1_1Context}{Context} context)
+\begin{DoxyCompactList}\small\item\em Construct a new Menu Scene object, standard builder. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPauseScene_a2f62c5525c35fdc95420418e8b78995f}\label{classPauseScene_a2f62c5525c35fdc95420418e8b78995f}} 
+virtual void \hyperlink{classPauseScene_a2f62c5525c35fdc95420418e8b78995f}{draw} ()
+\begin{DoxyCompactList}\small\item\em overwriting the function drawing by adding new elements responsible for sampling new elements added to this view \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classPauseScene_ab1d5af95abe16f5d7a0cd98b9d1e1c96}{update} (sf\+::\+Time dt)
+\begin{DoxyCompactList}\small\item\em overwriting the function update by adding new elements responsible for sampling new elements added to this view \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classPauseScene_ad806125bd5ae985f24ff2cbfffc2c8e7}{handle\+Event} (const sf\+::\+Event \&event)
+\begin{DoxyCompactList}\small\item\em Adds new features to the function responsible for handling the events, adding a specific function for each key depending on the view. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPauseScene_ac9713bd8685f2d6793d8b5379c0e8aa6}\label{classPauseScene_ac9713bd8685f2d6793d8b5379c0e8aa6}} 
+\index{Pause\+Scene@{Pause\+Scene}!Pause\+Scene@{Pause\+Scene}}
+\index{Pause\+Scene@{Pause\+Scene}!Pause\+Scene@{Pause\+Scene}}
+\subsubsection{\texorpdfstring{Pause\+Scene()}{PauseScene()}}
+{\footnotesize\ttfamily Pause\+Scene\+::\+Pause\+Scene (\begin{DoxyParamCaption}\item[{\hyperlink{classStateManager}{State\+Manager} \&}]{stack,  }\item[{\hyperlink{structState_1_1Context}{Context}}]{context }\end{DoxyParamCaption})}
+
+
+
+Construct a new Menu Scene object, standard builder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & stack responsible for managing the views \\
+\hline
+{\em context} & relates all current context \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPauseScene_ad806125bd5ae985f24ff2cbfffc2c8e7}\label{classPauseScene_ad806125bd5ae985f24ff2cbfffc2c8e7}} 
+\index{Pause\+Scene@{Pause\+Scene}!handle\+Event@{handle\+Event}}
+\index{handle\+Event@{handle\+Event}!Pause\+Scene@{Pause\+Scene}}
+\subsubsection{\texorpdfstring{handle\+Event()}{handleEvent()}}
+{\footnotesize\ttfamily bool Pause\+Scene\+::handle\+Event (\begin{DoxyParamCaption}\item[{const sf\+::\+Event \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Adds new features to the function responsible for handling the events, adding a specific function for each key depending on the view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & getted action \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false if have a problem 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_a19965f83460b248c42952aac8d001206}{State}.
+
+\mbox{\Hypertarget{classPauseScene_ab1d5af95abe16f5d7a0cd98b9d1e1c96}\label{classPauseScene_ab1d5af95abe16f5d7a0cd98b9d1e1c96}} 
+\index{Pause\+Scene@{Pause\+Scene}!update@{update}}
+\index{update@{update}!Pause\+Scene@{Pause\+Scene}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily bool Pause\+Scene\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+overwriting the function update by adding new elements responsible for sampling new elements added to this view 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Fraction of time \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false if have a problem 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_acd5926bc7a373edff9e57f3ffe94ca13}{State}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/views/Pause\+Scene.\+hpp\item 
+sources/views/Pause\+Scene.\+cpp\end{DoxyCompactItemize}
