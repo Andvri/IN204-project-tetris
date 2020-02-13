@@ -9,12 +9,17 @@ MultiplayerScene::MultiplayerScene(StateManager& stack, Context contex)
     mMultiplayerTitle("MultiPlayer", "media/fonts/Blanka-Regular.otf", true, 100, false, true, sf::Color::Green),
     mButtons(),
     mButtonChoice(0),
-	th(nullptr)
+	th(nullptr),
+	waitResponse(false),
+	waitMessage("WAITING FOR PLAYERS", "media/fonts/Blanka-Regular.otf", true, 40, false, false)
 {
     sf::RenderWindow& window = *getContext().window;
     sf::Vector2f ws(window.getSize());
 
     mBackground.setSize(Utility::getRectWindow());
+	waitMessage.setPosition(Utility::getPositionRelative(ws, 2u, 2u, 1, 1));
+	waitMessage.deactivate();
+	waitMessage.setBorder(sf::Color::Black, sf::Color::White, 4);
 
     mMultiplayerTitle.setPosition(Utility::getPositionRelative(ws, 2u, 4u, 1, 1));
     for (int i = 0; i < ButtonsLabel.size(); i++)
@@ -36,7 +41,14 @@ MultiplayerScene::MultiplayerScene(StateManager& stack, Context contex)
 				(getContext().player)->establishRole(true);
 			b->setCallback([this](){
 				th = new sf::Thread([&] () {
+					waitResponse = true;
+					mButtons[1]->deactivate();
+					waitMessage.setText("WAITING FOR PLAYERS");
+					waitMessage.activate();
 					(getContext().player)->establishConnection(true);
+					waitMessage.deactivate();
+					mButtons[1]->activate();
+					waitResponse = false;
 				});
 				th->launch();
 				
@@ -50,7 +62,14 @@ MultiplayerScene::MultiplayerScene(StateManager& stack, Context contex)
 			(getContext().player)->establishRole(false);
 			b->setCallback([this](){
 				th = new sf::Thread([&] () {
+					waitResponse = true;
+					mButtons[0]->deactivate();
+					waitMessage.setText("SEARCHING PLAYERS");
+					waitMessage.activate();
 					(getContext().player)->establishConnection(false);
+					waitMessage.deactivate();
+					mButtons[0]->activate();
+					waitResponse = false;
 				});
 				th->launch();
 				//requestStackPop();
@@ -69,13 +88,18 @@ void MultiplayerScene::draw()
     if (mMultiplayerTitle.isActive()) window.draw(mMultiplayerTitle);
 
     for (auto &&i : mButtons){
-        window.draw(*i);
+		if (i->isActive())
+		{
+			window.draw(*i);
+		}
     }
+	if(waitMessage.isActive()) window.draw(waitMessage);
 }
 
 bool MultiplayerScene::update(sf::Time dt)
 {
     mMultiplayerTitle.update(dt);
+	if(waitMessage.isActive())  waitMessage.update(dt);
     return true;
 }
 
@@ -101,6 +125,10 @@ bool MultiplayerScene::handleEvent(const sf::Event& event){
 
 void MultiplayerScene::moveFocus(bool asc)
 {
+	if(waitResponse)
+		return;
+
+
 	int next;
 
 	if (mButtonChoice == 0 && !asc)

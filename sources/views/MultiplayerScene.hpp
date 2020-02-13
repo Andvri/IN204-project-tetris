@@ -61,7 +61,9 @@ private:
     Background                      mBackground;
     std::vector<Button *>           mButtons;
     int                             mButtonChoice;
-    sf::Thread                  *th;
+    sf::Thread                      *th;
+    bool                            waitResponse;
+    Label                           waitMessage;
 };
 
 #endif
