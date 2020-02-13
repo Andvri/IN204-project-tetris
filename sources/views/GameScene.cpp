@@ -26,14 +26,28 @@ GameScene::GameScene(StateManager& stack, Context context)
 	mPoints(0),
 	mTimeNotification(sf::Time::Zero),
     mNotification("GAME OVER", "media/fonts/Blanka-Regular.otf", true, 80, true),
-	mNotification2("Restart in: 0 ", "media/fonts/Blanka-Regular.otf", true, 30)
+	mNotification2("Restart in: 0 ", "media/fonts/Blanka-Regular.otf", true, 30),
+	thSend(nullptr),
+	thRecv(nullptr),
+	mOtherPlayer(20*10, TRANSPARENT)
 {
 	sf::RenderWindow& window = *getContext().window;
 	sf::Vector2f ws(window.getSize());
 
 	mBackground.setSize(Utility::getRectWindow());
 
-	restart();
+	restart(true);
+	if (getContext().player->getMultiplayer()) 
+	{
+		mNextText.setText("Player 2");
+		thRecv = new sf::Thread([&] () {
+			while (true)
+			{
+				getContext().player->recvData(mOtherPlayer);
+			}
+		});
+		thRecv->launch();
+	}
 
 	mTimeInfo.setPosition(Utility::getPositionRelative(ws, 16u, 8u, 3, 4));
 	mScoreLabel.setPosition(Utility::getPositionRelative(ws, 16u, 8u, 3, 1));
@@ -70,16 +84,35 @@ void GameScene::draw()
 	
 	tmpMatrix = tmpMatrix + (tmpTetromino);
 	
-	tmpGrid.setColors((tmpMatrix).getPos());
+	if (getContext().player->getMultiplayer()) {
+		tmpGrid.setColors(mOtherPlayer);
+	}
+	else {
+		tmpGrid.setColors((tmpMatrix).getPos());
+	}
+
 	tmpGrid.setPosition(Utility::getPositionRelative(sf::Vector2f(window.getSize()), 8u, 8u, 7, 4));
 
-
+	if (getContext().player->getMultiplayer()) 
+	{
+		std::cout << "deberia enviar" << std::endl;
+		thSend = new sf::Thread([&] () {
+			while (true)
+			{
+				getContext().player->sendData((mMatrix + (*mTetromino)).getPos());
+			}
+		});
+		thSend->launch();
+	}
+	
 	mGrid.setColors((mMatrix + (*mTetromino)).getPos());
 	
 	if(mTimeInfo.isActive()) window.draw(mTimeInfo);
 	if(mScoreLabel.isActive()) window.draw(mScoreLabel);
 	if(mScoreValue.isActive()) window.draw(mScoreValue);
 	if(mNextText.isActive()) window.draw(mNextText);
+
+
 	window.draw(mPlayerInfo);
 	window.draw(mNextRec);
 	window.draw(mGrid);
@@ -280,9 +313,13 @@ void GameScene::descend()
 
 
 
-void GameScene::restart()
+void GameScene::restart(bool firstTime )
 {
 
+	if (!firstTime)
+		getContext().player->setMultiplayer(false);
+
+	
 	timeLevel = sf::Time::Zero;
 	timeSinceLastUpdate = sf::Time::Zero;
 

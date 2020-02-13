@@ -41,14 +41,7 @@ MultiplayerScene::MultiplayerScene(StateManager& stack, Context contex)
 				(getContext().player)->establishRole(true);
 			b->setCallback([this](){
 				th = new sf::Thread([&] () {
-					waitResponse = true;
-					mButtons[1]->deactivate();
-					waitMessage.setText("WAITING FOR PLAYERS");
-					waitMessage.activate();
-					(getContext().player)->establishConnection(true);
-					waitMessage.deactivate();
-					mButtons[1]->activate();
-					waitResponse = false;
+					handleMultiplayer(true);
 				});
 				th->launch();
 				
@@ -62,14 +55,7 @@ MultiplayerScene::MultiplayerScene(StateManager& stack, Context contex)
 			(getContext().player)->establishRole(false);
 			b->setCallback([this](){
 				th = new sf::Thread([&] () {
-					waitResponse = true;
-					mButtons[0]->deactivate();
-					waitMessage.setText("SEARCHING PLAYERS");
-					waitMessage.activate();
-					(getContext().player)->establishConnection(false);
-					waitMessage.deactivate();
-					mButtons[0]->activate();
-					waitResponse = false;
+					handleMultiplayer(false);
 				});
 				th->launch();
 				//requestStackPop();
@@ -140,4 +126,23 @@ void MultiplayerScene::moveFocus(bool asc)
 	mButtons[next]->toggle();
 
 	mButtonChoice = next;
+}
+
+void    MultiplayerScene::handleMultiplayer(bool createConnection)
+{	
+	std::string msg = (createConnection) ? "WAITING FOR PLAYERS": "SEARCHING PLAYERS";
+	waitResponse = true;
+	waitMessage.setText(msg);
+	waitMessage.activate();
+	(getContext().player)->establishConnection(createConnection);
+	waitMessage.deactivate();
+	waitResponse = false;
+	
+
+	if ((getContext().player)->getMultiplayer()) 
+	{
+		requestStackPop();
+		requestStackPush(States::Game);
+	}
+	
 }

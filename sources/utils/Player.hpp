@@ -30,5 +30,8 @@ class Player
 
         void establishConnection(bool create);
         void establishRole(bool create);
+
+        void recvData(std::vector<int> &v);
+        void sendData(std::vector<int> v);
 };
 #endif

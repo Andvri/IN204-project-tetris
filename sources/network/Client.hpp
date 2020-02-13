@@ -11,6 +11,8 @@ class Client
 {
 private:
     sf::IpAddress ipReceiver;
+    int           portSend;
+    int           portRecv;
     sf::UdpSocket socket;
 public:
     Client();
@@ -22,6 +24,9 @@ public:
     sf::IpAddress getReceiver();
     void setReceiver(sf::IpAddress ia);
     void establishPort(bool create);
+
+    void recvData(std::vector<int> &v);
+    void sendData(std::vector<int> v);
 };
 
 

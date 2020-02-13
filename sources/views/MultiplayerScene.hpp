@@ -56,6 +56,14 @@ public:
      */
     virtual bool		handleEvent(const sf::Event& event);
 
+    /**
+     * @brief Responsible for making message settings and
+     * calling up connection functions
+     * 
+     * @param createConnection defines the action to be taken
+     */
+    void                handleMultiplayer(bool createConnection);
+
 private:
     Label                           mMultiplayerTitle;
     Background                      mBackground;

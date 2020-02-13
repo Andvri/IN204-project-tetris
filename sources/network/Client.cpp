@@ -52,11 +52,10 @@ RESPONSE_STATUS Client::searchConection()
 
             sf::IpAddress address = sender;
             ipReceiver = address;
+            portRecv = 8007;
+            portSend = 7008;
 
             return RESPONSE_STATUS::ESTABLISHED_CONNECTION;
-            if(response == RESPONSE_STATUS::CONNECTION_AVAILABLE) {
-                
-            }
         }
         elapsedSeconds = std::chrono::system_clock::now() - start;
     } while(elapsedSeconds.count() <= MAX_LISTEN_TIME);
@@ -87,12 +86,15 @@ RESPONSE_STATUS Client::listenConection()
             sf::IpAddress address = sender;
             packetSend << RESPONSE_STATUS::CONNECTION_AVAILABLE;
         
-            ipReceiver = address;
         
             if (socket.send(packetSend, sender, 8007) != sf::Socket::Done)
             {
                 std::cout << "Send error" << std::endl;
             }
+
+            ipReceiver = address;
+            portRecv = 7008;
+            portSend = 8007;
             return RESPONSE_STATUS::ESTABLISHED_CONNECTION;
             
         }
@@ -110,4 +112,38 @@ void Client::setReceiver(sf::IpAddress sc)
 sf::IpAddress Client::getReceiver()
 {
     return ipReceiver;
+}
+
+
+void Client::recvData(std::vector<int> &v)
+{
+    sf::Packet packetRecv;
+    sf::IpAddress sender;
+    unsigned short port;
+
+    if (socket.receive(packetRecv, ipReceiver, port) == sf::Socket::Done) {
+        for (size_t i = 0; i < v.size(); i++)
+        {
+            int j;
+            packetRecv >> j;   
+            v[i] = j;
+        }
+    }
+}
+void Client::sendData(std::vector<int> v)
+{
+    sf::Packet packetSend;
+    
+    for (size_t i = 0; i < v.size(); i++)
+    {
+        packetSend << v[i];
+    }
+    
+    
+    if (socket.send(packetSend, ipReceiver, portSend) != sf::Socket::Done)
+    {
+        std::cout << "Send error" << std::endl;
+    } 
+
+
 }
