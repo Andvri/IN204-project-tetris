@@ -36,6 +36,10 @@ PauseScene::PauseScene(StateManager& stack, Context context):
 				getContext().player->setPause(false);
 				getContext().player->setLevel(1);
 				requestStateClear();
+				if (getContext().player->getMultiplayer()) 
+				{
+					getContext().player->setMultiplayer(false);
+				}
 				requestStackPush(States::Menu);
 			});
 
