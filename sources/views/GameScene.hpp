@@ -69,7 +69,7 @@ private:
     void handlerCollisionEvent(CollisionDirection cd);
     bool                    mPause;
     bool                    mHardDrop;
-    void                    restart();
+    void                    restart(bool firstTime = false);
     void                    updateNextTetromino();
     int                     mPoints;
     sf::Time                mTimeNotification;
@@ -77,11 +77,14 @@ private:
     Label                   mNotification2;
     int                     mLines;
 
+    sf::Thread                      *thSend;
+    sf::Thread                      *thRecv;
+
 
     void                    updateScore(int lines);
 
     Label                   mPlayerInfo;
-
+    std::vector<int>  mOtherPlayer;
     const static int linesPerLevel;
 };
 

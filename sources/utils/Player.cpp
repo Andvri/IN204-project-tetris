@@ -88,3 +88,13 @@ void Player::establishRole(bool create)
 {
     mMultiplayerController.establishPort(create);
 }
+
+
+void Player::recvData(std::vector<int> &v)
+{
+    mMultiplayerController.recvData(v);
+}
+void Player::sendData(std::vector<int> v)
+{
+    mMultiplayerController.sendData(v);
+}
